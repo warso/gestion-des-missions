@@ -1,3 +1,9 @@
 node_modules
 public/bundle.js
 public/fonts
+../.project/
+../.settings/
+../back/.classpath
+../back/.project
+../back/.settings/
+../back/target/
