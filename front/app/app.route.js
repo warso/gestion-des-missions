@@ -7,7 +7,7 @@ export function route ($routeProvider, $locationProvider) {
         template: '<accueil></accueil>'
     })
     .when('/login',{
-        template: "<login></login>"
+        template: "<login-component></login-component>"
     })
     .otherwise({
         redirectTo: '/'

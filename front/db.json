@@ -1,3 +1,44 @@
 {
-  "data": []
+  "user": [
+    {
+      "id": 1,
+      "email": "employe@mission.fr",
+      "password": "employe"
+    },
+    {
+      "email": "admin",
+      "password": "qsdf",
+      "id": 2
+    },
+    {
+      "email": "admin",
+      "password": "qsdf",
+      "id": 3
+    },
+    {
+      "email": "admin",
+      "password": "qsdf",
+      "id": 4
+    },
+    {
+      "email": "admin",
+      "password": "qsdf",
+      "id": 5
+    },
+    {
+      "email": "admin",
+      "password": "qsdf",
+      "id": 6
+    },
+    {
+      "email": "admin",
+      "password": "qsdf",
+      "id": 7
+    },
+    {
+      "email": "admin",
+      "password": "admin",
+      "id": 8
+    }
+  ]
 }
