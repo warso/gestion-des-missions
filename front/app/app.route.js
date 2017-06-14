@@ -10,7 +10,7 @@ export function route ($routeProvider, $locationProvider) {
         template: '<mission></mission>'
     })
     .when('/login',{
-        template: "<login></login>"
+        template: "<login-component></login-component>"
     })
     
     .otherwise({

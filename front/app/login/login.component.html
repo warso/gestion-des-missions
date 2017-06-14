@@ -1,41 +1,42 @@
+<h1 align="center">
 
+  GDM</h1>
+<h2 align="center">Gestion des mission</h2>
 
-        <h1 align="center" >GDM</h1>
-        <h2 align="center">Gestion des mission</h2>
-    
-    <form class="form-horizontal container wrap" name ="authentification">
-<fieldset>
+<form class="form-horizontal container wrap" name="authentification">
+  <fieldset>
 
-<!-- Form Name -->
-<legend align ="center">Connexion : {{username.email}} </legend>
+    <!-- Form Name -->
+    <legend align="center">Connexion : {{user.email}} </legend>
 
-<!-- Text input-->
-<div class="form-group container">
-  <label class="col-md-4 control-label" for="username">email </label>  
-  <div class="col-md-4">
-  <input id="username" name="username" type="text" placeholder="" class="form-control input-md" required ng-model="username.email">
-    
-  </div>
-</div>
+    <!-- Text input-->
+    <div class="form-group container">
+      <label class="col-md-4 control-label" for="username">email </label>
+      <div class="col-md-4">
+        <input id="username" name="username" type="text" placeholder="" class="form-control input-md" required ng-model="user.email">
 
-<!-- Password input-->
-<div class="form-group container">
-  <label class="col-md-4 control-label" for="password">password</label>
-  <div class="col-md-4">
-    <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required ng-model="username.password">
-    
-  </div>
-</div>
+      </div>
+    </div>
 
-<!-- Button -->
-<div class="form-group container">
-  <label class="col-md-4 control-label" for="butConnect"></label>
-  <div class="col-md-4">
-    <button id="butConnect" name="butConnect" class="btn btn-primary" type="submit" ng-disabled="authentification.$invalid" ng-click="$ctrl.loginRecup()" >se connecter</button>
-  </div>
-</div>
+    <!-- Password input-->
+    <div class="form-group container">
+      <label class="col-md-4 control-label" for="password">password</label>
+      <div class="col-md-4">
+        <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required ng-model="user.password">
 
-</fieldset>
+      </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group container">
+      <label class="col-md-4 control-label" for="butConnect"></label>
+      <div class="col-md-4">
+        <button id="butConnect" name="butConnect" class="btn btn-primary" type="submit" ng-disabled="authentification.$invalid" ng-click="$ctrl.employeRecup(user)"
+          ng-click="">se connecter</button>
+
+        <button id="butAddEmploye" ng-click="$ctrl.employeAdd(user)">Ajouter</button>
+      </div>
+    </div>
+
+  </fieldset>
 </form>
-
-
