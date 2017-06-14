@@ -1,5 +1,6 @@
 package dev.model;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class Utilisateur {
 
 	private String email;
 
-	private String dateNaissance;
+	private LocalDateTime dateNaissance;
 	private String sexe;
 	private String address;
 
@@ -43,6 +44,19 @@ public class Utilisateur {
 
 	public Utilisateur() {
 		super();
+	}
+	
+	public Utilisateur(Personne personne, Role role) {
+		this.matricule = personne.matricule;
+		this.nom = personne.nom;
+		this.prenom = personne.prenom;
+		this.email = personne.email;
+		this.dateNaissance = LocalDateTime.parse(personne.dateNaissance);
+		this.sexe = personne.sexe;
+		this.address = personne.address;
+		this.departement = personne.departement;
+		
+		this.role = role;
 	}
 
 	public int getId() {
@@ -85,11 +99,11 @@ public class Utilisateur {
 		this.email = email;
 	}
 
-	public String getDateNaissance() {
+	public LocalDateTime getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(String dateNaissance) {
+	public void setDateNaissance(LocalDateTime dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 
