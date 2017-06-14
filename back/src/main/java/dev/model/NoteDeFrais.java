@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class NoteDeFrais {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -24,7 +25,7 @@ public class NoteDeFrais {
 	public NoteDeFrais() {
 		super();
 	}
-
+	// TODO example
 	public NoteDeFrais(Mission misson, LocalDateTime date, float montant, Nature nature, String commentaire) {
 		super();
 		this.misson = misson;
