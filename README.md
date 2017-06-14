@@ -22,3 +22,6 @@
       * /missions: afichage des missions
     * Component:
       * nav-bar : barre de navigation
+
+## Video 
+ * https://www.youtube.com/watch?v=4Y6LM4Y_K6c (aide pour la page login)
