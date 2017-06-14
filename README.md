@@ -18,4 +18,4 @@
   * Uitlisiateur
   * Missions
 * Front
-  * /missions: afichage des missions
+ * /missions: afichage des missions
