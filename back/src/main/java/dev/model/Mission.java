@@ -3,19 +3,35 @@ package dev.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import dev.enumeration.Statut;
 import dev.enumeration.Transport;
 
+@Entity
 public class Mission {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@ManyToOne
 	private Utilisateur utilisateur;
 	private LocalDateTime debut;
 	private LocalDateTime fin;
+	@ManyToOne
 	private Nature nature;
 	private String villeDepart;
 	private String villeArrivee;
+	// TODO mapping enum to string
 	private Transport transport;
+	// TODO mapping enum to string
 	private Statut statut;
+	@OneToMany
 	private List<NoteDeFrais> notes;
 
 	public Mission() {

@@ -2,14 +2,23 @@ package dev.model;
 
 import java.time.LocalDateTime;
 
-import dev.enumeration.Statut;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+import dev.enumeration.Statut;
+@Entity
 public class Absence {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private LocalDateTime debut;
 	private LocalDateTime fin;
 	private Statut statut;
 	private String motif;
+	@OneToOne
 	private Utilisateur utilisateur;
 
 	public Absence(LocalDateTime debut, LocalDateTime fin, Statut statut, String motif, Utilisateur utilisateur) {

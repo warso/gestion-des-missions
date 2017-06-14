@@ -2,15 +2,28 @@ package dev.model;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 import dev.enumeration.Role;
 
+@Entity
 public class Utilisateur {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String login;
 	private String matricule;
 	private String motDepasse;
+
+	// TODO changer type enum pour l'affichage en string
 	private Role role;
+	@OneToMany
 	private List<Mission> missions;
+	@OneToMany
 	private List<Absence> absences;
 
 	public Utilisateur() {
