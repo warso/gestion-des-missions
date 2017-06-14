@@ -15,7 +15,10 @@
         * GET /utilisateur/{matricule} : recuperer utilisateur par matricule
     * Services:
     * Entity:
-        * Uitlisiateur
+        * Utilisateur
         * Missions
 * Front
-    * /missions: afichage des missions
+    * Page :
+      * /missions: afichage des missions
+    * Component:
+      * nav-bar : barre de navigation
