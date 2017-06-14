@@ -1,10 +1,9 @@
 package dev.model;
 
+<<<<<<< HEAD
+=======
 import java.time.LocalDateTime;
 import java.util.List;
-
-import dev.enumeration.Statut;
-import dev.enumeration.Transport;
 
 public class Mission {
 	private int id;
@@ -15,7 +14,7 @@ public class Mission {
 	private String villeDepart;
 	private String villeArrivee;
 	private Transport transport;
-	private Statut statut;
+	private Status status;
 	private List<NoteDeFrais> notes;
 
 	public Mission() {
@@ -23,7 +22,7 @@ public class Mission {
 	}
 
 	public Mission(Utilisateur utilisateur, LocalDateTime debut, LocalDateTime fin, Nature nature, String villeDepart,
-			String villeArrivee, Transport transport, Statut statut, List<NoteDeFrais> notes) {
+			String villeArrivee, Transport transport, Status status, List<NoteDeFrais> notes) {
 		super();
 		this.utilisateur = utilisateur;
 		this.debut = debut;
@@ -32,7 +31,7 @@ public class Mission {
 		this.villeDepart = villeDepart;
 		this.villeArrivee = villeArrivee;
 		this.transport = transport;
-		this.statut = statut;
+		this.status = status;
 		this.notes = notes;
 	}
 
@@ -100,12 +99,12 @@ public class Mission {
 		this.transport = transport;
 	}
 
-	public Statut getStatut() {
-		return statut;
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setStatut(Statut statut) {
-		this.statut = statut;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	public List<NoteDeFrais> getNotes() {
@@ -115,5 +114,12 @@ public class Mission {
 	public void setNotes(List<NoteDeFrais> notes) {
 		this.notes = notes;
 	}
+>>>>>>> completion model KO manque enum
 
+public class Mission {
+	Nature nature = new Nature();
+	String villeDepart;
+	String villeArrivee;
+	
+	
 }
