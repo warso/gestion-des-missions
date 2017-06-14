@@ -75,7 +75,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- Spring Security -->
+		<!-- Spring Security 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -86,7 +86,9 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 			<version>4.2.2.RELEASE</version>
+			
 		</dependency>
+		-->
 	</dependencies>
 
 	<profiles>
