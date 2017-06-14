@@ -14,4 +14,5 @@ angular.module('app', [RouteModule])
 .component('accueil', AccueilComponent)
 .component('barnav', NavBarComponent)
 .component('login',LoginComponent)
+.component('mission', MissionComponent)
 .config(route);
