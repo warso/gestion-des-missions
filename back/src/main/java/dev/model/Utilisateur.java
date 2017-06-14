@@ -15,12 +15,27 @@ public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String login;
 	private String matricule;
-	private String motDepasse;
+
+	private String nom;
+	private String prenom;
+
+	private String email;
+
+	private String dateNaissance;
+	private String sexe;
+	private String address;
+
+	private String password;
+
+	@OneToMany
+	private List<Utilisateur> subalternes;
+	
+	private String departement;
 
 	// TODO changer type enum pour l'affichage en string
 	private Role role;
+	
 	@OneToMany
 	private List<Mission> missions;
 	@OneToMany
@@ -28,17 +43,6 @@ public class Utilisateur {
 
 	public Utilisateur() {
 		super();
-	}
-
-	public Utilisateur(String login, String matricule, String motDepasse, Role role, List<Mission> missions,
-			List<Absence> absences) {
-		super();
-		this.login = login;
-		this.matricule = matricule;
-		this.motDepasse = motDepasse;
-		this.role = role;
-		this.missions = missions;
-		this.absences = absences;
 	}
 
 	public int getId() {
@@ -49,14 +53,6 @@ public class Utilisateur {
 		this.id = id;
 	}
 
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
 	public String getMatricule() {
 		return matricule;
 	}
@@ -65,12 +61,77 @@ public class Utilisateur {
 		this.matricule = matricule;
 	}
 
-	public String getMotDepasse() {
-		return motDepasse;
+	public String getNom() {
+		return nom;
 	}
 
-	public void setMotDepasse(String motDepasse) {
-		this.motDepasse = motDepasse;
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(String dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+	public String getSexe() {
+		return sexe;
+	}
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public List<Utilisateur> getSubalternes() {
+		return subalternes;
+	}
+
+	public void setSubalternes(List<Utilisateur> subalternes) {
+		this.subalternes = subalternes;
+	}
+
+	public String getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(String departement) {
+		this.departement = departement;
 	}
 
 	public Role getRole() {
