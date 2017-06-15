@@ -1,4 +1,4 @@
-
+import './mission.component.css';
 import template from './mission.component.html'
 
 

@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,9 +33,9 @@ public class Mission {
 	private Nature nature;
 	private String villeDepart;
 	private String villeArrivee;
-	// TODO mapping enum to string
+	@Enumerated(EnumType.STRING)
 	private Transport transport;
-	// TODO mapping enum to string
+	@Enumerated(EnumType.STRING)
 	private Statut statut;
 	@OneToMany
 	private List<NoteDeFrais> notes;
