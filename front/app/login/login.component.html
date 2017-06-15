@@ -7,13 +7,13 @@
   <fieldset>
 
     <!-- Form Name -->
-    <legend align="center">Connexion : {{user.email}} </legend>
+    <legend align="center">Bonjour : {{$ctrl.user.email}} </legend>
 
     <!-- Text input-->
     <div class="form-group container">
       <label class="col-md-4 control-label" for="username">email </label>
       <div class="col-md-4">
-        <input id="username" name="username" type="text" placeholder="" class="form-control input-md" required ng-model="user.email">
+        <input id="username" name="username" type="text" placeholder="" class="form-control input-md" required ng-model="$ctrl.user.email">
 
       </div>
     </div>
@@ -22,7 +22,7 @@
     <div class="form-group container">
       <label class="col-md-4 control-label" for="password">password</label>
       <div class="col-md-4">
-        <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required ng-model="user.password">
+        <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required ng-model="$ctrl.user.password">
 
       </div>
     </div>
@@ -31,10 +31,10 @@
     <div class="form-group container">
       <label class="col-md-4 control-label" for="butConnect"></label>
       <div class="col-md-4">
-        <button id="butConnect" name="butConnect" class="btn btn-primary" type="submit" ng-disabled="authentification.$invalid" ng-click="$ctrl.employeRecup(user)"
+        <button id="butConnect" name="butConnect" class="btn btn-primary" type="submit" ng-disabled="authentification.$invalid" ng-click="$ctrl.verifUser()"
           ng-click="">se connecter</button>
 
-        <button id="butAddEmploye" ng-click="$ctrl.employeAdd(user)">Ajouter</button>
+        <button id="butAddEmploye" ng-click="$ctrl.addUser()">Ajouter</button>
       </div>
     </div>
 
