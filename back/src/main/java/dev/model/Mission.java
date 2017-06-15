@@ -1,5 +1,6 @@
 package dev.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,11 +22,11 @@ public class Mission {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@ManyToOne
-	private Utilisateur utilisateur;
+	private RoleUtilisateur utilisateur;
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDateTime debut;
+	private LocalDate debut;
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDateTime fin;
+	private LocalDate fin;
 	@ManyToOne
 	private Nature nature;
 	private String villeDepart;
@@ -41,7 +42,7 @@ public class Mission {
 		super();
 	}
 
-	public Mission(Utilisateur utilisateur, LocalDateTime debut, LocalDateTime fin, Nature nature, String villeDepart,
+	public Mission(RoleUtilisateur utilisateur, LocalDate debut, LocalDate fin, Nature nature, String villeDepart,
 			String villeArrivee, Transport transport, Statut statut, List<NoteDeFrais> notes) {
 		super();
 		this.utilisateur = utilisateur;
@@ -63,27 +64,27 @@ public class Mission {
 		this.id = id;
 	}
 
-	public Utilisateur getUtilisateur() {
+	public RoleUtilisateur getUtilisateur() {
 		return utilisateur;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
+	public void setUtilisateur(RoleUtilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
 
-	public LocalDateTime getDebut() {
+	public LocalDate getDebut() {
 		return debut;
 	}
 
-	public void setDebut(LocalDateTime debut) {
+	public void setDebut(LocalDate debut) {
 		this.debut = debut;
 	}
 
-	public LocalDateTime getFin() {
+	public LocalDate getFin() {
 		return fin;
 	}
 
-	public void setFin(LocalDateTime fin) {
+	public void setFin(LocalDate fin) {
 		this.fin = fin;
 	}
 

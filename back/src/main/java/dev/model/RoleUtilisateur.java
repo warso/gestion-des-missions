@@ -15,7 +15,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import dev.enumeration.Role;
 
-public class Utilisateur {
+@Entity
+public class RoleUtilisateur {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String matricule;
 
 	private String nom;
@@ -25,32 +30,34 @@ public class Utilisateur {
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDateTime dateNaissance;
-
 	private String sexe;
 	private String address;
 
 	private String password;
 
-	private List<String> subalternes;
+	@OneToMany
+	private List<RoleUtilisateur> subalternes;
 
 	private String departement;
 
+	@Enumerated(EnumType.STRING)
 	private Role role;
 
-	public Utilisateur() {
+	@OneToMany
+	private List<Mission> missions;
+	@OneToMany
+	private List<Absence> absences;
+
+	public RoleUtilisateur() {
 		super();
 	}
 
-	public Utilisateur(Personne persone, RoleUtilisateur role) {
-		super();
+	public int getId() {
+		return id;
 	}
 
-	public List<String> getSubalternes() {
-		return subalternes;
-	}
-
-	public void setSubalternes(List<String> subalternes) {
-		this.subalternes = subalternes;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getMatricule() {
@@ -117,6 +124,14 @@ public class Utilisateur {
 		this.password = password;
 	}
 
+	public List<RoleUtilisateur> getSubalternes() {
+		return subalternes;
+	}
+
+	public void setSubalternes(List<RoleUtilisateur> subalternes) {
+		this.subalternes = subalternes;
+	}
+
 	public String getDepartement() {
 		return departement;
 	}
@@ -131,6 +146,22 @@ public class Utilisateur {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public List<Mission> getMissions() {
+		return missions;
+	}
+
+	public void setMissions(List<Mission> missions) {
+		this.missions = missions;
+	}
+
+	public List<Absence> getAbsences() {
+		return absences;
+	}
+
+	public void setAbsences(List<Absence> absences) {
+		this.absences = absences;
 	}
 
 }

@@ -19,9 +19,9 @@ public class Absence {
 	private Statut statut;
 	private String motif;
 	@OneToOne
-	private Utilisateur utilisateur;
+	private RoleUtilisateur utilisateur;
 
-	public Absence(LocalDateTime debut, LocalDateTime fin, Statut statut, String motif, Utilisateur utilisateur) {
+	public Absence(LocalDateTime debut, LocalDateTime fin, Statut statut, String motif, RoleUtilisateur utilisateur) {
 		super();
 		this.debut = debut;
 		this.fin = fin;
@@ -74,11 +74,11 @@ public class Absence {
 		this.motif = motif;
 	}
 
-	public Utilisateur getUtilisateur() {
+	public RoleUtilisateur getUtilisateur() {
 		return utilisateur;
 	}
 
-	public void setUtilisateur(Utilisateur utilisateur) {
+	public void setUtilisateur(RoleUtilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
 
