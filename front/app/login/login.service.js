@@ -52,12 +52,6 @@ export class LoginService {
 
     }
 
-
-    // function(msg){
-    //             if(msg.user == 'succes') console.log('authentification reussite')
-    //             else console.log('error login')
-    // }
-
     ajoutNouveauEmploye(user) {
         console.log("recuperation de la fonction loginService", user)
         // envoie les data à user.json
