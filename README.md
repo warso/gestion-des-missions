@@ -20,8 +20,10 @@
 * Front
     * Page :
       * /missions: afichage des missions
-    * Component:
+    * Components:
       * nav-bar : barre de navigation
+    * Services:
+      * utilisateur
 
 ## Video 
  * https://www.youtube.com/watch?v=4Y6LM4Y_K6c (aide pour la page login)
