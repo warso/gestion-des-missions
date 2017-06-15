@@ -19,14 +19,14 @@ AFFICHAGE DES MISSION
     </thead>
     <tbody>
         <tr ng-repeat="mission in $ctrl.missions">
-            <td>Date de debut</td>
-            <td>Date de fin</td>
-            <td>Nature</td>
-            <td>Depart</td>
-            <td>Arrivée</td>
-            <td>Transport</td>
+            <td>{{mission.debut}}</td>
+            <td>{{mission.fin}}</td>
+            <td>{{mission.nature}}</td>
+            <td>{{mission.villeDepart}}</td>
+            <td>{{mission.villeArrivee}}</td>
+            <td>{{mission.transport}}</td>
             <td>{{mission.statut}}</td>
-            <td>Action</td>
+            <td></td>
         </tr>
         
     </tbody>

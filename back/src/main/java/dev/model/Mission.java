@@ -9,7 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import dev.enumeration.Statut;
 import dev.enumeration.Transport;
@@ -21,7 +22,9 @@ public class Mission {
 	private int id;
 	@ManyToOne
 	private Utilisateur utilisateur;
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDateTime debut;
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDateTime fin;
 	@ManyToOne
 	private Nature nature;
