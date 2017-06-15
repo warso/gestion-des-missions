@@ -10,15 +10,16 @@ class controller {
     }
     
     $onInit (){
-
         
-        console.log(this.MissionService.getMissions())
-        this.MissionService.getMissions()
-        .then(
-        missions => {
-            this.missions = missions
-        })
-        
+        let user = this.LoginService.loadUser()
+        console.log("loaded user",user)
+        if(user) {
+            this.MissionService.getMissions(user.matricule)
+            .then(
+            missions => {
+                this.missions = missions
+            })
+        }
     }
 }
 

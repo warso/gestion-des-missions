@@ -8,6 +8,7 @@
 <!-- Afficher le menu qui correspond au statut -->
 
 <div id="wrapper" ng-init="$ctrl.utilisateurs.role='admin'">
+    <div class="container-fluid">
     <nav class="navbar navbar-default">
         <ul class="nav navbar-nav">
             <li><a ng-href="/gestion-des-missions/" >Accueil</a></li>
@@ -18,8 +19,12 @@
             <li ng-if="$ctrl.utilisateurs.role=='admin'"><a href="#">Natures des missions</a></li>
             <li ng-if="$ctrl.utilisateurs.role=='manager'"><a href="#">Validation des missions</a></li>
         </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><p class="navbar-text">{{$ctrl.user.nom}}, {{$ctrl.user.prenom}}</p></li>
+        </ul>
     </nav>
 
+</div>
 </div>
 
 

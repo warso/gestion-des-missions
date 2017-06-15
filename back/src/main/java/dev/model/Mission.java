@@ -39,6 +39,8 @@ public class Mission {
 	private Statut statut;
 	@OneToMany
 	private List<NoteDeFrais> notes;
+	
+	
 
 	public Mission() {
 		super();
