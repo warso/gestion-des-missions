@@ -23,23 +23,6 @@ public class RoleUtilisateur {
 	private int id;
 	private String matricule;
 
-	private String nom;
-	private String prenom;
-
-	private String email;
-
-	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDateTime dateNaissance;
-	private String sexe;
-	private String address;
-
-	private String password;
-
-	@OneToMany
-	private List<RoleUtilisateur> subalternes;
-
-	private String departement;
-
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
@@ -66,78 +49,6 @@ public class RoleUtilisateur {
 
 	public void setMatricule(String matricule) {
 		this.matricule = matricule;
-	}
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getPrenom() {
-		return prenom;
-	}
-
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public LocalDateTime getDateNaissance() {
-		return dateNaissance;
-	}
-
-	public void setDateNaissance(LocalDateTime dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
-
-	public String getSexe() {
-		return sexe;
-	}
-
-	public void setSexe(String sexe) {
-		this.sexe = sexe;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public List<RoleUtilisateur> getSubalternes() {
-		return subalternes;
-	}
-
-	public void setSubalternes(List<RoleUtilisateur> subalternes) {
-		this.subalternes = subalternes;
-	}
-
-	public String getDepartement() {
-		return departement;
-	}
-
-	public void setDepartement(String departement) {
-		this.departement = departement;
 	}
 
 	public Role getRole() {

@@ -1,15 +1,10 @@
 package dev.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -43,6 +38,31 @@ public class Utilisateur {
 
 	public Utilisateur(Personne persone, RoleUtilisateur role) {
 		super();
+	}
+
+	public Utilisateur(Personne persone, Role role) {
+		super();
+		
+		this.matricule = persone.matricule;
+		this.nom = persone.nom;
+		this.prenom = persone.prenom;
+		this.email = persone.email;
+//		this.dateNaissance = LocalDateTime.parse(persone.dateNaissance);
+		this.sexe = persone.sexe;
+		this.address = persone.address;
+		this.password = persone.password;
+		this.subalternes = persone.subalternes;
+		this.departement = persone.departement;
+		this.role = role;
+		
+	}
+	
+	
+
+	public Utilisateur(String matricule, String nom, String prenom, String email, LocalDateTime dateNaissance,
+			String sexe, String address, String password, List<String> subalternes, String departement, Role role) {
+		super();
+
 	}
 
 	public List<String> getSubalternes() {

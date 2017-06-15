@@ -5,6 +5,8 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -13,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.model.Personne;
 import dev.model.Utilisateur;
 
+@Service
 public class PersonneService {
 
 	String adressApi = "https://raw.githubusercontent.com/DiginamicFormation/ressources-atelier/master/users.json";
