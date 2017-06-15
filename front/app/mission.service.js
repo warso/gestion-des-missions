@@ -8,14 +8,13 @@ export class MissionService {
         
         
     }
-
-    test() {
-        this.$http.get(API_URL+'/missions')
+    
+    getMissions() {
+        console.log("getMissions()")
+        return this.$http.get(API_URL+'/missions')
         .then(
-            rep => {
-                console.log("data", rep.data)
-            },
-            err => {console.log("error acces API/missions", err)}
+        rep => rep.data,
+        err => { console.log("error acces API/missions", err) }
         )
     }
 }

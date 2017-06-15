@@ -4,14 +4,30 @@
 
 AFFICHAGE DES MISSION
 
-<table>
+<table class="table">
     <thead>
         <tr>
-    <th>Prénom</th>
-    <th>Nom</th>
-  </tr>
+            <th>Date de debut</th>
+            <th>Date de fin</th>
+            <th>Nature</th>
+            <th>Depart</th>
+            <th>Arrivée</th>
+            <th>Transport</th>
+            <th>Statut</th>
+            <th>Action</th>
+        </tr>
     </thead>
     <tbody>
+        <tr ng-repeat="mission in $ctrl.missions">
+            <td>Date de debut</td>
+            <td>Date de fin</td>
+            <td>Nature</td>
+            <td>Depart</td>
+            <td>Arrivée</td>
+            <td>Transport</td>
+            <td>{{mission.statut}}</td>
+            <td>Action</td>
+        </tr>
         
     </tbody>
 </table>

@@ -16,7 +16,7 @@ import { MissionService } from './mission.service'
 // import {UtilisateurService} from './utilisateur.service';
 
 
-const API_URL='http://localhost:8080'
+// const API_URL='http://localhost:8080'
 
 angular.module('app', [RouteModule])
 
