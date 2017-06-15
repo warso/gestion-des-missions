@@ -6,6 +6,8 @@ export class LoginService {
         this.$q = $q
         this.API_URL = API_URL
         this.$cookies = $cookies
+        
+        this.user = {}
     }
     
     recup() {
@@ -73,12 +75,15 @@ export class LoginService {
         // envoie les data à user.json
         let $promesse = this.$http.post('http://localhost:3000/user', user)
     }
-
+    
     saveUser(user) {
         this.$cookies.putObject("user",user)
+        this.user = user
     }
-
+    
     loadUser(){
-        return this.$cookies.getObject("user")
+        // if(!this.user)
+        this.user = this.$cookies.getObject("user")
+        return this.user
     }
 }

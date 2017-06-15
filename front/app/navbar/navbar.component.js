@@ -9,8 +9,8 @@ class controller {
 
     $onInit(){
 
+        console.log("user", this.user)
         this.user = this.LoginService.loadUser()
-        console.log("user", user)
     }
 
 }
