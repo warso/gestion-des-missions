@@ -3,8 +3,15 @@ import template from './mission.component.html'
 
 
 class controller {
-    constructor () {
-        this.titre = 'Mission';
+    constructor (MissionService) {
+        this.MissionService = MissionService
+        
+    }
+    
+    $onInit (){
+        console.log("mission compo on init")
+        this.MissionService.test()
+        
     }
 }
 
