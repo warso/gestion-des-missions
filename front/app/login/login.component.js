@@ -10,7 +10,9 @@ class controller {
             email: "",
             password: ""
         }
-
+        
+        this.sha1 = require('sha1');
+        
     }
     //  Le component combine les controller et les view. Ici dans la classe controller on a nos methodes de controller
     verifUser() {
@@ -21,18 +23,33 @@ class controller {
             if (userRecupere) {
                 this.$location.path('http://localhost:9000/gestion-des-missions/')
             } else {
-
+                
             }
-
+            
         })
-
+        
     }
-
-
+    
+    connection () {
+        this.loginService.getUserByEmail(this.user.email)
+        .then(
+        user => {
+            let dataUser = user[0]
+            console.log("data user", dataUser)
+            console.log("ctrl user", this.user)
+            if(dataUser.email === this.user.email && dataUser.password === this.sha1(this.user.password))
+                console.log("succes connection")
+            else
+                console.log("eror connection")
+        }
+        )
+    }
+    
+    
     addUser() {
         this.loginService.ajoutNouveauEmploye(this.user)
     }
-
+    
 }
 
 export let LoginComponent = {
