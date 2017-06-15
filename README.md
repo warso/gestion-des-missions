@@ -14,13 +14,19 @@
         * GET /missions : liste des missions
         * GET /utilisateur/{matricule} : recuperer utilisateur par matricule
     * Services:
+    * Controller :
+      * Utilisateur
+      * Mission
     * Entity:
         * Utilisateur
         * Missions
+       
 * Front
     * Page :
       * /missions: afichage des missions
     * Components:
+      * utilisateur
+      *mission
       * nav-bar : barre de navigation
     * Services:
       * utilisateur
