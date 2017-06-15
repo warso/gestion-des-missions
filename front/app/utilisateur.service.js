@@ -7,4 +7,6 @@ export class UtilisateurService {
         return this.$http.get(API_URL + "/utilisateurs")
             .then(response => response.data)
     }
+
+    
 }

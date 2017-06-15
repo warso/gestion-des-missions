@@ -6,6 +6,7 @@ class controller {
     constructor (UtilisateurService) {
         this.UtilisateurService = UtilisateurService
         
+        
     }
     
     $onInit() {
@@ -18,5 +19,5 @@ class controller {
 export let UtilisateurComponent = {
     template,
     controller,
-    bindings: {utilisateurs:"<"}
+    bindings: {}
 };

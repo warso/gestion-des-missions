@@ -10,6 +10,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { NavBarComponent } from './navbar/navbar.component';
 import { LoginComponent} from './login/login.component';
 import {MissionComponent} from './mission/mission.component'
+import {MissionCreationComponent} from './missionCreation/missionCreation.component'
 import {UtilisateurComponent} from './utilisateur/utilisateur.component'
 
 
@@ -25,6 +26,7 @@ angular.module('app', [RouteModule, ngCookies])
 .component('barnav', NavBarComponent)
 .component('loginComponent',LoginComponent)
 .component('mission', MissionComponent)
+.component('missionCreation', MissionCreationComponent)
 .component('utilisateur', UtilisateurComponent)
 
 // ici 'LoginService' est le nom du service que je vais injecter dans mon controller (dans le component)

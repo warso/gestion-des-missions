@@ -39,6 +39,8 @@ export class LoginService {
         }
         )
     }
+
+    
     
     verif(user) {
         console.log("dans la methode verif du service")

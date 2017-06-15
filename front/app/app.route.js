@@ -9,6 +9,9 @@ export function route($routeProvider, $locationProvider) {
         .when('/missionsVisualisation', {
             template: '<mission></mission>'
         })
+        .when('/missionsCreation', {
+            template: '<missionCreation></missionCreation>'
+        })        
         .when('/login', {
             template: "<login-component></login-component>"
         })

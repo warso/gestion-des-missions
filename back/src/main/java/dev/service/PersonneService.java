@@ -46,11 +46,5 @@ public class PersonneService {
 		return list;
 	}
 
-	public static void main(String[] args) {
-
-		PersonneService service = new PersonneService();
-		List<Personne> list = service.getUtilisateurs();
-		System.out.println(list.get(0).matricule);
-	}
 
 }

@@ -30,11 +30,11 @@
   },
   "dependencies": {
     "angular": "^1.6.4",
+    "angular-cookies": "^1.6.4",
     "angular-route": "^1.6.4",
     "bootstrap": "^3.3.7",
     "lodash": "^4.17.4",
-    "uuid": "^3.0.1",
     "sha1": "^1.1.1",
-    "angular-cookies": "^1.6.4"
+    "uuid": "^3.0.1"
   }
 }

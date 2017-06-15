@@ -26,7 +26,7 @@ public class UtilisateurService {
 
 		personnes.stream().forEach(p -> {
 			// TODO gestion des roles
-			list.add(new Utilisateur(p, Role.EMPLOYE));
+			list.add(new Utilisateur(p, Role.ADMINISTRATEUR));
 		});
 
 		return list;
@@ -40,7 +40,7 @@ public class UtilisateurService {
 		personnes.stream().forEach(p -> {
 			if (p.matricule.equals(matricule))
 				// TODO gestion des roles
-				list.add(new Utilisateur(p, Role.EMPLOYE));
+				list.add(new Utilisateur(p, Role.ADMINISTRATEUR));
 		});
 
 		return list;
@@ -62,7 +62,7 @@ public class UtilisateurService {
 				// TODO gestion des roles
 				// si ça match il crée un nouvel utilisateur et l'ajoute dans la
 				// liste d'utilisateurs
-				list.add(new Utilisateur(p, Role.EMPLOYE));
+				list.add(new Utilisateur(p, Role.ADMINISTRATEUR));
 		});
 
 		return list;
