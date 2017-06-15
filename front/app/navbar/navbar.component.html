@@ -1,26 +1,12 @@
-<<<<<<< HEAD
-<nav class="navbar navbar-default">
-    <ul class="nav navbar-nav">
-        <li><a href="#">Accueil</a></li>
-        <li><a href="#">Gestion des missions</a></li>
-        <li><a href="#">Planning des missions</a></li>
-        <li><a href="#">Primes</a></li>
-        <li><a href="#">Saisie note de frais</a></li>
-        <li><a href="#">Natures des missions</a></li>
-        <li><a href="#">Validation des missions</a></li>
-    </ul>
-</nav>
-
-=======
 <!-- Choix du statut -->
 <form>
-    <label><input type="radio" ng-model="utilisateurs.sexe" value="male"> Administrator</label>
-    <label><input type="radio" ng-model="utilisateurs.sexe" value="femelle">Manager</label>
+    <label><input type="radio" ng-model="utilisateurs" value="male"> Administrator</label>
+    <label><input type="radio" ng-model="utilisateurs" value="femelle">Manager</label>
 </form>
 
 <!-- Afficher le menu qui correspond au statut -->
 
-<div id="wrapper" ng-switch="utilisateurs.sexe">
+<div id="wrapper" ng-switch="utilisateurs">
     <div ng-switch-when="male">
         <nav class="navbar navbar-default">
             <ul class="nav navbar-nav">
@@ -60,4 +46,3 @@
     </div>
 
 </div>
->>>>>>> commit avant pull

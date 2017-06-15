@@ -5,16 +5,11 @@ import { route } from './app.route';
 import { AccueilComponent } from './accueil/accueil.component';
 import { NavBarComponent } from './navbar/navbar.component';
 import { LoginComponent} from './login/login.component';
-<<<<<<< HEAD
 import { LoginService } from './login/login.service'
 
 import {MissionComponent} from './mission/mission.component'
-=======
-import {UtilisateurService} from './utilisateur.service';
->>>>>>> commit avant pull
+// import {UtilisateurService} from './utilisateur.service';
 
-
-const API_URL='http://localhost:8080'
 
 angular.module('app', [RouteModule])
 .value( 'API_URL', API_URL)

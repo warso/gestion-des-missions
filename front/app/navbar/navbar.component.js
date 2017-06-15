@@ -4,10 +4,10 @@ import template from './navbar.component.html';
 class controller {
     constructor() { }
 
-    $onInit() {
-        this.UtilisateurService.getUtilisateurs()
-            .then(utilisateurs => this.utilisateurs = utilisateurs)
-    }
+    // $onInit() {
+    //     this.UtilisateurService.getUtilisateurs()
+    //         .then(utilisateurs => this.utilisateurs = utilisateurs)
+    // }
 }
 
 export let NavBarComponent = {
