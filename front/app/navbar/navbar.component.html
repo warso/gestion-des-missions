@@ -1,13 +1,31 @@
 <!-- Choix du statut -->
 <form>
-    <label><input type="radio" ng-model="utilisateurs" value="male"> Administrator</label>
-    <label><input type="radio" ng-model="utilisateurs" value="femelle">Manager</label>
+    <label><input type="radio" ng-model="$ctrl.utilisateurs.role" value="admin"> Administrateur</label>
+    <label><input type="radio" ng-model="$ctrl.utilisateurs.role" value="manager">Manager</label>
+    <label><input type="radio" ng-model="$ctrl.utilisateurs.role" value="employe">Employe</label>
 </form>
 
 <!-- Afficher le menu qui correspond au statut -->
 
-<div id="wrapper" ng-switch="utilisateurs">
-    <div ng-switch-when="male">
+<div id="wrapper" ng-init="$ctrl.utilisateurs.role='admin'">
+    <nav class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+            <li><a href="#" >Accueil</a></li>
+            <li><a href="#">Gestion des missions</a></li>
+            <li><a href="#">Planning des missions</a></li>
+            <li><a href="#">Primes</a></li>
+            <li><a href="#">Saisie note de frais</a></li>
+            <li ng-if="$ctrl.utilisateurs.role=='admin'"><a href="#">Natures des missions</a></li>
+            <li ng-if="$ctrl.utilisateurs.role=='manager'"><a href="#">Validation des missions</a></li>
+        </ul>
+    </nav>
+
+</div>
+
+
+
+<!--<div id="wrapper" ng-switch="utilisateurs">
+    <div ng-switch-when="admin">
         <nav class="navbar navbar-default">
             <ul class="nav navbar-nav">
                 <li><a href="#">Accueil</a></li>
@@ -20,7 +38,7 @@
             </ul>
         </nav>
     </div>
-    <div ng-switch-when="femelle">
+    <div ng-switch-when="manager">
         <nav class="navbar navbar-default">
             <ul class="nav navbar-nav">
                 <li><a href="#">Accueil</a></li>
@@ -33,7 +51,7 @@
         </nav>
     </div>
 
-    <div ng-switch-when="visitor">
+    <div ng-switch-when="employe">
         <nav class="navbar navbar-default">
             <ul class="nav navbar-nav">
                 <li><a href="#">Accueil</a></li>
@@ -43,6 +61,4 @@
                 <li><a href="#">Saisie note de frais</a></li>
             </ul>
         </nav>
-    </div>
-
-</div>
+    </div>-->
