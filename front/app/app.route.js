@@ -6,7 +6,7 @@ export function route($routeProvider, $locationProvider) {
         .when('/', {
             template: '<accueil></accueil>'
         })
-        .when('/missions', {
+        .when('/missionsVisualisation', {
             template: '<mission></mission>'
         })
         .when('/login', {
