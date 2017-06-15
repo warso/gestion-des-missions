@@ -1,4 +1,5 @@
 import angular from 'angular';
+import ngCookies from 'angular-cookies'
 import RouteModule from 'angular-route';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -16,7 +17,7 @@ import { LoginService } from './login/login.service'
 import { MissionService } from './mission.service'
 import {UtilisateurService} from './utilisateur.service';
 
-angular.module('app', [RouteModule])
+angular.module('app', [RouteModule, ngCookies])
 
 .value( 'API_URL', API_URL)
 

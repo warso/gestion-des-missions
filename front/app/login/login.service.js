@@ -1,10 +1,11 @@
 
 
 export class LoginService {
-    constructor($http, $q, API_URL) {
+    constructor($http, $q, API_URL, $cookies) {
         this.$http = $http
         this.$q = $q
         this.API_URL = API_URL
+        this.$cookies = $cookies
     }
     
     recup() {
@@ -69,5 +70,13 @@ export class LoginService {
         console.log("recuperation de la fonction loginService", user)
         // envoie les data à user.json
         let $promesse = this.$http.post('http://localhost:3000/user', user)
+    }
+
+    saveUser(user) {
+        this.$cookies.putObject("user",user)
+    }
+
+    loadUser(){
+        return this.$cookies.getObject("user")
     }
 }

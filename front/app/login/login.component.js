@@ -37,8 +37,11 @@ class controller {
             let dataUser = user[0]
             console.log("data user", dataUser)
             console.log("ctrl user", this.user)
-            if(dataUser.email === this.user.email && dataUser.password === this.sha1(this.user.password))
+            if(dataUser.email === this.user.email && dataUser.password === this.sha1(this.user.password)) {
                 console.log("succes connection")
+                this.loginService.saveUser(dataUser)
+                this.$location.path('missions')
+            }
             else
                 console.log("eror connection")
         }
