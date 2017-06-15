@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import dev.model.Personne;
-import dev.model.Utilisateur;
+
 
 @Service
 public class PersonneService {
@@ -43,7 +43,6 @@ public class PersonneService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return list;
 	}
 
