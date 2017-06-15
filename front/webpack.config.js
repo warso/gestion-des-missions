@@ -3,12 +3,15 @@ const path = require('path');
 
 const API_URL = process.env.NODE_ENV === 'production' ? 'https://missions-api.cleverapps.io' : 'http://localhost:8080';
 
+const publicPath = process.env.NODE_ENV === 'production' ? '' : '/gestion-des-missions/'
+
 const output = 'public';
 
 module.exports = {
     entry: "./app",
     output: {
         path: path.resolve(__dirname, output),
+        publicPath: publicPath,
         filename: "bundle.js"
     },
 
