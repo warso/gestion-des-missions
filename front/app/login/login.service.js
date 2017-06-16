@@ -7,23 +7,21 @@ export class LoginService {
         this.API_URL = API_URL
         this.$cookies = $cookies
         this.$location = $location
-
+        
         this.cookieName = "user"
-
+        
         this.sha1 = require('sha1');
         
         this.user
-
+        
         let user = this.loadUser()
         if(user)
         {
             this.user = user
         }
+        
     }
-
-    $onInit(){
-        console.log("init login service")
-    }
+    
     
     recup() {
         console.log("dans la methode recup du service")
@@ -95,11 +93,16 @@ export class LoginService {
     saveUser(user) {
         this.$cookies.putObject(this.cookieName,user)
         this.user = user
+        
+        if(this.navbarCallback){
+            this.navbarCallback()
+        }
     }
     
     loadUser(){
-        if(!this.user)
+        if(!this.user) {
             this.user = this.$cookies.getObject(this.cookieName)
+        }
         return this.user
     }
     
@@ -109,12 +112,13 @@ export class LoginService {
         .then(
         rep => {
             let dataUser = rep[0]
-            console.log("data user", dataUser)
-            console.log("ctrl user", user)
             if(dataUser.email === user.email && dataUser.password === this.sha1(user.password)) {
                 console.log("succes connection")
                 this.saveUser(dataUser)
-                this.$location.path('missions')
+                if(this.navbarCallback){
+                    this.navbarCallback()
+                }
+                // this.$location.path('missions')
             }
             else
             console.log("eror connection")
@@ -122,10 +126,16 @@ export class LoginService {
         err=>{}
         )
     }
-
+    
     deleteUser(){
         console.log("delete cookie")
         this.user = undefined
         this.$cookies.remove(this.cookieName)
+
+        this.$location.path("login")
+        
+        if(this.navbarCallback){
+            this.navbarCallback()
+        }
     }
 }
