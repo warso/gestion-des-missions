@@ -20,8 +20,8 @@ AFFICHAGE DES MISSION <br>
     <tbody>
         <tr ng-repeat="mission in $ctrl.missions">
             
-            <td>{{mission.debut}}</td>
-            <td>{{mission.fin}}</td>
+            <td>{{mission.debut|date:'dd/MM/yyyy'}}</td>
+            <td>{{mission.fin|date:'dd/MM/yyyy'}}</td>
             <td>{{mission.nature}}</td>
             <td>{{mission.villeDepart}}</td>
             <td>{{mission.villeArrivee}}</td>

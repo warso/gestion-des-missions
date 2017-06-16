@@ -2,6 +2,7 @@ package dev.listner;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -12,10 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import dev.enumeration.Role;
 import dev.enumeration.Statut;
 import dev.model.Mission;
+import dev.model.Nature;
 import dev.model.RoleUtilisateur;
 import dev.repository.MissionRepo;
+import dev.repository.NatureRepository;
 import dev.repository.RoleUtilisateurRepo;
-import dev.service.PersonneService;
 import dev.service.UtilisateurService;
 
 
@@ -28,6 +30,8 @@ public class DataInitListener implements ServletContextListener{
 	@Autowired UtilisateurService utilsiateurService;
 
 	@Autowired MissionRepo missionRepo;
+	
+	@Autowired NatureRepository natureRepo;
 	
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {	
@@ -46,10 +50,22 @@ public class DataInitListener implements ServletContextListener{
 		util3.setRole(Role.ADMINISTRATEUR);
 		utilRepo.save(util3);
 		
+		Nature nature1 = new Nature();
+		nature1.setType("Conseil");
+		natureRepo.save(nature1);
+		
+		Nature nature2 = new Nature();
+		nature2.setType("Expertise Technique");
+		natureRepo.save(nature2);
+		
+		Nature nature3 = new Nature();
+		nature3.setType("Formation");
+		natureRepo.save(nature3);
+		
 		Mission m1 = new Mission();
 		m1.setUtilisateur(util1);
-		m1.setDebut(LocalDate.now());
-		m1.setFin(LocalDate.now().plusMonths(1));
+		m1.setDebut(LocalDateTime.now());
+		m1.setFin(LocalDateTime.now().plusMonths(1));
 		m1.setStatut(Statut.INITIALE);
 		m1.setVilleDepart("coucou m1");
 		m1.setVilleArrivee("coucou m1");
@@ -57,8 +73,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m2 = new Mission();
 		m2.setUtilisateur(util2);
-		m2.setDebut(LocalDate.now());
-		m2.setFin(LocalDate.now().plusMonths(1));
+		m2.setDebut(LocalDateTime.now());
+		m2.setFin(LocalDateTime.now().plusMonths(1));
 		m2.setStatut(Statut.INITIALE);
 		m2.setVilleDepart("coucou m2");
 		m2.setVilleArrivee("coucou m2");

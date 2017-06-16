@@ -1,6 +1,7 @@
 package dev.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Properties;
 
@@ -45,7 +46,7 @@ public class TraitementDeNuit {
 			if(m.getStatut() == Statut.INITIALE)
 				traitementMissionNouvelle(m);
 
-			if(m.getStatut() != Statut.ECHUE && m.getFin().isBefore(LocalDate.now()))
+			if(m.getStatut() != Statut.ECHUE && m.getFin().isBefore(LocalDateTime.now()))
 				traitementMissionTerminee(m);
 			
 		}

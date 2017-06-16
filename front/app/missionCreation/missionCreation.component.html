@@ -10,50 +10,45 @@
         <div class="form-group container">
             <label class="col-md-4 control-label" for="username">Date de debut </label>
             <div class="col-md-4">
-                <input id="username" name="username" type="date" placeholder="" class="form-control input-md" required ng-model="$ctrl.user.email">
-
+                <input id="username" ng-model="$ctrl.mission.debut" name="username" type="date" placeholder="" class="form-control input-md" required>
             </div>
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
         </div>
 
         <!-- Date de fin-->
         <div class="form-group container">
-            <label class="col-md-4 control-label" for="username">Date de debut </label>
+            <label class="col-md-4 control-label" for="username">Date de fin </label>
             <div class="col-md-4">
-                <input id="username" name="username" type="date" placeholder="" class="form-control input-md" required ng-model="$ctrl.user.email">
-
+                <input id="username" ng-model="$ctrl.mission.fin" name="username" type="date" placeholder="" class="form-control input-md" required>
             </div>
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
         </div>
 
         <!-- Nature -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="selectbasic">Nature</label>
             <div class="col-md-4">
-                <select id="selectbasic" name="selectbasic" class="form-control">
-      <option value="1">Option one</option>
-      <option value="2">Option two</option>
+                <select id="selectbasic" ng-model="$ctrl.mission.nature" name="selectbasic" class="form-control">
+                    <option ng-repeat="nature in $ctrl.natures" value="nature.id">{{nature.type}}</option>
     </select>
             </div>
         </div>
 
         <!-- Ville de depart -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasic">Ville de depart</label>
+            <label class="col-md-4 control-label" for="textinput">Ville de depart</label>
             <div class="col-md-4">
-                <select id="selectbasic" name="selectbasic" class="form-control">
-      <option value="1">Option one</option>
-      <option value="2">Option two</option>
-    </select>
+                <input id="textinput" ng-model="$ctrl.mission.villeDepart" name="textinput" type="text" placeholder="ville de départ" class="form-control input-md">
+
             </div>
         </div>
 
         <!-- Ville d'arrivée -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasic">Ville d'arrivée</label>
+            <label class="col-md-4 control-label" for="textinput">Ville d'arrivée</label>
             <div class="col-md-4">
-                <select id="selectbasic" name="selectbasic" class="form-control">
-      <option value="1">Option one</option>
-      <option value="2">Option two</option>
-    </select>
+                <input id="textinput" ng-model="$ctrl.mission.villeArrivee" name="textinput" type="text" placeholder="ville d'arrivée" class="form-control input-md">
+
             </div>
         </div>
 
@@ -61,9 +56,8 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="selectbasic">Transport</label>
             <div class="col-md-4">
-                <select id="selectbasic" name="selectbasic" class="form-control">
-      <option value="1">Option one</option>
-      <option value="2">Option two</option>
+                <select id="selectbasic" ng-model="$ctrl.mission.transport" name="selectbasic" class="form-control">
+      <option ng-repeat="transport in $ctrl.transports" value="transport">{{transport}}</option>
     </select>
             </div>
         </div>
@@ -72,7 +66,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="button1id"></label>
             <div class="col-md-8">
-                <button id="button1id" name="button1id" class="btn btn-danger">Annuler</button>
-                <button id="button2id" name="button2id" class="btn btn-success">Valider</button>
+                <button id="button1id" name="button1id" class="btn btn-danger" ng-click="$ctrl.reset()">Annuler</button>
+                <button id="button2id" name="button2id" class="btn btn-success" ng-click="$ctrl.addMission()">Valider</button>
             </div>
         </div>
