@@ -7,6 +7,43 @@
 
 <!-- Afficher le menu qui correspond au statut -->
 <pre>{{$ctrl.user|json}}</pre>
+
+<div>
+    <a ng-href="missionsVisualisation" ng-click="$ctrl.LoginService.connection({email:'test',password:'password'})" class="btn btn-default">login as Collab</a>
+    <a ng-href="missionsVisualisation" ng-click="$ctrl.LoginService.connection({email:'test',password:'password'})" class="btn btn-default">login as Manager</a>
+    <a ng-href="missionsVisualisation" ng-click="$ctrl.LoginService.connection({email:'test',password:'password'})" class="btn btn-default">login as Admin</a>
+
+    <a ng-href="missionsVisualisation" ng-click="$ctrl.LoginService.saveUser(
+        {
+            matricule:'test',
+            nom:'toto',
+            prenom:'tata',
+            email:'test',
+            password:'password',
+            role:'EMPLOYE'
+        })" class="btn btn-default">fake EMPLOYE</a>
+    <a ng-href="missionsVisualisation" ng-click="$ctrl.LoginService.saveUser(
+        {
+            matricule:'test',
+            nom:'toto',
+            prenom:'tata',
+            email:'test',
+            password:'password',
+            role:'ADMINISTRATEUR'
+        })" class="btn btn-default">fake ADMINISTRATEUR</a>
+    <a ng-href="missionsVisualisation" ng-click="$ctrl.LoginService.saveUser(
+        {
+            matricule:'test',
+            nom:'toto',
+            prenom:'tata',
+            email:'test',
+            password:'password',
+            role:'MANAGER'
+        })" class="btn btn-default">fake MANAGER</a>
+
+        <a ng-href="missionsVisualisation" ng-click="$ctrl.LoginService.deleteUser()" class="btn btn-default">Logout</a>
+</div>
+
 <div id="wrapper" ng-model="$ctrl.user.role" ng-init="$ctrl.user.role=='EMPLOYE'">
     <div class="container-fluid">
     <nav class="navbar navbar-default">

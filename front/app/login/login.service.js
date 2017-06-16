@@ -1,13 +1,28 @@
 
 
 export class LoginService {
-    constructor($http, $q, API_URL, $cookies) {
+    constructor($http, $q, API_URL, $cookies, $location) {
         this.$http = $http
         this.$q = $q
         this.API_URL = API_URL
         this.$cookies = $cookies
+        this.$location = $location
+
+        this.cookieName = "user"
+
+        this.sha1 = require('sha1');
         
-        this.user = {}
+        this.user
+
+        let user = this.loadUser()
+        if(user)
+        {
+            this.user = user
+        }
+    }
+
+    $onInit(){
+        console.log("init login service")
     }
     
     recup() {
@@ -37,11 +52,12 @@ export class LoginService {
             return rep.data
         },
         err => { 
-            console.log("error", err)
+            console.log("Connection API impossible", err)
+            return this.$q.reject(err)
         }
         )
     }
-
+    
     
     
     verif(user) {
@@ -77,13 +93,39 @@ export class LoginService {
     }
     
     saveUser(user) {
-        this.$cookies.putObject("user",user)
+        this.$cookies.putObject(this.cookieName,user)
         this.user = user
     }
     
     loadUser(){
-        // if(!this.user)
-        this.user = this.$cookies.getObject("user")
+        if(!this.user)
+            this.user = this.$cookies.getObject(this.cookieName)
         return this.user
+    }
+    
+    connection(user) {
+        console.log("connect as",user)
+        this.getUserByEmail(user.email)
+        .then(
+        rep => {
+            let dataUser = rep[0]
+            console.log("data user", dataUser)
+            console.log("ctrl user", user)
+            if(dataUser.email === user.email && dataUser.password === this.sha1(user.password)) {
+                console.log("succes connection")
+                this.saveUser(dataUser)
+                this.$location.path('missions')
+            }
+            else
+            console.log("eror connection")
+        },
+        err=>{}
+        )
+    }
+
+    deleteUser(){
+        console.log("delete cookie")
+        this.user = undefined
+        this.$cookies.remove(this.cookieName)
     }
 }

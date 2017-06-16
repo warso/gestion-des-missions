@@ -11,7 +11,7 @@ class controller {
             password: ""
         }
         
-        this.sha1 = require('sha1');
+        
         
     }
     //  Le component combine les controller et les view. Ici dans la classe controller on a nos methodes de controller
@@ -31,21 +31,7 @@ class controller {
     }
     
     connection () {
-        this.loginService.getUserByEmail(this.user.email)
-        .then(
-        user => {
-            let dataUser = user[0]
-            console.log("data user", dataUser)
-            console.log("ctrl user", this.user)
-            if(dataUser.email === this.user.email && dataUser.password === this.sha1(this.user.password)) {
-                console.log("succes connection")
-                this.loginService.saveUser(dataUser)
-                this.$location.path('missions')
-            }
-            else
-                console.log("eror connection")
-        }
-        )
+        this.loginService.connection(this.user)
     }
     
     
