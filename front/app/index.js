@@ -13,9 +13,18 @@ import {MissionComponent} from './mission/mission.component'
 import {MissionValidationComponent} from './missionValidation/missionValidation.component'
 import {MissionCreationComponent} from './missionCreation/missionCreation.component'
 import {UtilisateurComponent} from './utilisateur/utilisateur.component'
+<<<<<<< HEAD
 import {LoginService} from './login/login.service'
 import {MissionService} from './mission.service'
 import {UtilisateurService} from './utilisateur.service'
+=======
+import { AuthComponent } from './auth/auth.component'
+
+
+import { LoginService } from './login/login.service'
+import { MissionService } from './mission.service'
+import {UtilisateurService} from './utilisateur.service';
+>>>>>>> origin/master
 
 angular.module('app', [RouteModule, ngCookies])
 .value('API_URL', window.API_URL)
@@ -26,6 +35,8 @@ angular.module('app', [RouteModule, ngCookies])
 .component('missionValidation', MissionValidationComponent)
 .component('missionCreation', MissionCreationComponent)
 .component('utilisateur', UtilisateurComponent)
+
+.component('auth', AuthComponent)
 
 // ici 'LoginService' est le nom du service que je vais injecter dans mon controller (dans le component)
 .service('LoginService', LoginService)

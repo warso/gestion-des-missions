@@ -1,5 +1,6 @@
 
 export class MissionService {
+<<<<<<< HEAD
   constructor ($http, $q, API_URL) {
     this.$http = $http
     this.$q = $q
@@ -9,6 +10,18 @@ export class MissionService {
   getMissions (matricule) {
     // console.log('getMissions()')
     return this.$http.get(API_URL + '/missions/matricule/' + matricule)
+=======
+    constructor($http, $q, API_URL) {
+        this.$http = $http
+        this.$q = $q
+        this.API_URL = API_URL
+        
+        
+    }
+    
+    getMissions(matricule) {
+        return this.$http.get(API_URL+'/missions/matricule/'+matricule)
+>>>>>>> origin/master
         .then(
         rep => rep.data,
 <<<<<<< HEAD
