@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import dev.enumeration.Role;
 import dev.model.Personne;
+import dev.model.RoleUtilisateur;
 import dev.model.Utilisateur;
 import dev.repository.RoleUtilisateurRepo;
 
@@ -19,6 +20,15 @@ public class UtilisateurService {
 
 	@Autowired
 	RoleUtilisateurRepo roleRepo;
+	
+	private Role getRole(String matricule) {
+		List<RoleUtilisateur> roleUtil = roleRepo.findByMatricule(matricule);
+		
+		if(roleUtil.size()==1)
+			return roleUtil.get(0).getRole();
+		
+		return Role.EMPLOYE;
+	}
 
 	public List<Utilisateur> findAll() {
 		List<Utilisateur> list = new ArrayList<>();
@@ -26,7 +36,7 @@ public class UtilisateurService {
 
 		personnes.stream().forEach(p -> {
 			// TODO gestion des roles
-			list.add(new Utilisateur(p, Role.ADMINISTRATEUR));
+			list.add(new Utilisateur(p, getRole(p.matricule)));
 		});
 
 		return list;
@@ -40,7 +50,7 @@ public class UtilisateurService {
 		personnes.stream().forEach(p -> {
 			if (p.matricule.equals(matricule))
 				// TODO gestion des roles
-				list.add(new Utilisateur(p, Role.ADMINISTRATEUR));
+				list.add(new Utilisateur(p, getRole(p.matricule)));
 		});
 
 		return list;
@@ -62,7 +72,7 @@ public class UtilisateurService {
 				// TODO gestion des roles
 				// si ça match il crée un nouvel utilisateur et l'ajoute dans la
 				// liste d'utilisateurs
-				list.add(new Utilisateur(p, Role.ADMINISTRATEUR));
+				list.add(new Utilisateur(p, getRole(p.matricule)));
 		});
 
 		return list;

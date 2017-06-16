@@ -33,12 +33,18 @@ public class DataInitListener implements ServletContextListener{
 	public void contextInitialized(ServletContextEvent sce) {	
 		RoleUtilisateur util1 = new RoleUtilisateur();
 		util1.setMatricule("bd540e65");
-		util1.setRole(Role.MANAGER);
+		util1.setRole(Role.EMPLOYE);
 		utilRepo.save(util1);
+		
 		RoleUtilisateur util2 = new RoleUtilisateur();
 		util2.setMatricule("75e8048c");
 		util2.setRole(Role.MANAGER);
 		utilRepo.save(util2);
+		
+		RoleUtilisateur util3 = new RoleUtilisateur();
+		util3.setMatricule("8b2d3ac7");
+		util3.setRole(Role.ADMINISTRATEUR);
+		utilRepo.save(util3);
 		
 		Mission m1 = new Mission();
 		m1.setUtilisateur(util1);
