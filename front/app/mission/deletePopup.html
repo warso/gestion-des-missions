@@ -1,0 +1,18 @@
+<div class="container junbotron">
+    <label>date de debut {{$ctrl.uneMission.debut}}</label>
+    <br>
+    <label>date de fin: {{$ctrl.uneMission.fin}}</label>
+    <br>
+
+    <label>{{$ctrl.uneMission.nature}}</label>
+
+
+    <br>
+
+    <div class="container">
+        <a href="#" class="btn btn-danger" ng-click="$ctrl.closeModal()" >Annuler</a>
+
+
+        <a class="btn btn-success" ng-click="$ctrl.MissionService.deleteMission(uneMission.id) ; $ctrl.uneMission = $ctrl.MissionService.getMission($ctrl.user.matricule)" data-toggle="modal" data-target="#product_view" >Valider</a>
+
+    </div>
