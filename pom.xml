@@ -53,7 +53,7 @@
 				<jdbc.url>jdbc:h2:mem:test</jdbc.url>
 				<jdbc.user>pizzeriadb</jdbc.user>
 				<jdbc.pass>pizzeriadb</jdbc.pass>
-				<jpa.generate.ddl>true</jpa.generate.ddl>
+				<jpa.hibernate.ddl>create-drop</jpa.hibernate.ddl>
 				<jdbc.dialect>org.hibernate.dialect.H2Dialect</jdbc.dialect>
 				<jdbc.connections.max.active>5</jdbc.connections.max.active>
 			</properties>
@@ -68,7 +68,7 @@
 				<jdbc.url>jdbc:mysql://localhost:3306/sirh-db</jdbc.url>
 				<jdbc.user>sirh-db</jdbc.user>
 				<jdbc.pass>sirh-db</jdbc.pass>
-				<jpa.generate.ddl>true</jpa.generate.ddl>
+				<jpa.hibernate.ddl>create-drop</jpa.hibernate.ddl>
 				<jdbc.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</jdbc.dialect>
 				<jdbc.connections.max.active>5</jdbc.connections.max.active>
 			</properties>
@@ -80,7 +80,7 @@
 				<jdbc.url>jdbc:mysql://${env.MYSQL_ADDON_HOST}:${env.MYSQL_ADDON_PORT}/${env.MYSQL_ADDON_DB}</jdbc.url>
 				<jdbc.user>${env.MYSQL_ADDON_USER}</jdbc.user>
 				<jdbc.pass>${env.MYSQL_ADDON_PASSWORD}</jdbc.pass>
-				<jpa.generate.ddl>${env.GENERATE_DDL}</jpa.generate.ddl>
+				<jpa.hibernate.ddl>${env.HIBERNATE_DDL}</jpa.hibernate.ddl>
 				<jdbc.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</jdbc.dialect>
 				<jdbc.connections.max.active>2</jdbc.connections.max.active>
 			</properties>
