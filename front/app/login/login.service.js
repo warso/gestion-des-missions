@@ -107,7 +107,6 @@ export class LoginService {
     }
     
     connection(user) {
-        console.log("connect as",user)
         this.getUserByEmail(user.email)
         .then(
         rep => {
@@ -120,18 +119,18 @@ export class LoginService {
                 }
                 // this.$location.path('missions')
             }
-            else
-            console.log("eror connection")
+            else {
+                console.log("eror connection")
+            }
         },
         err=>{}
         )
     }
     
     deleteUser(){
-        console.log("delete cookie")
         this.user = undefined
         this.$cookies.remove(this.cookieName)
-
+        
         this.$location.path("login")
         
         if(this.navbarCallback){

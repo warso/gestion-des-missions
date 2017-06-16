@@ -8,10 +8,9 @@ class controller {
     this.user = {}
   }
 
-  $onInit () {
-    console.log('navbar user', this.user)
-    this.user = this.LoginService.loadUser()
-  }
+    $onInit(){
+        this.user = this.LoginService.loadUser()
+    }
 
   onUserChange () {
     this.user = this.LoginService.loadUser()

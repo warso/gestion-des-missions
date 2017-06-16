@@ -1,9 +1,11 @@
-export function route ($routeProvider, $locationProvider) {
-  $locationProvider.html5Mode(true)
+export function route($routeProvider, $locationProvider) {
 
-  $routeProvider
+    $locationProvider.html5Mode(true)
+
+    $routeProvider
         .when('/', {
-          template: '<accueil></accueil>'
+            // template: '<accueil></accueil>'
+            redirectTo: '/missionsVisualisation'
         })
         .when('/missionsVisualisation', {
             template: '<mission></mission>',
