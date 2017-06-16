@@ -19,6 +19,7 @@ AFFICHAGE DES MISSION <br>
     </thead>
     <tbody>
         <tr ng-repeat="mission in $ctrl.missions">
+            
             <td>{{mission.debut}}</td>
             <td>{{mission.fin}}</td>
             <td>{{mission.nature}}</td>
@@ -26,6 +27,9 @@ AFFICHAGE DES MISSION <br>
             <td>{{mission.villeArrivee}}</td>
             <td>{{mission.transport}}</td>
             <td>{{mission.statut}}</td>
+            <!--dans le ng-click j'appel mon controleur qui appel le deleteMission de MissionService. et en pararmétre de fonction on a l'id de la mission.-->
+            <!--Donc en cliquant sur la poubelle, automatiquement il recupere l'id correspondant à la ligne et supprime ainsi la mission-->
+            <td><a class="btn btn-default" ng-click="$ctrl.MissionService.deleteMission(mission.id) ; $ctrl.missions = $ctrl.MissionService.getMission($ctrl.user.matricule)" ><span class="glyphicon glyphicon-trash"></span></a></td>
             <td></td>
         </tr>
         
