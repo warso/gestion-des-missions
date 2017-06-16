@@ -18,17 +18,19 @@ VALIDATION DES MISSIONS <br>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="mission in $ctrl.missions">
-            <td>{{mission.debut}}</td>
-            <td>{{mission.fin}}</td>
-            <td>{{mission.nature}}</td>
-            <td>{{mission.villeDepart}}</td>
-            <td>{{mission.villeArrivee}}</td>
-            <td>{{mission.transport}}</td>
-            <td>{{mission.statut}}</td>
-            <td></td>
-        </tr>
-        
+            <tr ng-repeat="mission in $ctrl.missions" ng-if="mission.statut == 'EN_ATTENTE_VALIDATION'">
+                <td>{{mission.debut}}</td>
+                <td>{{mission.fin}}</td>
+                <td>{{mission.nature}}</td>
+                <td>{{mission.villeDepart}}</td>
+                <td>{{mission.villeArrivee}}</td>
+                <td>{{mission.transport}}</td>
+                <td>{{mission.statut}}</td>
+                <td>
+                    <a ng-click="$ctrl.validerMission(mission)" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-ok"></span> Valider</a>
+                    <a ng-click="$ctrl.RejeterMission(mission)" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Rejeter</a>
+                </td>
+            </tr>       
     </tbody>
 </table>
 

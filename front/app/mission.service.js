@@ -6,6 +6,11 @@ export class MissionService {
     this.API_URL = API_URL
   }
 
+  updateMission (mission) {
+    console.log('updateMissions()')
+    this.$http.put(API_URL + '/missions', mission)
+  }
+
   getMissions (matricule) {
     return this.$http.get(API_URL + '/missions/matricule/' + matricule)
         .then(

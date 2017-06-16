@@ -6,6 +6,7 @@ class controller {
     this.MissionService = MissionService
     this.LoginService = LoginService
     this.missions = []
+    this.missionsInitiales = []
   }
 
   $onInit () {
@@ -17,6 +18,16 @@ class controller {
               this.missions = missions
             })
     }
+  }
+
+  validerMission (mission) {
+    mission.statut = 'VALIDEE'
+    this.MissionService.updateMission(mission)
+  }
+
+  RejeterMission (mission) {
+    mission.statut = 'REJETEE'
+    this.MissionService.updateMission(mission)
   }
 }
 
