@@ -14,13 +14,14 @@ import {MissionValidationComponent} from './missionValidation/missionValidation.
 import {MissionCreationComponent} from './missionCreation/missionCreation.component'
 import {UtilisateurComponent} from './utilisateur/utilisateur.component'
 import { AuthComponent } from './auth/auth.component'
+import { MissionPlanning } from './missionPlanning/missionplanning.component'
 
 
 import { LoginService } from './login/login.service'
 import { MissionService } from './mission.service'
 import {UtilisateurService} from './utilisateur.service'
 
-angular.module('app', [RouteModule, ngCookies])
+angular.module('app', [RouteModule, ngCookies, require('angular-bootstrap-calendar'), require('angular-ui-bootstrap')])
 .value('API_URL', window.API_URL)
 .component('accueil', AccueilComponent)
 .component('barnav', NavBarComponent)
@@ -29,6 +30,7 @@ angular.module('app', [RouteModule, ngCookies])
 .component('missionValidation', MissionValidationComponent)
 .component('missionCreation', MissionCreationComponent)
 .component('utilisateur', UtilisateurComponent)
+.component('missionPlanning', MissionPlanning)
 
 .component('auth', AuthComponent)
 
