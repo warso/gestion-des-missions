@@ -6,26 +6,20 @@ export function route ($routeProvider, $locationProvider) {
           template: '<accueil></accueil>'
         })
         .when('/missionsVisualisation', {
-<<<<<<< HEAD
-          template: '<mission></mission>'
-        })
-        .when('/missionsValidation', {
-          template: '<mission-validation></mission-validation>'
-        })
-        .when('/missionsCreation', {
-          template: '<missionCreation></missionCreation>'
-        })
-=======
             template: '<mission></mission>',
             requireAuth: true,
             authorizeRole: ["EMPLOYE", "ADMINISTRATEUR", "MANAGER"] 
+        })
+        .when('/missionsValidation', {
+            template: '<mission-validation></mission-validation>',
+            requireAuth: true,
+            authorizeRole: ["MANAGER"] 
         })
         .when('/missionsCreation', {
             template: '<missionCreation></missionCreation>',
             requireAuth: true,
             authorizeRole: ["EMPLOYE", "ADMINISTRATEUR", "MANAGER"] 
         })        
->>>>>>> origin/master
         .when('/login', {
           template: '<login-component></login-component>'
         })

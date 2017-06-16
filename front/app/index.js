@@ -13,18 +13,12 @@ import {MissionComponent} from './mission/mission.component'
 import {MissionValidationComponent} from './missionValidation/missionValidation.component'
 import {MissionCreationComponent} from './missionCreation/missionCreation.component'
 import {UtilisateurComponent} from './utilisateur/utilisateur.component'
-<<<<<<< HEAD
-import {LoginService} from './login/login.service'
-import {MissionService} from './mission.service'
-import {UtilisateurService} from './utilisateur.service'
-=======
 import { AuthComponent } from './auth/auth.component'
 
 
 import { LoginService } from './login/login.service'
 import { MissionService } from './mission.service'
-import {UtilisateurService} from './utilisateur.service';
->>>>>>> origin/master
+import {UtilisateurService} from './utilisateur.service'
 
 angular.module('app', [RouteModule, ngCookies])
 .value('API_URL', window.API_URL)
