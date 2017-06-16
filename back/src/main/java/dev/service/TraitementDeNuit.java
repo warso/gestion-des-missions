@@ -19,9 +19,14 @@ import dev.model.Nature;
 import dev.repository.MissionRepo;
 import java.time.temporal.ChronoUnit;
 
+/**
+ * Gère les traitements de nuit de façon planifiée
+ * @author Pierre Brengues
+ */
 @Component
 public class TraitementDeNuit {	
 
+	// repository des missions
 	@Autowired MissionRepo missionRepo;
 
 
@@ -32,8 +37,6 @@ public class TraitementDeNuit {
 	//@Scheduled(fixedDelay=5000) // Pour tester (toutes les 5 secondes)
 	@Scheduled(cron="0 0 1 * * ?") // Tous les jours à une heure du matin 
 	public void lancerTraitementNuit() {
-
-		//System.out.println("coucou");
 
 
 		List<Mission> missions = missionRepo.findAll();
@@ -101,9 +104,7 @@ public class TraitementDeNuit {
 		prop.setProperty("mail.smtp.starttls.enable","true");
 		prop.setProperty("mail.debug","true");
 		prop.setProperty("mail.smtp.ssl.trust", "smtp.gmail.com");
-		//mailSender.setJavaMailProperties(prop);
 
-		//System.out.println("Envoi mail ...");
 		JavaMailSenderImpl sender = new JavaMailSenderImpl();
 		sender.setJavaMailProperties(prop);
 		sender.setHost("smtp.gmail.com");
@@ -117,12 +118,13 @@ public class TraitementDeNuit {
 			helper.setTo(destinataire);
 			helper.setText(contenuMail);
 			helper.setSubject(objet);
+			sender.send(message);
+			
 		} catch (MessagingException e) {
+			
 			e.printStackTrace();
 		}
 
-		sender.send(message);
-		System.out.println("Mail envoyé");
 	}
 
 }
