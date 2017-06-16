@@ -2,9 +2,9 @@
 import template from './login.component.html'
 // le component est mon intelligence entre les pages html et les services
 class controller {
-    // je crée mon objet loginService avec le this, dans lequelle j'injecte mon service LoginService(voir le index.js), j'injecte mon service angular $location
+    // je crée mon objet LoginService avec le this, dans lequelle j'injecte mon service LoginService(voir le index.js), j'injecte mon service angular $location
     constructor(LoginService, $location) {
-        this.loginService = LoginService
+        this.LoginService = LoginService
         this.$location = $location
         this.user = {
             email: "",
@@ -18,7 +18,7 @@ class controller {
     verifUser() {
         console.log('verifUser =')
         //  ici j'ai une promesse qui a pour parametre u userRecup qui est le resultat de ma promesse se trouvant dans la fonction verif() dans login.service
-        this.loginService.verif(this.user).then(userRecupere => {
+        this.LoginService.verif(this.user).then(userRecupere => {
             console.log('result =', userRecupere)
             if (userRecupere) {
                 this.$location.path('http://localhost:9000/gestion-des-missions/')
@@ -31,12 +31,13 @@ class controller {
     }
     
     connection () {
-        this.loginService.connection(this.user)
+        console.log("connection ", user)
+        this.LoginService.connection(this.user)
     }
     
     
     addUser() {
-        this.loginService.ajoutNouveauEmploye(this.user)
+        this.LoginService.ajoutNouveauEmploye(this.user)
     }
     
 }
