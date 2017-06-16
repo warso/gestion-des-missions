@@ -39,7 +39,7 @@ public class Mission {
 	private Statut statut;
 	@OneToMany
 	private List<NoteDeFrais> notes;
-	
+	private float prime;
 	
 
 	public Mission() {
@@ -66,6 +66,14 @@ public class Mission {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public float getPrime() {
+		return prime;
+	}
+
+	public void setPrime(float prime) {
+		this.prime = prime;
 	}
 
 	public RoleUtilisateur getUtilisateur() {
