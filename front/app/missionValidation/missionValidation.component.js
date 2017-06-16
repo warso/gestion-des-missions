@@ -1,5 +1,5 @@
-import './mission.component.css'
-import template from './mission.component.html'
+import './missionValidation.component.css'
+import template from './missionValidation.component.html'
 
 class controller {
   constructor (MissionService, LoginService) {
@@ -10,7 +10,6 @@ class controller {
 
   $onInit () {
     let user = this.LoginService.loadUser()
-    console.log('loaded user', user)
     if (user !== undefined) {
       this.MissionService.getMissions(user.matricule)
             .then(
@@ -21,7 +20,7 @@ class controller {
   }
 }
 
-export let MissionComponent = {
+export let MissionValidationComponent = {
   template,
   controller,
   bindings: {}

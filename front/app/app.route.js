@@ -1,25 +1,26 @@
-export function route($routeProvider, $locationProvider) {
+export function route ($routeProvider, $locationProvider) {
+  $locationProvider.html5Mode(true)
 
-    $locationProvider.html5Mode(true);
-
-    $routeProvider
+  $routeProvider
         .when('/', {
-            template: '<accueil></accueil>'
+          template: '<accueil></accueil>'
         })
         .when('/missionsVisualisation', {
-            template: '<mission></mission>'
+          template: '<mission></mission>'
+        })
+        .when('/missionsValidation', {
+          template: '<mission-validation></mission-validation>'
         })
         .when('/missionsCreation', {
-            template: '<missionCreation></missionCreation>'
-        })        
+          template: '<missionCreation></missionCreation>'
+        })
         .when('/login', {
-            template: "<login-component></login-component>"
+          template: '<login-component></login-component>'
         })
         .when('/utilisateur', {
-            template: "<utilisateur></utilisateur>"
+          template: '<utilisateur></utilisateur>'
         })
         .otherwise({
-            redirectTo: '/'
-        });
-
+          redirectTo: '/'
+        })
 }
