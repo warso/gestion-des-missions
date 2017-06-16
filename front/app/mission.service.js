@@ -10,7 +10,6 @@ export class MissionService {
     }
     
     getMissions(matricule) {
-        console.log("getMissions()")
         return this.$http.get(API_URL+'/missions/matricule/'+matricule)
         .then(
         rep => rep.data,

@@ -7,10 +7,14 @@ export function route($routeProvider, $locationProvider) {
             template: '<accueil></accueil>'
         })
         .when('/missionsVisualisation', {
-            template: '<mission></mission>'
+            template: '<mission></mission>',
+            requireAuth: true,
+            authorizeRole: ["EMPLOYE", "ADMINISTRATEUR", "MANAGER"] 
         })
         .when('/missionsCreation', {
-            template: '<missionCreation></missionCreation>'
+            template: '<missionCreation></missionCreation>',
+            requireAuth: true,
+            authorizeRole: ["EMPLOYE", "ADMINISTRATEUR", "MANAGER"] 
         })        
         .when('/login', {
             template: "<login-component></login-component>"

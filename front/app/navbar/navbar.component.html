@@ -5,8 +5,6 @@
     <label><input type="radio" ng-model="$ctrl.user.role" value="employe">Employe</label>
 </form>-->
 
-<!-- Afficher le menu qui correspond au statut -->
-<pre>{{$ctrl.user|json}}</pre>
 
 <div>
     <a ng-href="missionsVisualisation" ng-click="$ctrl.LoginService.connection({email:'robertsross@sultraxin.com',password:'password'})" class="btn btn-default">login as Collab</a>
@@ -58,8 +56,8 @@
 
             
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><p class="navbar-text">{{$ctrl.user.nom}}, {{$ctrl.user.prenom}}</p></li>
+        <ul class="nav navbar-nav navbar-right" ng-if="$ctrl.user">
+            <li><p class="navbar-text" > {{$ctrl.user.nom}}, {{$ctrl.user.prenom}} </span></p></li>
         </ul>
     </nav>
 </div>

@@ -12,7 +12,6 @@ class controller {
     $onInit (){
         
         let user = this.LoginService.loadUser()
-        console.log("loaded user",user)
         if(user!=undefined) {
             this.MissionService.getMissions(user.matricule)
             .then(
