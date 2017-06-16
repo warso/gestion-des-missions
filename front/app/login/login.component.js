@@ -31,7 +31,6 @@ class controller {
     }
     
     connection () {
-        console.log("connection ", user)
         this.LoginService.connection(this.user)
     }
     
