@@ -6,11 +6,6 @@ export class MissionService {
     this.API_URL = API_URL
   }
 
-  updateMission (mission) {
-    console.log('updateMissions()')
-    this.$http.put(API_URL + '/missions', mission)
-  }
-
   getMissions (matricule) {
     return this.$http.get(API_URL + '/missions/matricule/' + matricule)
         .then(
@@ -34,5 +29,16 @@ export class MissionService {
         rep => rep.data,
         err => { console.log('error acces API/missions for delete mission', err) }
         )
+  }
+
+    //
+  getMissionNature () {
+    return this.$http.get(API_URL + '/nature')
+            .then(response => response.data)
+  }
+
+  getMissionTransport () {
+    return this.$http.get(API_URL + '/transport')
+            .then(response => response.data)
   }
 }

@@ -13,10 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import dev.enumeration.Role;
 import dev.enumeration.Statut;
 import dev.model.Mission;
+import dev.model.Nature;
 import dev.model.RoleUtilisateur;
 import dev.repository.MissionRepo;
+import dev.repository.NatureRepository;
 import dev.repository.RoleUtilisateurRepo;
-import dev.service.PersonneService;
 import dev.service.UtilisateurService;
 
 
@@ -29,6 +30,8 @@ public class DataInitListener implements ServletContextListener{
 	@Autowired UtilisateurService utilsiateurService;
 
 	@Autowired MissionRepo missionRepo;
+	
+	@Autowired NatureRepository natureRepo;
 	
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {	
@@ -53,6 +56,17 @@ public class DataInitListener implements ServletContextListener{
 		utilRepo.save(util4);
 		
 		
+		Nature nature1 = new Nature();
+		nature1.setType("Conseil");
+		natureRepo.save(nature1);
+		
+		Nature nature2 = new Nature();
+		nature2.setType("Expertise Technique");
+		natureRepo.save(nature2);
+		
+		Nature nature3 = new Nature();
+		nature3.setType("Formation");
+		natureRepo.save(nature3);
 		
 		Mission m1 = new Mission();
 		m1.setUtilisateur(util1);
@@ -92,7 +106,7 @@ public class DataInitListener implements ServletContextListener{
 		
 		
 		Mission m5 = new Mission();
-		m5.setUtilisateur(util1);
+		m5.setUtilisateur(util2);
 		m5.setDebut(LocalDateTime.now());
 		m5.setFin(LocalDateTime.now().plusMonths(1));
 		m5.setStatut(Statut.EN_ATTENTE_VALIDATION);

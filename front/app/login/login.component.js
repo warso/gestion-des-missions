@@ -3,6 +3,7 @@ import template from './login.component.html'
 // le component est mon intelligence entre les pages html et les services
 class controller {
     // je crée mon objet LoginService avec le this, dans lequelle j'injecte mon service LoginService(voir le index.js), j'injecte mon service angular $location
+
   constructor (LoginService, $location) {
     this.LoginService = LoginService
     this.$location = $location
@@ -10,6 +11,8 @@ class controller {
       email: '',
       password: ''
     }
+
+    this.errorLogin = false
 
     this.errorLogin = false
   }

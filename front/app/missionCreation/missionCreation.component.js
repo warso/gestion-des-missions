@@ -1,4 +1,3 @@
-
 import template from './missionCreation.component.html'
 
 class controller {
