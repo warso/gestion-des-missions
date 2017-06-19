@@ -6,18 +6,23 @@ class controller {
     this.MissionService = MissionService
     this.LoginService = LoginService
     this.missions = []
+    this.missionsSubalternes = []
     this.missionsInitiales = []
   }
 
   $onInit () {
     let user = this.LoginService.loadUser()
     if (user !== undefined) {
-      this.MissionService.getMissions(user.matricule)
+      this.MissionService.getMissionsSubalternes(user.matricule)
             .then(
             missions => {
               this.missions = missions
             })
     }
+
+    this.missionsSubalternes = this.missions.filter(function (mission) {
+      return this.LoginService.user.subalternes.contains(mission.utilisateur.matricule)
+    })
   }
 
   validerMission (mission) {

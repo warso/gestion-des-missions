@@ -19,6 +19,14 @@ export class MissionService {
         )
   }
 
+  getMissionsSubalternes (matricule) {
+    return this.$http.get(API_URL + '/missions/subalternes/' + matricule)
+        .then(
+        rep => rep.data,
+        err => { console.log('error acces API/missions for get missionSubalternes', err) }
+        )
+  }
+
   deleteMission (id) {
     console.log('deleteMissions()')
     return this.$http.delete(API_URL + '/missions/' + id)

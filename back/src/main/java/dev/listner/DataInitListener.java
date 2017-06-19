@@ -46,6 +46,13 @@ public class DataInitListener implements ServletContextListener{
 		util3.setRole(Role.ADMINISTRATEUR);
 		utilRepo.save(util3);
 		
+		RoleUtilisateur util4 = new RoleUtilisateur();
+		util4.setMatricule("6c8be60e");
+		util4.setRole(Role.EMPLOYE);
+		utilRepo.save(util4);
+		
+		
+		
 		Mission m1 = new Mission();
 		m1.setUtilisateur(util1);
 		m1.setDebut(LocalDate.now());
@@ -84,13 +91,22 @@ public class DataInitListener implements ServletContextListener{
 		
 		
 		Mission m5 = new Mission();
-		m5.setUtilisateur(util2);
+		m5.setUtilisateur(util1);
 		m5.setDebut(LocalDate.now());
 		m5.setFin(LocalDate.now().plusMonths(1));
 		m5.setStatut(Statut.EN_ATTENTE_VALIDATION);
 		m5.setVilleDepart("coucou m5");
 		m5.setVilleArrivee("coucou m5");
 		missionRepo.save(m5);
+		
+		Mission m6 = new Mission();
+		m6.setUtilisateur(util4);
+		m6.setDebut(LocalDate.now());
+		m6.setFin(LocalDate.now().plusMonths(1));
+		m6.setStatut(Statut.EN_ATTENTE_VALIDATION);
+		m6.setVilleDepart("coucou m6");
+		m6.setVilleArrivee("coucou m6");
+		missionRepo.save(m6);
 		
 	}
 

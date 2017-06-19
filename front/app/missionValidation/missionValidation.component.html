@@ -19,6 +19,13 @@ VALIDATION DES MISSIONS <br>
     </thead>
     <tbody>
             <tr ng-repeat="mission in $ctrl.missions" ng-if="mission.statut == 'EN_ATTENTE_VALIDATION'">
+                <!--
+$ctrl.LoginService.user.subalternes.contains(mission.utilisateur.matricule) && 
+
+                {{$ctrl.LoginService.user.subalternes}}
+                <td>{{mission.utilisateur.matricule}}</td>
+                -->
+
                 <td>{{mission.debut}}</td>
                 <td>{{mission.fin}}</td>
                 <td>{{mission.nature}}</td>
