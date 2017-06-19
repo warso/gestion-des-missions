@@ -14,7 +14,7 @@ import {MissionValidationComponent} from './missionValidation/missionValidation.
 import {MissionCreationComponent} from './missionCreation/missionCreation.component'
 import {UtilisateurComponent} from './utilisateur/utilisateur.component'
 import { AuthComponent } from './auth/auth.component'
-import $uibModal from 'angular-ui-bootstrap';
+//import $uibModal from 'angular-ui-bootstrap';
 
 
 import { LoginService } from './login/login.service'
