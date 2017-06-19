@@ -10,6 +10,8 @@ class controller {
             email: "",
             password: ""
         }
+
+        this.errorLogin = false;
         
         
         
@@ -32,6 +34,21 @@ class controller {
     
     connection () {
         this.LoginService.connection(this.user)
+        .then (
+        rep => {
+            if(rep==true){
+                console.log("ok")
+                
+                this.errorLogin = false;
+                this.$location.path("missionsVisualisation")
+            }
+            else {
+                this.errorLogin = true;
+                console.log("Vos informations d'authentification sont invalides")
+            }
+        }
+        )
+        
     }
     
     

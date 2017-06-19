@@ -107,23 +107,31 @@ export class LoginService {
     }
     
     connection(user) {
-        this.getUserByEmail(user.email)
+        return this.getUserByEmail(user.email)
         .then(
         rep => {
             let dataUser = rep[0]
+            if(!dataUser){
+                console.log("eror connection")
+                return false;
+            }
+            
             if(dataUser.email === user.email && dataUser.password === this.sha1(user.password)) {
                 console.log("succes connection")
                 this.saveUser(dataUser)
                 if(this.navbarCallback){
                     this.navbarCallback()
                 }
-                // this.$location.path('missions')
+                return true
             }
             else {
                 console.log("eror connection")
+                return false
             }
         },
-        err=>{}
+        err=>{
+            console.log("error connection API", err)
+        }
         )
     }
     
