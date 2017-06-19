@@ -28,8 +28,8 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="selectbasic">Nature</label>
             <div class="col-md-4">
-                <select id="selectbasic" ng-model="$ctrl.mission.nature" name="selectbasic" class="form-control">
-                    <option ng-repeat="nature in $ctrl.natures" value="nature.id">{{nature.type}}</option>
+                <select id="selectbasic" ng-model="$ctrl.mission.nature.id" name="selectbasic" class="form-control">
+                    <option ng-repeat="nature in $ctrl.natures" value="{{nature.id}}">{{nature.type}}</option>
     </select>
             </div>
         </div>
@@ -57,7 +57,7 @@
             <label class="col-md-4 control-label" for="selectbasic">Transport</label>
             <div class="col-md-4">
                 <select id="selectbasic" ng-model="$ctrl.mission.transport" name="selectbasic" class="form-control">
-      <option ng-repeat="transport in $ctrl.transports" value="transport">{{transport}}</option>
+      <option ng-repeat="transport in $ctrl.transports" value="{{transport}}">{{transport}}</option>
     </select>
             </div>
         </div>
@@ -67,6 +67,6 @@
             <label class="col-md-4 control-label" for="button1id"></label>
             <div class="col-md-8">
                 <button id="button1id" name="button1id" class="btn btn-danger" ng-click="$ctrl.reset()">Annuler</button>
-                <button id="button2id" name="button2id" class="btn btn-success" ng-click="$ctrl.addMission()">Valider</button>
+                <button id="button2id" name="button2id" class="btn btn-success" ng-click="$ctrl.addMission() ">Valider</button>
             </div>
         </div>

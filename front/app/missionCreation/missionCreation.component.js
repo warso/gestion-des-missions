@@ -10,14 +10,15 @@ class controller {
         this.mission = {
             debut:"",
             fin:"",
-            nature:"",
+            nature:{id:""},
             villeDepart:"",
             villeArrivee:"",
-            transport:""
+            transport:"",
         }
     }
 
     addMission() {
+        console.log(this.mission)
         this.MissionCreationService.ajoutNouvelleMission(this.mission)
     }
 
@@ -49,5 +50,5 @@ class controller {
 export let MissionCreationComponent = {
     template,
     controller,
-    bindings: {}
+    bindings: { mission:"<"}
 };

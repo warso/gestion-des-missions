@@ -6,15 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.enumeration.Statut;
 import dev.enumeration.Transport;
 import dev.model.Mission;
 import dev.model.RoleUtilisateur;
@@ -63,11 +64,20 @@ public class MissionController {
 		return Transport.values();
 	}
 	
+	@GetMapping("/statut")
+	// @CrossOrigin("*")
+	public Statut[] getSatut(@RequestParam(value = "statut", required=false)  String s){
+		return Statut.values();
+	}
+	
 	@PostMapping("/missions")
-	@CrossOrigin("*")
-	public void addMission(@RequestBody Mission mission) {
+//	@CrossOrigin("*")
+	public void addMission(@RequestBody Mission mission, RoleUtilisateur user) {
 
+		mission.setStatut(Statut.INITIALE);
 		missionrepo.save(mission);
+
+		
 	}
 
 	@DeleteMapping("/missions/{id}")
@@ -82,7 +92,6 @@ public class MissionController {
 		} else {
 			reponse.put("message", "erreur suppression mission id invalide");
 		}
-		else{ reponse.put("message", "erreur suppression mission id invalide");}
 		
 		return reponse;
 	}
