@@ -1,20 +1,21 @@
-<div class="container junbotron">
-    <label>date de debut {{$ctrlPop.uneMission.debut}}</label>
-    <br>
-    <label>date de fin: {{$ctrlPop.uneMission.fin}}</label>
-    <br>
+<div class="">
+    <h1 class="modal-title">Titre de test</h1>
+    <div class="modal-body">
 
-    <label>{{$ctrlPop.uneMission.nature}}</label>
+        <label>date de debut: {{$ctrlPop.uneMission.debut}}</label>
+        <br>
+        <label>date de fin: {{$ctrlPop.uneMission.fin}}</label>
+        <br>
 
+        <label>Nature de mission: {{$ctrlPop.uneMission.nature}}</label>
+    </div>
 
-    <br>
-
-    <div class="container">
-        <a href="#" class="btn btn-danger" ng-click="$ctrlPop.annuler()" >Annuler</a>
-<!--
+    <div class="modal-footer">
+        <a href="#" class="btn btn-danger" ng-click="$ctrlPop.annuler()">Annuler</a>
+        <!--
 "$ctrlPop.MissionService.validationSuppression() ; $ctrlPop.uneMission = $ctrlPop.MissionService.getMission($ctrl.user.matricule)"
 -->
 
-        <a  class="btn btn-success" ng-click="$ctrlPop.validerSuppression()" data-toggle="modal" data-target="#product_view" >Valider</a>
+        <a class="btn btn-success" ng-click="$ctrlPop.validerSuppression()" data-toggle="modal" data-target="#product_view">Valider</a>
 
     </div>

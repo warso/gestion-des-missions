@@ -1,20 +1,19 @@
-import angular from 'angular'
+import angular from 'angular';
 import ngCookies from 'angular-cookies'
-import RouteModule from 'angular-route'
-import $uibModal from 'angular-ui-bootstrap'
-import 'bootstrap/dist/css/bootstrap.css'
+import RouteModule from 'angular-route';
 
-import { route } from './app.route'
+import 'bootstrap/dist/css/bootstrap.css';
 
-import {AccueilComponent} from './accueil/accueil.component'
-import {NavBarComponent} from './navbar/navbar.component'
-import {LoginComponent} from './login/login.component'
+import { route } from './app.route';
+
+import { AccueilComponent } from './accueil/accueil.component';
+import { NavBarComponent } from './navbar/navbar.component';
+import { LoginComponent} from './login/login.component';
 import {MissionComponent} from './mission/mission.component'
 import {MissionValidationComponent} from './missionValidation/missionValidation.component'
 import {MissionCreationComponent} from './missionCreation/missionCreation.component'
 import {UtilisateurComponent} from './utilisateur/utilisateur.component'
 import { AuthComponent } from './auth/auth.component'
-import $uibModal from 'angular-ui-bootstrap';
 
 
 import { LoginService } from './login/login.service'
@@ -22,11 +21,13 @@ import { MissionService } from './mission.service'
 import {UtilisateurService} from './utilisateur.service';
 import {MissionCreationService} from './missionCreation.service';
 
-angular.module('app', [RouteModule, ngCookies, $uibModal])
-.value('API_URL', window.API_URL)
+angular.module('app', [RouteModule, ngCookies])
+
+.value( 'API_URL', API_URL)
+
 .component('accueil', AccueilComponent)
 .component('barnav', NavBarComponent)
-.component('loginComponent', LoginComponent)
+.component('loginComponent',LoginComponent)
 .component('mission', MissionComponent)
 .component('missionValidation', MissionValidationComponent)
 .component('missionCreation', MissionCreationComponent)
@@ -40,4 +41,4 @@ angular.module('app', [RouteModule, ngCookies, $uibModal])
 .service('UtilisateurService',UtilisateurService)
 .service('MissionCreationService',MissionCreationService)
 
-.config(route)
+.config(route);

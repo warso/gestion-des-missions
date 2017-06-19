@@ -1,20 +1,24 @@
-import angular from 'angular'
+import angular from 'angular';
 import ngCookies from 'angular-cookies'
+<<<<<<< HEAD
+import RouteModule from 'angular-route';
+=======
 import RouteModule from 'angular-route'
-import $uibModal from 'angular-ui-bootstrap'
-import 'bootstrap/dist/css/bootstrap.css'
+import 'angular-ui-bootstrap/dist/ui-bootstrap-tpls.js'
+>>>>>>> M007 mission suppression: supres
 
-import { route } from './app.route'
+import 'bootstrap/dist/css/bootstrap.css';
 
-import {AccueilComponent} from './accueil/accueil.component'
-import {NavBarComponent} from './navbar/navbar.component'
-import {LoginComponent} from './login/login.component'
+import { route } from './app.route';
+
+import { AccueilComponent } from './accueil/accueil.component';
+import { NavBarComponent } from './navbar/navbar.component';
+import { LoginComponent} from './login/login.component';
 import {MissionComponent} from './mission/mission.component'
 import {MissionValidationComponent} from './missionValidation/missionValidation.component'
 import {MissionCreationComponent} from './missionCreation/missionCreation.component'
 import {UtilisateurComponent} from './utilisateur/utilisateur.component'
 import { AuthComponent } from './auth/auth.component'
-import $uibModal from 'angular-ui-bootstrap';
 
 
 import { LoginService } from './login/login.service'
@@ -22,11 +26,18 @@ import { MissionService } from './mission.service'
 import {UtilisateurService} from './utilisateur.service';
 import {MissionCreationService} from './missionCreation.service';
 
-angular.module('app', [RouteModule, ngCookies, $uibModal])
+<<<<<<< HEAD
+angular.module('app', [RouteModule, ngCookies])
+
+.value( 'API_URL', API_URL)
+
+=======
+angular.module('app', [RouteModule, ngCookies, 'ui.bootstrap'])
 .value('API_URL', window.API_URL)
+>>>>>>> M007 mission suppression: supres
 .component('accueil', AccueilComponent)
 .component('barnav', NavBarComponent)
-.component('loginComponent', LoginComponent)
+.component('loginComponent',LoginComponent)
 .component('mission', MissionComponent)
 .component('missionValidation', MissionValidationComponent)
 .component('missionCreation', MissionCreationComponent)
@@ -40,4 +51,4 @@ angular.module('app', [RouteModule, ngCookies, $uibModal])
 .service('UtilisateurService',UtilisateurService)
 .service('MissionCreationService',MissionCreationService)
 
-.config(route)
+.config(route);

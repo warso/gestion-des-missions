@@ -1,7 +1,8 @@
 import angular from 'angular'
 import ngCookies from 'angular-cookies'
 import RouteModule from 'angular-route'
-import $uibModal from 'angular-ui-bootstrap'
+import 'angular-ui-bootstrap/dist/ui-bootstrap-tpls.js'
+
 import 'bootstrap/dist/css/bootstrap.css'
 
 import { route } from './app.route'
@@ -14,15 +15,13 @@ import {MissionValidationComponent} from './missionValidation/missionValidation.
 import {MissionCreationComponent} from './missionCreation/missionCreation.component'
 import {UtilisateurComponent} from './utilisateur/utilisateur.component'
 import { AuthComponent } from './auth/auth.component'
-import $uibModal from 'angular-ui-bootstrap';
 
 
 import { LoginService } from './login/login.service'
 import { MissionService } from './mission.service'
-import {UtilisateurService} from './utilisateur.service';
-import {MissionCreationService} from './missionCreation.service';
+import {UtilisateurService} from './utilisateur.service'
 
-angular.module('app', [RouteModule, ngCookies, $uibModal])
+angular.module('app', [RouteModule, ngCookies, 'ui.bootstrap'])
 .value('API_URL', window.API_URL)
 .component('accueil', AccueilComponent)
 .component('barnav', NavBarComponent)
@@ -35,9 +34,8 @@ angular.module('app', [RouteModule, ngCookies, $uibModal])
 .component('auth', AuthComponent)
 
 // ici 'LoginService' est le nom du service que je vais injecter dans mon controller (dans le component)
-.service ('LoginService', LoginService )
-.service ('MissionService', MissionService)
-.service('UtilisateurService',UtilisateurService)
-.service('MissionCreationService',MissionCreationService)
+.service('LoginService', LoginService)
+.service('MissionService', MissionService)
+.service('UtilisateurService', UtilisateurService)
 
 .config(route)
