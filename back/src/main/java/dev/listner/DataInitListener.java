@@ -2,6 +2,7 @@ package dev.listner;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -55,8 +56,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m1 = new Mission();
 		m1.setUtilisateur(util1);
-		m1.setDebut(LocalDate.now());
-		m1.setFin(LocalDate.now().plusMonths(1));
+		m1.setDebut(LocalDateTime.now());
+		m1.setFin(LocalDateTime.now().plusMonths(1));
 		m1.setStatut(Statut.INITIALE);
 		m1.setVilleDepart("coucou m1");
 		m1.setVilleArrivee("coucou m1");
@@ -64,8 +65,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m2 = new Mission();
 		m2.setUtilisateur(util2);
-		m2.setDebut(LocalDate.now());
-		m2.setFin(LocalDate.now().plusMonths(1));
+		m2.setDebut(LocalDateTime.now());
+		m2.setFin(LocalDateTime.now().plusMonths(1));
 		m2.setStatut(Statut.INITIALE);
 		m2.setVilleDepart("coucou m2");
 		m2.setVilleArrivee("coucou m2");
@@ -73,8 +74,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m3 = new Mission();
 		m3.setUtilisateur(util2);
-		m3.setDebut(LocalDate.now());
-		m3.setFin(LocalDate.now().plusMonths(1));
+		m3.setDebut(LocalDateTime.now());
+		m3.setFin(LocalDateTime.now().plusMonths(1));
 		m3.setStatut(Statut.EN_ATTENTE_VALIDATION);
 		m3.setVilleDepart("coucou m3");
 		m3.setVilleArrivee("coucou m3");
@@ -82,8 +83,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m4 = new Mission();
 		m4.setUtilisateur(util2);
-		m4.setDebut(LocalDate.now());
-		m4.setFin(LocalDate.now().plusMonths(1));
+		m4.setDebut(LocalDateTime.now());
+		m4.setFin(LocalDateTime.now().plusMonths(1));
 		m4.setStatut(Statut.EN_ATTENTE_VALIDATION);
 		m4.setVilleDepart("coucou m4");
 		m4.setVilleArrivee("coucou m4");
@@ -92,8 +93,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m5 = new Mission();
 		m5.setUtilisateur(util1);
-		m5.setDebut(LocalDate.now());
-		m5.setFin(LocalDate.now().plusMonths(1));
+		m5.setDebut(LocalDateTime.now());
+		m5.setFin(LocalDateTime.now().plusMonths(1));
 		m5.setStatut(Statut.EN_ATTENTE_VALIDATION);
 		m5.setVilleDepart("coucou m5");
 		m5.setVilleArrivee("coucou m5");
@@ -101,8 +102,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m6 = new Mission();
 		m6.setUtilisateur(util4);
-		m6.setDebut(LocalDate.now());
-		m6.setFin(LocalDate.now().plusMonths(1));
+		m6.setDebut(LocalDateTime.now());
+		m6.setFin(LocalDateTime.now().plusMonths(1));
 		m6.setStatut(Statut.EN_ATTENTE_VALIDATION);
 		m6.setVilleDepart("coucou m6");
 		m6.setVilleArrivee("coucou m6");
