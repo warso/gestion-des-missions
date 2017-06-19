@@ -1,8 +1,7 @@
 import angular from 'angular'
 import ngCookies from 'angular-cookies'
 import RouteModule from 'angular-route'
-import 'angular-ui-bootstrap/dist/ui-bootstrap-tpls.js'
-
+import $uibModal from 'angular-ui-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 
 import { route } from './app.route'
@@ -22,7 +21,7 @@ import { MissionService } from './mission.service'
 import {UtilisateurService} from './utilisateur.service';
 import {MissionCreationService} from './missionCreation.service';
 
-angular.module('app', [RouteModule, ngCookies])
+angular.module('app', [RouteModule, ngCookies, $uibModal])
 .value('API_URL', window.API_URL)
 .component('accueil', AccueilComponent)
 .component('barnav', NavBarComponent)

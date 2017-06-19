@@ -9,4 +9,5 @@ import dev.model.RoleUtilisateur;
 public interface RoleUtilisateurRepo extends JpaRepository<RoleUtilisateur, Integer> {
 	
 	List<RoleUtilisateur> findByMatricule( String Matricule);
+	
 }

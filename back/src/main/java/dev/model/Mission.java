@@ -4,6 +4,7 @@ package dev.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -23,7 +24,7 @@ public class Mission {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@ManyToOne
+	@ManyToOne()
 	private RoleUtilisateur utilisateur;
 	
 	//2017-06-07T22:00:00.000Z

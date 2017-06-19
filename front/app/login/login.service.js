@@ -81,7 +81,7 @@ export class LoginService {
     }
   }
 
-  loadUser () {
+  loadUser() {
     if (!this.user) {
       this.user = this.$cookies.getObject(this.cookieName)
     }

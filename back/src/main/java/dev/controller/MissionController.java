@@ -99,9 +99,10 @@ public class MissionController {
 	
 	@PostMapping("/missions")
 //	@CrossOrigin("*")
-	public void addMission(@RequestBody Mission mission, RoleUtilisateur user) {
+	public void addMission(@RequestBody Mission mission) {
 
 		mission.setStatut(Statut.INITIALE);
+	mission.setUtilisateur(roleRepo.findByMatricule(mission.getUtilisateur().getMatricule()).get(0));
 		missionrepo.save(mission);
 
 		

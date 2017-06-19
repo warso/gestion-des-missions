@@ -2,6 +2,7 @@ package dev.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -23,7 +24,7 @@ public class RoleUtilisateur {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
-	@OneToMany
+	@OneToMany()
 	private List<Mission> missions;
 	@OneToMany
 	private List<Absence> absences;
