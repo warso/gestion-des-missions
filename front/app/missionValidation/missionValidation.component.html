@@ -1,44 +1,45 @@
+<div class="container">
+    <h2 align="center">Validation DES MISSIONS</h2> <br>
+    <div class="row">
 
-VALIDATION DES MISSIONS <br>
-<div class="row">
+        <div class="col-md-10">
 
-<div class="col-md-10">
-    
-<table class="table">
-    <thead>
-        <tr>
-            <th>Date de debut</th>
-            <th>Date de fin</th>
-            <th>Nature</th>
-            <th>Depart</th>
-            <th>Arrivée</th>
-            <th>Transport</th>
-            <th>Statut</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-            <tr ng-repeat="mission in $ctrl.missions" ng-if="mission.statut == 'EN_ATTENTE_VALIDATION'">
-                <!--
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Date de debut</th>
+                        <th>Date de fin</th>
+                        <th>Nature</th>
+                        <th>Depart</th>
+                        <th>Arrivée</th>
+                        <th>Transport</th>
+                        <th>Statut</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="mission in $ctrl.missions" ng-if="mission.statut == 'EN_ATTENTE_VALIDATION'">
+                        <!--
 $ctrl.LoginService.user.subalternes.contains(mission.utilisateur.matricule) && 
 
                 {{$ctrl.LoginService.user.subalternes}}
                 <td>{{mission.utilisateur.matricule}}</td>
                 -->
 
-                <td>{{mission.debut}}</td>
-                <td>{{mission.fin}}</td>
-                <td>{{mission.nature.type}}</td>
-                <td>{{mission.villeDepart}}</td>
-                <td>{{mission.villeArrivee}}</td>
-                <td>{{mission.transport}}</td>
-                <td>{{mission.statut}}</td>
-                <td>
-                    <a ng-click="$ctrl.validerMission(mission)" class="btn btn-ms btn-success"><span class="glyphicon glyphicon-ok"></span></a>
-                    <a ng-click="$ctrl.RejeterMission(mission)" class="btn btn-ms btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
-                </td>
-            </tr>       
-    </tbody>
-</table>
-
-
+                        <td>{{mission.debut}}</td>
+                        <td>{{mission.fin}}</td>
+                        <td>{{mission.nature.type}}</td>
+                        <td>{{mission.villeDepart}}</td>
+                        <td>{{mission.villeArrivee}}</td>
+                        <td>{{mission.transport}}</td>
+                        <td>{{mission.statut}}</td>
+                        <td>
+                            <div class="row">
+                                <a ng-click="$ctrl.validerMission(mission)" class="btn btn-ms btn-success"><span class="glyphicon glyphicon-ok"></span></a>
+                                <a ng-click="$ctrl.RejeterMission(mission)" class="btn btn-ms btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
