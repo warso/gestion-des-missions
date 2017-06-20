@@ -17,6 +17,7 @@
                 </tr>
             </thead>
             <tbody>
+                <!--boucle de parcours  de notre liste de mission-->
                 <tr ng-repeat="mission in $ctrl.missions">
 
                     <td>{{mission.debut}}</td>
@@ -34,7 +35,8 @@
 
 
 
-                    <td><a class="btn btn-default" ng-click="$ctrl.popup(mission)" data-toggle="modal" data-target="#product_view"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <td><a ng-if="mission.statut == 'INITIALE'" class="btn btn-default" ng-click="$ctrl.popup(mission)" data-toggle="modal" data-target="#product_view"><span class="glyphicon glyphicon-trash"></span></a></td>
+                     <li ng-if="$ctrl.user.role=='ADMINISTRATEUR'"><a href="#">Natures des missions</a></li>
 
                 </tr>
 

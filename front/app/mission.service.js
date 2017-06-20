@@ -1,49 +1,54 @@
 
 export class MissionService {
-  constructor ($http, $q, API_URL) {
+  constructor($http, $q, API_URL) {
     this.$http = $http
     this.$q = $q
     this.API_URL = API_URL
   }
 
-  updateMission (mission) {
+  updateMission(mission) {
     console.log('updateMissions()')
     this.$http.put(API_URL + '/missions', mission)
   }
 
-  getMissions (matricule) {
+  getMissions(matricule) {
     return this.$http.get(API_URL + '/missions/matricule/' + matricule)
-        .then(
-        rep => rep.data,
-        err => { console.log('error acces API/missions for get mission', err) }
-        )
+      .then(
+      rep => rep.data,
+      err => { console.log('error acces API/missions for get mission', err) }
+      )
   }
 
-  getMissionsSubalternes (matricule) {
+  getMissionsSubalternes(matricule) {
     return this.$http.get(API_URL + '/missions/subalternes/' + matricule)
-        .then(
-        rep => rep.data,
-        err => { console.log('error acces API/missions for get missionSubalternes', err) }
-        )
+      .then(
+      rep => rep.data,
+      err => { console.log('error acces API/missions for get missionSubalternes', err) }
+      )
   }
 
-  deleteMission (id) {
+  deleteMission(id) {
     console.log('deleteMissions()')
     return this.$http.delete(API_URL + '/missions/' + id)
-        .then(
-        rep => rep.data,
-        err => { console.log('error acces API/missions for delete mission', err) }
-        )
+      .then(
+      rep => rep.data,
+      err => { console.log('error acces API/missions for delete mission', err) }
+      )
   }
 
-    //
-  getMissionNature () {
+  // recupertion nature des missions (enumeration dans Java)
+  getMissionNature() {
     return this.$http.get(API_URL + '/nature')
-            .then(response => response.data)
+      .then(response => response.data)
+  }
+ // recupertion status des missions (enumeration dans Java)
+  getMissionStatus() {
+    return this.$http.get(API_URL + '/statut')
+      .then(response => response.data)
   }
 
-  getMissionTransport () {
+  getMissionTransport() {
     return this.$http.get(API_URL + '/transport')
-            .then(response => response.data)
+      .then(response => response.data)
   }
 }

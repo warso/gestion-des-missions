@@ -7,6 +7,7 @@ class controller {
     this.MissionService = MissionService
     this.LoginService = LoginService
     this.$uibModal = $uibModal
+
     this.missions = []
   }
 
@@ -24,6 +25,11 @@ class controller {
           console.log("Missions apres rechargement", this.missions)
         })
     }
+  }
+
+  statutMission(){
+   this.MissionService.getMissionStatus()
+    console.log("fonctions statut mission")
   }
 
   popup(mission) {
