@@ -69,8 +69,8 @@ public class DataInitListener implements ServletContextListener{
 
 		Mission m1 = new Mission();
 		m1.setUtilisateur(util1);
-		m1.setDebut(LocalDateTime.now());
-		m1.setFin(LocalDateTime.now().plusMonths(1));
+		m1.setDebut(LocalDate.now());
+		m1.setFin(LocalDate.now().plusMonths(1));
 		m1.setStatut(Statut.INITIALE);
 		m1.setVilleDepart("Lille");
 		m1.setVilleArrivee("Nantes");
@@ -80,8 +80,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m2 = new Mission();
 		m2.setUtilisateur(util2);
-		m2.setDebut(LocalDateTime.now());
-		m2.setFin(LocalDateTime.now().plusMonths(1));
+		m2.setDebut(LocalDate.now());
+		m2.setFin(LocalDate.now().plusMonths(1));
 		m2.setStatut(Statut.INITIALE);
 		m2.setVilleDepart("Paris");
 		m2.setVilleArrivee("New York");
@@ -91,8 +91,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m3 = new Mission();
 		m3.setUtilisateur(util2);
-		m3.setDebut(LocalDateTime.now());
-		m3.setFin(LocalDateTime.now().plusMonths(1));
+		m3.setDebut(LocalDate.now());
+		m3.setFin(LocalDate.now().plusMonths(1));
 		m3.setStatut(Statut.EN_ATTENTE_VALIDATION);
 		m3.setVilleDepart("Nantes");
 		m3.setVilleArrivee("Longcochon");
@@ -102,8 +102,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m4 = new Mission();
 		m4.setUtilisateur(util2);
-		m4.setDebut(LocalDateTime.now());
-		m4.setFin(LocalDateTime.now().plusMonths(1));
+		m4.setDebut(LocalDate.now());
+		m4.setFin(LocalDate.now().plusMonths(1));
 		m4.setStatut(Statut.EN_ATTENTE_VALIDATION);
 		m4.setVilleDepart("Nantes");
 		m4.setVilleArrivee("Bourré");
@@ -114,8 +114,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m5 = new Mission();
 		m5.setUtilisateur(util2);
-		m5.setDebut(LocalDateTime.now());
-		m5.setFin(LocalDateTime.now().plusMonths(1));
+		m5.setDebut(LocalDate.now());
+		m5.setFin(LocalDate.now().plusMonths(1));
 		m5.setStatut(Statut.EN_ATTENTE_VALIDATION);
 		m5.setVilleDepart("Nantes");
 		m5.setVilleArrivee("Corps-Nuds");
@@ -125,8 +125,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m6 = new Mission();
 		m6.setUtilisateur(util4);
-		m6.setDebut(LocalDateTime.now());
-		m6.setFin(LocalDateTime.now().plusMonths(1));
+		m6.setDebut(LocalDate.now());
+		m6.setFin(LocalDate.now().plusMonths(1));
 		m6.setStatut(Statut.EN_ATTENTE_VALIDATION);
 		m6.setVilleDepart("Nantes");
 		m6.setVilleArrivee("Trécon");

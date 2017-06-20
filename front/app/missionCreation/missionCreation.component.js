@@ -3,7 +3,7 @@ import template from './missionCreation.component.html'
 
 
 class controller {
-    constructor(MissionService, LoginService,MissionCreationService,$location) {
+    constructor(MissionService, LoginService,MissionCreationService,$location, moment) {
         this.MissionService = MissionService
         this.LoginService = LoginService
         this.$location=$location
@@ -17,6 +17,7 @@ class controller {
             villeArrivee:"",
             transport:"",
         }
+        this.moment = moment
     }
 
     addMission() {
@@ -25,9 +26,20 @@ class controller {
             console.log("Utilisateur non déf.")
         }
         else {
-            this.mission.utilisateur.matricule=this.LoginService.loadUser().matricule
-            console.log(this.mission)
-            this.MissionCreationService.ajoutNouvelleMission(this.mission)
+            let mission = angular.copy(this.mission)
+            mission.utilisateur.matricule=this.LoginService.loadUser().matricule
+
+            // moficier les dates pour correspondre au format spring
+            console.log(mission)
+            mission.debut = this.moment(mission.debut).format('YYYY/MM/DD');
+            mission.fin = this.moment(mission.fin).format('YYYY/MM/DD');
+            console.log(mission)
+
+            // this.mission.debut = this.mission.debut.substring(0,9)
+            // this.mission.fin = this.mission.fin.substring(0,9)
+            // console.log(this.mission)
+
+            this.MissionCreationService.ajoutNouvelleMission(mission)
             this.$location.path('/missionsVisualisation')
         }
     }

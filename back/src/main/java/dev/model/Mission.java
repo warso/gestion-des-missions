@@ -1,6 +1,7 @@
 package dev.model;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -29,9 +30,9 @@ public class Mission {
 	
 	//2017-06-07T22:00:00.000Z
 	@JsonFormat(pattern = "yyyy/MM/dd")
-	private LocalDateTime debut;
+	private LocalDate debut;
 	@JsonFormat(pattern = "yyyy/MM/dd")
-	private LocalDateTime fin;
+	private LocalDate fin;
 	@ManyToOne
 	private Nature nature;
 	private String villeDepart;
@@ -49,7 +50,7 @@ public class Mission {
 		super();
 	}
 
-	public Mission(RoleUtilisateur utilisateur, LocalDateTime debut, LocalDateTime fin, Nature nature, String villeDepart,
+	public Mission(RoleUtilisateur utilisateur, LocalDate debut, LocalDate fin, Nature nature, String villeDepart,
 			String villeArrivee, Transport transport, Statut statut, List<NoteDeFrais> notes) {
 		super();
 		this.utilisateur = utilisateur;
@@ -87,19 +88,19 @@ public class Mission {
 		this.utilisateur = utilisateur;
 	}
 
-	public LocalDateTime getDebut() {
+	public LocalDate getDebut() {
 		return debut;
 	}
 
-	public void setDebut(LocalDateTime debut) {
+	public void setDebut(LocalDate debut) {
 		this.debut = debut;
 	}
 
-	public LocalDateTime getFin() {
+	public LocalDate getFin() {
 		return fin;
 	}
 
-	public void setFin(LocalDateTime fin) {
+	public void setFin(LocalDate fin) {
 		this.fin = fin;
 	}
 

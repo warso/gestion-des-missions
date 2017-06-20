@@ -3,6 +3,7 @@ import ngCookies from 'angular-cookies'
 import RouteModule from 'angular-route'
 import $uibModal from 'angular-ui-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
+import {moment} from 'moment'
 
 import { route } from './app.route'
 
@@ -22,7 +23,9 @@ import { MissionService } from './mission.service'
 import {UtilisateurService} from './utilisateur.service';
 import {MissionCreationService} from './missionCreation.service';
 
-angular.module('app', [RouteModule, ngCookies, $uibModal])
+require('angular-moment');
+
+angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment'])
 .value('API_URL', window.API_URL)
 .component('accueil', AccueilComponent)
 .component('barnav', NavBarComponent)

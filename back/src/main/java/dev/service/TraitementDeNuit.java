@@ -14,8 +14,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.sun.mail.smtp.SMTPSendFailedException;
-
 import dev.enumeration.Statut;
 import dev.model.Mission;
 import dev.model.Nature;
@@ -41,17 +39,19 @@ public class TraitementDeNuit {
 	//@Scheduled(cron="0 0 1 * * ?") // Tous les jours à une heure du matin 
 	public void lancerTraitementNuit() {
 
+
 		List<Mission> missions = missionRepo.findAll();
 		for (Mission m : missions) {
-			
-			if(m.getStatut() != Statut.ECHUE && m.getFin().isBefore(LocalDateTime.now()))
+
+
+			if(m.getStatut() != Statut.ECHUE && m.getFin().isBefore(LocalDate.now()))
 				traitementMissionTerminee(m);
+
 
 			if(m.getStatut() == Statut.INITIALE)
 				traitementMissionNouvelle(m);
-
+			
 		}
-		
 
 	}
 
@@ -82,8 +82,6 @@ public class TraitementDeNuit {
 	private void traitementMissionNouvelle(Mission m) {
 
 		m.setStatut(Statut.EN_ATTENTE_VALIDATION);
-		missionRepo.save(m);
-		
 		envoiMail(
 				"manager@yopmail.com",
 				"Mission "+m.getId()+" en attente de validation",
@@ -91,6 +89,7 @@ public class TraitementDeNuit {
 						+ "La mission ID:"+m.getId()+" a besoin d'être validée.\r"
 						+ "Cliquez ici pour accéder à la page de validation.");
 
+		missionRepo.save(m);
 
 	}
 
@@ -124,10 +123,10 @@ public class TraitementDeNuit {
 			helper.setSubject(objet);
 			sender.send(message);
 			
-		} catch (Exception e) {
+		} catch (MessagingException e) {
 			
 			e.printStackTrace();
-		} 
+		}
 
 	}
 
