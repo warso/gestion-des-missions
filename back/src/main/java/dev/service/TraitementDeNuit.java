@@ -67,6 +67,9 @@ public class TraitementDeNuit {
 		if(nat.isPrime()){
 			long nbJours = ChronoUnit.DAYS.between(m.getDebut(),m.getFin());
 			m.setPrime(nbJours * nat.getTauxJournalierMoyen() * nat.getPourcentagePrime());
+			//System.out.println("nbJours : "+nbJours);
+			//System.out.println("tauxJourn : "+nat.getTauxJournalierMoyen());
+			//System.out.println("pourcPrime : "+nat.getPourcentagePrime());
 		}
 
 

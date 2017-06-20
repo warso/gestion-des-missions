@@ -57,14 +57,23 @@ public class DataInitListener implements ServletContextListener{
 
 		Nature conseil = new Nature();
 		conseil.setType("Conseil");
+		conseil.setPrime(true);
+		conseil.setTauxJournalierMoyen(200f);
+		conseil.setPourcentagePrime(0.2f);
 		natureRepo.save(conseil);
 
 		Nature expertise = new Nature();
 		expertise.setType("Expertise Technique");
+		expertise.setPrime(true);
+		expertise.setTauxJournalierMoyen(100f);
+		expertise.setPourcentagePrime(0.15f);
 		natureRepo.save(expertise);
 
 		Nature formation = new Nature();
 		formation.setType("Formation");
+		formation.setPrime(true);
+		formation.setTauxJournalierMoyen(150f);
+		formation.setPourcentagePrime(0.35f);
 		natureRepo.save(formation);
 
 		Mission m1 = new Mission();
@@ -145,6 +154,28 @@ public class DataInitListener implements ServletContextListener{
 		m7.setNature(conseil);
 		m7.setTransport(Transport.TRAIN);
 		missionRepo.save(m7);
+		
+		Mission m8 = new Mission();
+		m8.setUtilisateur(util2);
+		m8.setDebut(LocalDate.parse("2002-01-01"));
+		m8.setFin(LocalDate.parse("2002-02-02"));
+		m8.setStatut(Statut.VALIDEE);
+		m8.setVilleDepart("Paris");
+		m8.setVilleArrivee("Lens");
+		m8.setNature(expertise);
+		m8.setTransport(Transport.COVOITURAGE);
+		missionRepo.save(m8);
+		
+		Mission m9 = new Mission();
+		m9.setUtilisateur(util2);
+		m9.setDebut(LocalDate.parse("2003-01-01"));
+		m9.setFin(LocalDate.parse("2003-02-02"));
+		m9.setStatut(Statut.VALIDEE);
+		m9.setVilleDepart("Lyon");
+		m9.setVilleArrivee("Lille");
+		m9.setNature(formation);
+		m9.setTransport(Transport.VOITURE_DE_SERVICE);
+		missionRepo.save(m9);
 		
 	}
 
