@@ -14,7 +14,7 @@
 
             <ul class="nav navbar-nav navbar-right" ng-if="$ctrl.user">
                 <li>
-                    <p class="navbar-text"> {{$ctrl.user.nom}}, {{$ctrl.user.prenom}} </span>
+                    <p class="navbar-text">Bienvenue, {{$ctrl.user.nom}} {{$ctrl.user.prenom}} </span>
                     </p>
                 </li>
                 <li><a ng-href="missionsVisualisation" ng-click="$ctrl.LoginService.deleteUser()" class="btn btn-default">Se déconnecter</a></li>
