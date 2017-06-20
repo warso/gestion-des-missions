@@ -28,9 +28,9 @@ public class Mission {
 	private RoleUtilisateur utilisateur;
 	
 	//2017-06-07T22:00:00.000Z
-	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private LocalDateTime debut;
-	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private LocalDateTime fin;
 	@ManyToOne
 	private Nature nature;

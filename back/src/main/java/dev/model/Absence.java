@@ -8,13 +8,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import dev.enumeration.Statut;
 @Entity
 public class Absence {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private LocalDateTime debut;
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private LocalDateTime fin;
 	private Statut statut;
 	private String motif;

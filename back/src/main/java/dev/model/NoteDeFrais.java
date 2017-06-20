@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class NoteDeFrais {
 
@@ -16,6 +18,7 @@ public class NoteDeFrais {
 	private int id;
 	@ManyToOne
 	private Mission misson;
+	@JsonFormat(pattern = "yyyy/MM/dd")
 	private LocalDateTime date;
 	private float montant;
 	@ManyToOne
