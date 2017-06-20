@@ -15,15 +15,20 @@ import {PrimesComponent} from './primes/primes.component'
 import {MissionValidationComponent} from './missionValidation/missionValidation.component'
 import {MissionCreationComponent} from './missionCreation/missionCreation.component'
 import {UtilisateurComponent} from './utilisateur/utilisateur.component'
-import {AuthComponent} from './auth/auth.component'
-// import $uibModal from 'angular-ui-bootstrap';
+import { AuthComponent } from './auth/auth.component'
+import {MissionPlanningComponent} from './missionPlanning/missionPlanning.component'
 
-import {LoginService} from './login/login.service'
-import {MissionService} from './mission.service'
-import {UtilisateurService} from './utilisateur.service'
-import {MissionCreationService} from './missionCreation.service'
 
-require('angular-moment')
+import 'angular-bootstrap-calendar'
+import 'angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css'
+
+
+import { LoginService } from './login/login.service'
+import { MissionService } from './mission.service'
+import {UtilisateurService} from './utilisateur.service';
+import {MissionCreationService} from './missionCreation.service';
+
+require('angular-moment');
 
 angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment'])
 .value('API_URL', window.API_URL)
@@ -35,6 +40,7 @@ angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment'])
 .component('missionValidation', MissionValidationComponent)
 .component('missionCreation', MissionCreationComponent)
 .component('utilisateur', UtilisateurComponent)
+.component('missionPlanning', MissionPlanningComponent)
 
 .component('auth', AuthComponent)
 

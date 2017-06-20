@@ -10,9 +10,9 @@ class controller {
     this.$location = $location
 
     $scope.isActive = function (viewLocation) {
-      this.$location
-      return viewLocation === this.$location.path()
-    }.bind(this)
+      // console.log(this.$location)
+            return viewLocation === this.$location.path()
+        }.bind(this)
 
     $scope.$on('$routeChangeStart', function (angularEvent, newUrl) {
       if ($location.path() === '/login') {
