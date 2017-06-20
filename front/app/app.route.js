@@ -16,6 +16,11 @@ export function route ($routeProvider, $locationProvider) {
           requireAuth: true,
           authorizeRole: ['MANAGER']
         })
+        .when('/primes', {
+          template: '<primes></primes>',
+          requireAuth: true,
+          authorizeRole: ['EMPLOYE', 'ADMINISTRATEUR', 'MANAGER']
+        })
         .when('/missionsCreation', {
           template: '<mission-creation></mission-creation>',
           requireAuth: true,
