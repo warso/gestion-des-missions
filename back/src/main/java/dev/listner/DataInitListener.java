@@ -97,7 +97,7 @@ public class DataInitListener implements ServletContextListener{
 		m3.setVilleDepart("Nantes");
 		m3.setVilleArrivee("Longcochon");
 		m3.setNature(formation);
-		m3.setTransport(Transport.CONVOITURAGE);
+		m3.setTransport(Transport.COVOITURAGE);
 		missionRepo.save(m3);
 		
 		Mission m4 = new Mission();

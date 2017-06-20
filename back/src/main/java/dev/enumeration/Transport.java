@@ -3,7 +3,7 @@ package dev.enumeration;
 public enum Transport {
 	
 	AVION,
-	CONVOITURAGE,
+	COVOITURAGE,
 	TRAIN,
 	VOITURE_DE_SERVICE;
 
