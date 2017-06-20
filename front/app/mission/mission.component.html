@@ -30,9 +30,6 @@
                     <!--dans le ng-click j'appel mon controleur qui appel le deleteMission de MissionService. et en pararmétre de fonction on a l'id de la mission.-->
                     <!--Donc en cliquant sur la poubelle, automatiquement il recupere l'id correspondant à la ligne et supprime ainsi la mission : $ctrl.MissionService.deleteMission(mission.id)-->
 
-                    <td><a class="btn btn-default" ng-click="$ctrl.MissionService.deleteMission(mission.id) ; $ctrl.missions = $ctrl.MissionService.getMission($ctrl.user.matricule)" data-toggle="modal" data-target="#product_view" ><span class="glyphicon glyphicon-trash"></span></a></td>
-
-
 
 
                     <td><a ng-if="mission.statut == 'INITIALE'" class="btn btn-default" ng-click="$ctrl.popup(mission)" data-toggle="modal" data-target="#product_view"><span class="glyphicon glyphicon-trash"></span></a></td>
