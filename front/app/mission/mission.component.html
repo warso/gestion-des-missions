@@ -32,8 +32,9 @@
 
 
 
-                    <td><a ng-if="mission.statut == 'INITIALE'" class="btn btn-default" ng-click="$ctrl.popup(mission)" data-toggle="modal" data-target="#product_view"><span class="glyphicon glyphicon-trash"></span></a></td>
-                     <li ng-if="$ctrl.user.role=='ADMINISTRATEUR'"><a href="#">Natures des missions</a></li>
+                    <td><a ng-if="mission.statut == 'INITIALE'" class="btn btn-default" ng-click="$ctrl.popup(mission)" data-toggle="modal"
+                            data-target="#product_view"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <li ng-if="$ctrl.user.role=='ADMINISTRATEUR'"><a href="#">Natures des missions</a></li>
 
                 </tr>
 
@@ -46,6 +47,6 @@
         </div>
 
 
-        <div>
-            <button><a href="/gestion-des-missions/missionsCreation" class="btn btn-default">Ajouter une demande</a></button>
-        </div>
+        <a href="/gestion-des-missions/missionsCreation" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter une demande</a>
+    </div>
+</div>
