@@ -30,7 +30,7 @@ import {MissionCreationService} from './missionCreation.service';
 
 require('angular-moment');
 
-angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment'])
+angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment', 'mwl.calendar'])
 .value('API_URL', window.API_URL)
 .component('accueil', AccueilComponent)
 .component('barnav', NavBarComponent)
