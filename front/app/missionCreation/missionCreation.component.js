@@ -3,33 +3,37 @@ import template from './missionCreation.component.html'
 
 
 class controller {
-    constructor(MissionService, LoginService,MissionCreationService,$location, moment) {
+    constructor(MissionService, LoginService, MissionCreationService, $location, moment) {
         this.MissionService = MissionService
         this.LoginService = LoginService
-        this.$location=$location
-        this.MissionCreationService=MissionCreationService
+        this.$location = $location
+        this.MissionCreationService = MissionCreationService
         this.mission = {
-            debut:"",
-            fin:"",
-            nature:{id:""},
-            villeDepart:"",
-            utilisateur:{matricule:""},
-            villeArrivee:"",
-            transport:"",
+            debut: "",
+            fin: "",
+            nature: { id: "" },
+            villeDepart: "",
+            utilisateur: { matricule: "" },
+            villeArrivee: "",
+            transport: "",
         }
-        this.moment = moment
+        this.moment = moment 
     }
 
+
+
     addMission() {
-        this.mission.utilisateur=this.LoginService.loadUser()
-        if (!this.mission.utilisateur){
-            console.log("Utilisateur non déf.")
+        this.mission.utilisateur = this.LoginService.loadUser()
+        if ((!this.mission.utilisateur) || (this.debut>this.fin) || (this.debut==now)) {
+            console.log("Utilisateur non déf. et date de mission incorrecte")
+
         }
+
         else {
             let mission = angular.copy(this.mission)
-            mission.utilisateur.matricule=this.LoginService.loadUser().matricule
+            mission.utilisateur.matricule = this.LoginService.loadUser().matricule
 
-            // moficier les dates pour correspondre au format spring
+            // modifier les dates pour correspondre au format spring
             console.log(mission)
             mission.debut = this.moment(mission.debut).format('YYYY/MM/DD');
             mission.fin = this.moment(mission.fin).format('YYYY/MM/DD');
@@ -72,5 +76,5 @@ class controller {
 export let MissionCreationComponent = {
     template,
     controller,
-    bindings: { mission:"<"}
+    bindings: { mission: "<" }
 };
