@@ -17,15 +17,16 @@ class controller {
             villeArrivee: "",
             transport: "",
         }
-        this.moment = moment 
+        this.moment = moment
     }
 
 
 
     addMission() {
         this.mission.utilisateur = this.LoginService.loadUser()
-        if ((!this.mission.utilisateur) || (this.debut>this.fin) || (this.debut==now)) {
+        if ((!this.mission.utilisateur) || ((this.mission.debut > this.mission.fin) && (this.mission.debut === Date.now()))) {
             console.log("Utilisateur non déf. et date de mission incorrecte")
+            alert("nullleuobp")
 
         }
 
@@ -41,7 +42,7 @@ class controller {
 
             // this.mission.debut = this.mission.debut.substring(0,9)
             // this.mission.fin = this.mission.fin.substring(0,9)
-            // console.log(this.mission)
+            console.log(this.mission)
 
             this.MissionCreationService.ajoutNouvelleMission(mission)
             this.$location.path('/missionsVisualisation')

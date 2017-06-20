@@ -12,9 +12,9 @@ export class MissionCreationService {
 
   ajoutNouvelleMission (mission) {
 
-    console.log('recuperation de la fonction mision creationService', mission)
+    //console.log('recuperation de la fonction mision creationService', mission)
         // envoie les data à mission.json
-    console.log(this.$http.post(API_URL + '/missions', mission));
+   this.$http.post(API_URL + '/missions', mission);
     
   }
 }

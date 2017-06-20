@@ -7,12 +7,12 @@ class controller {
     this.LoginService.navbarCallback = function () { this.onUserChange() }.bind(this)
     this.user = {}
     this.hide = true
-    this.$location=$location
+    this.$location = $location
 
     $scope.isActive = function (viewLocation) {
-      console.log(this.$location)
-            return viewLocation === this.$location.path()
-        }.bind(this)
+      this.$location
+      return viewLocation === this.$location.path()
+    }.bind(this)
 
     $scope.$on('$routeChangeStart', function (angularEvent, newUrl) {
       if ($location.path() === '/login') {
