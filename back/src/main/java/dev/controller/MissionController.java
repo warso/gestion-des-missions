@@ -1,10 +1,12 @@
 package dev.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +36,6 @@ public class MissionController {
 	@Autowired
 	private UtilisateurService utilsService;
 
-
 	@Autowired
 	RoleUtilisateurRepo roleRepo;
 
@@ -46,7 +47,6 @@ public class MissionController {
 
 		return missionrepo.findAll();
 	}
-
 
 	@PutMapping("/missions")
 	public void putMission(@RequestBody Mission mission) {
@@ -66,63 +66,79 @@ public class MissionController {
 	public List<Mission> getBySubalternes(@PathVariable String matricule) {
 		List<RoleUtilisateur> roles = roleRepo.findByMatricule(matricule);
 		List<Utilisateur> util = utilsService.findByMatricule(matricule);
-		
+
 		// ça mérite p'tet un refactoring ici :D
-		if (roles.size() >= 1){
+		if (roles.size() >= 1) {
 			List<Mission> res = missionrepo.findByUtilisateur(roles.get(0));
 
-			if (util.size() >= 1){
+			if (util.size() >= 1) {
 				List<String> subs = util.get(0).getSubalternes();
-				for (String sub : subs){
+				for (String sub : subs) {
 					List<RoleUtilisateur> roleSub = roleRepo.findByMatricule(sub);
 					if (roleSub.size() >= 1)
 						res.addAll(missionrepo.findByUtilisateur(roleSub.get(0)));
 				}
 			}
 			return res;
-		}else
+		} else
 			return new ArrayList<Mission>();
-			
-}
+
+	}
+	
+	/*
+	 * Recupére un tableau de transport à l'URL suivant /transport
+	 */
 
 	@GetMapping("/transport")
 	// @CrossOrigin("*")
-	public Transport[] getTransport(@RequestParam(value = "transport", required=false)  String t){
+	public Transport[] getTransport(@RequestParam(value = "transport", required = false) String t) {
 		return Transport.values();
 	}
 	
+	/*
+	 * Recupére un tableau de statut à l'URL suivant /statut
+	 */
+	
 	@GetMapping("/statut")
 	// @CrossOrigin("*")
-	public Statut[] getSatut(@RequestParam(value = "statut", required=false)  String s){
+	public Statut[] getSatut(@RequestParam(value = "statut", required = false) String s) {
 		return Statut.values();
 	}
 	
+	/*
+	 * Insère une nouvelle mission en base de données
+	 */
+
 	@PostMapping("/missions")
-//	@CrossOrigin("*")
+	// @CrossOrigin("*")
 	public void addMission(@RequestBody Mission mission) {
 
-		mission.setStatut(Statut.INITIALE);
-	mission.setUtilisateur(roleRepo.findByMatricule(mission.getUtilisateur().getMatricule()).get(0));
-		missionrepo.save(mission);
-
-		
+		if(mission.getDebut().isAfter(LocalDateTime.now())){
+			
+			mission.setStatut(Statut.INITIALE);
+			mission.setUtilisateur(roleRepo.findByMatricule(mission.getUtilisateur().getMatricule()).get(0));
+			missionrepo.save(mission);			
+		}
 	}
+	
+	/*
+	 * Supprime une mission à partir de son Id
+	 */
 
 	@DeleteMapping("/missions/{id}")
 
-	public Map<String, String> deleteById(@PathVariable Integer id){
+	public Map<String, String> deleteById(@PathVariable Integer id) {
 
 		Map<String, String> reponse = new HashMap<>();
-		if (missionrepo.exists(id)){
+		if (missionrepo.exists(id)) {
 			missionrepo.delete(id);
 			System.out.println("mission supprimé pour l'id" + id);
 			reponse.put("message", "suppression mission ok");
 		} else {
 			reponse.put("message", "erreur suppression mission id invalide");
-		};
+		}
+		;
 		return reponse;
 	}
-
-
 
 }
