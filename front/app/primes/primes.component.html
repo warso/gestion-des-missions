@@ -1,6 +1,23 @@
 <div class="container">
     <h2 align="center">RECAPITULATION DES PRIMES</h2> <br>
-    <div class="row">
-
+    <div class="col-md-10">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date de debut</th>
+                    <th>Date de fin</th>
+                    <th>Nature</th>
+                    <th>Prime</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="mission in $ctrl.missions" ng-if="mission.statut == 'ECHUE'">
+                    <td>{{mission.debut}}</td>
+                    <td>{{mission.fin}}</td>
+                    <td>{{mission.nature.type}}</td>
+                    <td>{{mission.prime}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

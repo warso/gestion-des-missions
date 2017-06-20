@@ -82,6 +82,8 @@ public class TraitementDeNuit {
 	private void traitementMissionNouvelle(Mission m) {
 
 		m.setStatut(Statut.EN_ATTENTE_VALIDATION);
+		missionRepo.save(m);
+		
 		envoiMail(
 				"manager@yopmail.com",
 				"Mission "+m.getId()+" en attente de validation",
@@ -89,7 +91,6 @@ public class TraitementDeNuit {
 						+ "La mission ID:"+m.getId()+" a besoin d'être validée.\r"
 						+ "Cliquez ici pour accéder à la page de validation.");
 
-		missionRepo.save(m);
 
 	}
 
@@ -123,10 +124,11 @@ public class TraitementDeNuit {
 			helper.setSubject(objet);
 			sender.send(message);
 			
-		} catch (MessagingException e) {
+		} catch (Exception e) {
 			
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
+		//System.out.println("\r\rcoucou\r\r");
 
 	}
 

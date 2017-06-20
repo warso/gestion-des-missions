@@ -6,7 +6,6 @@ class controller {
     this.MissionService = MissionService
     this.LoginService = LoginService
     this.missions = []
-    this.missionsSubalternes = []
     this.missionsInitiales = []
   }
 
@@ -19,10 +18,6 @@ class controller {
               this.missions = missions
             })
     }
-
-    this.missionsSubalternes = this.missions.filter(function (mission) {
-      return this.LoginService.user.subalternes.contains(mission.utilisateur.matricule)
-    })
   }
 
   validerMission (mission) {

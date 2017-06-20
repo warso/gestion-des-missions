@@ -134,6 +134,18 @@ public class DataInitListener implements ServletContextListener{
 		m6.setTransport(Transport.TRAIN);
 		missionRepo.save(m6);
 		
+		
+		Mission m7 = new Mission();
+		m7.setUtilisateur(util2);
+		m7.setDebut(LocalDate.parse("2000-01-01"));
+		m7.setFin(LocalDate.parse("2000-02-02"));
+		m7.setStatut(Statut.VALIDEE);
+		m7.setVilleDepart("Millau");
+		m7.setVilleArrivee("Rodez");
+		m7.setNature(conseil);
+		m7.setTransport(Transport.TRAIN);
+		missionRepo.save(m7);
+		
 	}
 
 	@Override
