@@ -1,5 +1,6 @@
 package dev.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,11 +30,10 @@ import dev.service.UtilisateurService;
 public class MissionController {
 
 	@Autowired
-	private MissionRepo missionrepo;
+	private MissionRepo missionRepo;
 
 	@Autowired
 	private UtilisateurService utilsService;
-
 
 	@Autowired
 	RoleUtilisateurRepo roleRepo;
@@ -44,20 +44,19 @@ public class MissionController {
 	@GetMapping("/missions")
 	public List<Mission> get() {
 
-		return missionrepo.findAll();
+		return missionRepo.findAll();
 	}
-
 
 	@PutMapping("/missions")
 	public void putMission(@RequestBody Mission mission) {
-		missionrepo.save(mission);
+		missionRepo.save(mission);
 	}
 
 	@GetMapping("/missions/matricule/{matricule}")
 	public List<Mission> getByMatricule(@PathVariable String matricule) {
 		List<RoleUtilisateur> roles = roleRepo.findByMatricule(matricule);
 		if (roles.size() == 1)
-			return missionrepo.findByUtilisateur(roles.get(0));
+			return missionRepo.findByUtilisateur(roles.get(0));
 		else
 			return new ArrayList<Mission>();
 	}
@@ -66,39 +65,39 @@ public class MissionController {
 	public List<Mission> getBySubalternes(@PathVariable String matricule) {
 		List<RoleUtilisateur> roles = roleRepo.findByMatricule(matricule);
 		List<Utilisateur> util = utilsService.findByMatricule(matricule);
-		
-		// ça mérite p'tet un refactoring ici :D
-		if (roles.size() >= 1){
-			List<Mission> res = missionrepo.findByUtilisateur(roles.get(0));
 
-			if (util.size() >= 1){
+		// ça mérite p'tet un refactoring ici :D
+		if (roles.size() >= 1) {
+			List<Mission> res = missionRepo.findByUtilisateur(roles.get(0));
+
+			if (util.size() >= 1) {
 				List<String> subs = util.get(0).getSubalternes();
-				for (String sub : subs){
+				for (String sub : subs) {
 					List<RoleUtilisateur> roleSub = roleRepo.findByMatricule(sub);
 					if (roleSub.size() >= 1)
-						res.addAll(missionrepo.findByUtilisateur(roleSub.get(0)));
+						res.addAll(missionRepo.findByUtilisateur(roleSub.get(0)));
 				}
 			}
 			return res;
-		}else
+		} else
 			return new ArrayList<Mission>();
-			
-}
+
+	}
 
 	@GetMapping("/transport")
-	public Transport[] getTransport(@RequestParam(value = "transport", required=false)  String t){
+	public Transport[] getTransport(@RequestParam(value = "transport", required = false) String t) {
 		return Transport.values();
 	}
-	
+
 	/*
 	 * Recupére un tableau de statut à l'URL suivant /statut
 	 */
-	
+
 	@GetMapping("/statut")
-	public Statut[] getSatut(@RequestParam(value = "statut", required=false)  String s){
+	public Statut[] getSatut(@RequestParam(value = "statut", required = false) String s) {
 		return Statut.values();
 	}
-	
+
 	/*
 	 * Insère une nouvelle mission en base de données
 	 */
@@ -107,30 +106,39 @@ public class MissionController {
 	public void addMission(@RequestBody Mission mission) {
 
 		mission.setStatut(Statut.INITIALE);
-	mission.setUtilisateur(roleRepo.findByMatricule(mission.getUtilisateur().getMatricule()).get(0));
-		missionrepo.save(mission);
+		mission.setUtilisateur(roleRepo.findByMatricule(mission.getUtilisateur().getMatricule()).get(0));
+		LocalDate debutMission = mission.getDebut();
+		LocalDate finMission = mission.getFin();
 
-		
+		if ((debutMission.isAfter(LocalDate.now()))
+				&& ((debutMission.isBefore(finMission)) || (debutMission.isEqual(finMission)))) {
+
+			if (mission.getTransport() == Transport.AVION) {
+				finMission = debutMission.plusDays(7);
+			}
+			missionRepo.save(mission);
+
+		}
+
 	}
-	
+
 	/*
 	 * Supprime une mission à partir de son Id
 	 */
 
 	@DeleteMapping("/missions/{id}")
-	public Map<String, String> deleteById(@PathVariable Integer id){
+	public Map<String, String> deleteById(@PathVariable Integer id) {
 
 		Map<String, String> reponse = new HashMap<>();
-		if (missionrepo.exists(id)) {
-			missionrepo.delete(id);
+		if (missionRepo.exists(id)) {
+			missionRepo.delete(id);
 			System.out.println("mission supprimé pour l'id" + id);
 			reponse.put("message", "suppression mission ok");
 		} else {
 			reponse.put("message", "erreur suppression mission id invalide");
-		};
+		}
+		;
 		return reponse;
 	}
-
-
 
 }
