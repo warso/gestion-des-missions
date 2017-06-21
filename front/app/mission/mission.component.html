@@ -1,9 +1,10 @@
+
 <div class="container ">
     <h2 align="center">AFFICHAGE DES MISSIONS</h2> <br>
 
-    <div class="col-md-10 jumbotron">
+    <div class="col-md-10 ">
 
-        <table class="table">
+        <table class="table ">
             <thead>
                 <tr>
                     <th>Date de debut</th>
@@ -32,9 +33,15 @@
 
                     <td>
                       
-                      <div>
-                           <a ng-if="mission.statut == 'INITIALE'" class="btn btn-default" data-toggle="modal" data-target="#product_view" ng-click="$ctrl.popupDelete(mission)"><span class="glyphicon glyphicon-trash"></span></a>
-                        <a href="/gestion-des-missions/missionsModification/{{mission.id}}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                      <div class="row "> 
+                          <div class="col-md-6">
+                              <a ng-if="mission.statut == 'INITIALE'" class="btn btn-default" data-toggle="modal" data-target="#product_view" ng-click="$ctrl.popupDelete(mission)"><span class="glyphicon glyphicon-trash"></span></a>
+                          </div>
+                           
+                           <div class="col-md-6">
+                               <a href="/gestion-des-missions/missionsModification/{{mission.id}}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                           </div>
+                        
                       </div>
                        
                        
