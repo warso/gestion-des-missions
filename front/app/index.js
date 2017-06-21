@@ -30,6 +30,7 @@ import { LoginService } from './login/login.service'
 import { MissionService } from './mission.service'
 import {UtilisateurService} from './utilisateur.service';
 import {MissionCreationService} from './missionCreation.service';
+import {AbsenceService} from './absence.service'
 
 require('angular-moment');
 
@@ -56,6 +57,7 @@ angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment', 'mwl.
 .service('MissionService', MissionService)
 .service('UtilisateurService', UtilisateurService)
 .service('MissionCreationService', MissionCreationService)
+.service('AbsenceService', AbsenceService)
 
 .config(route)
 

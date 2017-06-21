@@ -1,4 +1,45 @@
 {
+  "absences":[
+    {
+        "id": 3685,
+        "dateDebut": {
+            "year": 2017,
+            "month": "JUNE",
+            "monthValue": 6,
+            "chronology": {
+                "calendarType": "iso8601",
+                "id": "ISO"
+            },
+            "leapYear": false,
+            "dayOfMonth": 20,
+            "dayOfWeek": "TUESDAY",
+            "dayOfYear": 171,
+            "era": "CE"
+        },
+        "dateFin": {
+            "year": 2017,
+            "month": "JUNE",
+            "monthValue": 6,
+            "chronology": {
+                "calendarType": "iso8601",
+                "id": "ISO"
+            },
+            "leapYear": false,
+            "dayOfMonth": 21,
+            "dayOfWeek": "WEDNESDAY",
+            "dayOfYear": 172,
+            "era": "CE"
+        },
+        "type": "CONGE_SANS_SOLDE",
+        "statut": "EN_ATTENTE_VALIDATION",
+        "motif": "un motif d'absence",
+        "utilisateur": {
+            "id": 1501,
+            "matriculeCollab": "bd540e65",
+            "role": "ADMIN"
+        }
+    }
+  ],
   "user": [
     {
       "id": 1,
