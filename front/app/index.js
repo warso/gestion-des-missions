@@ -4,6 +4,7 @@ import RouteModule from 'angular-route'
 import $uibModal from 'angular-ui-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import {moment} from 'moment'
+import 'moment/locale/fr'
 
 import { route } from './app.route'
 
@@ -51,3 +52,13 @@ angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment', 'mwl.
 .service('MissionCreationService', MissionCreationService)
 
 .config(route)
+
+.config(['calendarConfig', function (calendarConfig) {
+  // calendarConfig.templates.calendarMonthView = 'path/to/custom/template.html'
+  calendarConfig.dateFormatter = 'moment'
+  calendarConfig.allDateFormats.moment.date.hour = 'HH:mm'
+  calendarConfig.allDateFormats.moment.title.day = 'ddd D MMM'
+  calendarConfig.i18nStrings.weekNumber = 'Sem. {week}'
+  calendarConfig.displayAllMonthEvents = true
+  calendarConfig.showTimesOnWeekView = true
+}])
