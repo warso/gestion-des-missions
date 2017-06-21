@@ -6,9 +6,16 @@ class controller {
         this.MissionService = MissionService
         this.LoginService = LoginService
         this.$location = $location
-        // afin de recupéré l'id de la mission en fonction de son chemi uri
+        // Recuperation de la mission en fonction de son Id et affichage de l'id dans l'uri
+
         MissionService.getMissionsById($routeParams.id)
-            .then(mission => this.mission = mission)
+            .then(mission => { 
+        // Pour un problème d'affichage on a transformé la date en String avant de la stoquer en base de donnée.(dans missionCreation.js la fonction addMission(), utilisation librairie moment)
+        // ici je fait le chemin inverse, je transforme uen chaîne de caractére en date, pour ne pas planté mon ng-model dans le .html(la où le type="date")
+                mission.debut = new Date(mission.debut)
+                 mission.fin = new Date(mission.fin)
+                this.mission = mission
+            })
     }
 
 
@@ -31,14 +38,12 @@ class controller {
 
     }
 
-    modifMission() {
+    modifMission(mission) {
         console.log("modifmission")
-        // this.mission.utilisateur = this.LoginService.loadUser()
+         this.mission.utilisateur = this.LoginService.loadUser()
         
         this.MissionService.updateMission(this.mission)
-
-//this.MissionService.updateMission()
-       // this.$location.path('/missionsVisualisation')
+     this.$location.path('/missionsVisualisation')
     }
 
     reset() {

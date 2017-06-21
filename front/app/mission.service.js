@@ -1,16 +1,24 @@
 
 export class MissionService {
-  constructor($http, $q, API_URL) {
+  constructor($http, $q, API_URL, moment) {
     this.$http = $http
     this.$q = $q
     this.API_URL = API_URL
-
+    this.moment = moment
 
   }
 
   updateMission(mission) {
-    console.log('updateMissions()')
-    return this.$http.put(API_URL + '/missions/' ,mission)
+    //paramètre mission récupére l'objet avec les donnée du formulaire de mission saisi(quand on clic sur le bouton modifier)
+
+    // on fait une copie de notre mission afin de pouvoir faire la transformation des dates en string sans poser probléme à notre objet de base mission
+    let missionCopy = angular.copy(mission)
+
+    missionCopy.debut = this.moment(missionCopy.debut).format('YYYY/MM/DD');
+    missionCopy.fin = this.moment(missionCopy.fin).format('YYYY/MM/DD');
+
+// on fait un put(permetttant le update en base de donée) en mettant missonCopy qui est l'objet que l'on veux appliquer
+    return this.$http.put(API_URL + '/missions', missionCopy)
       .then(rep => rep.data)
   }
 
@@ -29,8 +37,8 @@ export class MissionService {
     }
     return this.$http.get(API_URL + '/missions/id/' + id)
       .then(
-        rep => rep.data,
-        err => { console.log('error acces API/missions for get mission', err) }
+      rep => rep.data,
+      err => { console.log('error acces API/missions for get mission', err) }
       )
   }
 

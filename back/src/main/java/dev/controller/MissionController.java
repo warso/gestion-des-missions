@@ -51,7 +51,6 @@ public class MissionController {
 	/**Modification de la mission */
 	@PutMapping("/missions")
 	public void putMission(@RequestBody Mission mission) {
-		System.out.println("coucou");
 		/*recuperation d'une mission de la base de donnée par son id*/
 		Mission m = missionRepo.findOne(mission.getId());
 		/*permet de faire le changement des champs et leur persistance si notre objet n'est pas transient(vide)*/
