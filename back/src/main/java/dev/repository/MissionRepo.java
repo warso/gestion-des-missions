@@ -11,5 +11,5 @@ import dev.model.RoleUtilisateur;
 public interface MissionRepo extends JpaRepository<Mission, Integer> {
 	
 	List<Mission> findByUtilisateur( RoleUtilisateur utilisateur );
-
+	List<Mission> findById( int id );
 }

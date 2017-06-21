@@ -1,12 +1,14 @@
 package dev.controller;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,6 +43,8 @@ public class MissionController {
 
 	@Autowired
 	NatureRepository natureRepo;
+	
+	Logger logger = LoggerFactory.getLogger(MissionController.class);
 
 	@GetMapping("/missions")
 	public List<Mission> get() {
@@ -48,7 +52,10 @@ public class MissionController {
 		return missionRepo.findAll();
 	}
 	
-	/**Modification de la mission */
+	/*
+	 * Permet la modification d'une mission
+	 */
+	
 	@PutMapping("/missions")
 	public void putMission(@RequestBody Mission mission) {
 		/*recuperation d'une mission de la base de donnée par son id*/
@@ -64,10 +71,14 @@ public class MissionController {
 			m.setTransport(mission.getTransport());
 
 			missionRepo.save(m);
-			System.out.println("Modification de la mission avec l'id: "+mission.getId()+ " reussite" );
+			logger.info("Modification de la mission avec l'id: "+mission.getId()+ " reussite" );
 		}
-		else System.out.println("Modification echoué");
+		else logger.info("Modification echoué");
 	}
+	
+	/*
+	 * Retourne une liste mission par matricule
+	 */
 
 	@GetMapping("/missions/matricule/{matricule}")
 	public List<Mission> getByMatricule(@PathVariable String matricule) {
@@ -77,7 +88,11 @@ public class MissionController {
 		else
 			return new ArrayList<Mission>();
 	}
-
+	
+	/*
+	 * Retourne une liste mission par subalterne
+	 */
+	
 	@GetMapping("/missions/subalternes/{matricule}")
 	public List<Mission> getBySubalternes(@PathVariable String matricule) {
 		List<RoleUtilisateur> roles = roleRepo.findByMatricule(matricule);
@@ -100,13 +115,12 @@ public class MissionController {
 			return new ArrayList<Mission>();
 
 	}
-
+	
 	/*
-	 * Recupére un tableau de transport à l'URL suivant /transport
+	 * Recupére un tableau de transport à l'URL suivant "/transport"
 	 */
 
 	@GetMapping("/transport")
-	// @CrossOrigin("*")
 	public Transport[] getTransport(@RequestParam(value = "transport", required = false) String t) {
 		return Transport.values();
 	}
@@ -116,7 +130,6 @@ public class MissionController {
 	 */
 
 	@GetMapping("/statut")
-	// @CrossOrigin("*")
 	public Statut[] getSatut(@RequestParam(value = "statut", required = false) String s) {
 		return Statut.values();
 	}
@@ -126,52 +139,63 @@ public class MissionController {
 	 */
 
 	@PostMapping("/missions")
-	// @CrossOrigin("*")
 	public void addMission(@RequestBody Mission mission) {
 
 		mission.setStatut(Statut.INITIALE);
 		mission.setUtilisateur(roleRepo.findByMatricule(mission.getUtilisateur().getMatricule()).get(0));
 		LocalDate debutMission = mission.getDebut();
 		LocalDate finMission = mission.getFin();
+		Mission miss = missionRepo.findAll().get(0);
+		
+		if (debutMission.getDayOfYear() <= LocalDate.now().getDayOfYear()){
+			logger.info(" Debut aujourd'hui");
+		}
+		
+		else if (debutMission.getDayOfYear() >= finMission.getDayOfYear()){
+			logger.info("Fin avant debut ou Fin = debut");
+			
+		}
 
-		if ((debutMission.isAfter(LocalDate.now()))
-				&& ((debutMission.isBefore(finMission)) || (debutMission.isEqual(finMission)))) {
-
-			if (mission.getTransport() == Transport.AVION) {
-				finMission = debutMission.plusDays(7);
-			}
+		else if (
+				(mission.getTransport().equals(Transport.AVION))
+				&&
+				(Period.between(LocalDate.now(), debutMission).getDays() <= 7)
+				){
+			logger.info("Avion");
+			logger.info(""+(mission.getTransport() == Transport.AVION));
+			logger.info(""+(Period.between(LocalDate.now(), debutMission).getDays() >= 7));
+			logger.info(""+(Period.between(LocalDate.now(), debutMission).getDays()));
+			
+		}
+		
+		else if (miss.equals(mission)){
+			logger.info("Mission existante");
+		}
+		
+		else {
 			missionRepo.save(mission);
 
 		}
+
 	}
 
 	/*
 	 * Supprime une mission à partir de son Id
 	 */
 
-	/** Suppression de mission par id */
 	@DeleteMapping("/missions/{id}")
-
 	public Map<String, String> deleteById(@PathVariable Integer id) {
 
 		Map<String, String> reponse = new HashMap<>();
 		if (missionRepo.exists(id)) {
 			missionRepo.delete(id);
-			System.out.println("mission supprimé pour l'id" + id);
+			logger.info("mission supprimé pour l'id" + id);
 			reponse.put("message", "suppression mission ok");
 		} else {
 			reponse.put("message", "erreur suppression mission id invalide");
 		}
 		;
 		return reponse;
-	}
-
-	/** Méthode de recupération d'une mission par son id */
-	@GetMapping("/missions/id/{id}")
-	public Mission getMissionById(@PathVariable Integer id) {
-		Mission mission = missionRepo.findOne(id);
-
-		return mission;
 	}
 
 }

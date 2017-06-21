@@ -17,7 +17,7 @@ export class MissionService {
     missionCopy.debut = this.moment(missionCopy.debut).format('YYYY/MM/DD');
     missionCopy.fin = this.moment(missionCopy.fin).format('YYYY/MM/DD');
 
-// on fait un put(permetttant le update en base de donée) en mettant missonCopy qui est l'objet que l'on veux appliquer
+    // on fait un put(permetttant le update en base de donée) en mettant missonCopy qui est l'objet que l'on veux appliquer
     return this.$http.put(API_URL + '/missions', missionCopy)
       .then(rep => rep.data)
   }
@@ -60,6 +60,8 @@ export class MissionService {
       )
   }
 
+
+
   deleteMission(id) {
     console.log('deleteMissions()')
     return this.$http.delete(API_URL + '/missions/' + id)
@@ -83,5 +85,13 @@ export class MissionService {
   getMissionTransport() {
     return this.$http.get(API_URL + '/transport')
       .then(response => response.data)
+  }
+
+  ajoutNouvelleMission(mission) {
+
+    //console.log('recuperation de la fonction mision creationService', mission)
+    // envoie les data à mission.json
+    this.$http.post(API_URL + '/missions', mission);
+
   }
 }

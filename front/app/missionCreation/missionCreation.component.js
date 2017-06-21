@@ -3,11 +3,10 @@ import template from './missionCreation.component.html'
 
 
 class controller {
-    constructor(MissionService, LoginService, MissionCreationService, $location, moment) {
+    constructor(MissionService, LoginService, $location, moment) {
         this.MissionService = MissionService
         this.LoginService = LoginService
         this.$location = $location
-        this.MissionCreationService = MissionCreationService
         this.mission = {
             debut: "",
             fin: "",
@@ -23,28 +22,33 @@ class controller {
 
 
     addMission() {
+        console.log(this.mission)
         this.mission.utilisateur = this.LoginService.loadUser()
-        if ((!this.mission.utilisateur) || ((this.mission.debut > this.mission.fin) && (this.mission.debut === Date.now()))) {
-            console.log("Utilisateur non déf. et date de mission incorrecte")
-            alert("nullleuobp")
+        if (!this.mission.utilisateur) {
+            console.log("Utilisateur non déf.")
+            alert("alert1")
 
         }
+
+        else if (this.moment(this.mission.debut) > this.moment(this.mission.fin)) 
+        {alert("Debut avant fin")}
+
+        else if (this.moment(this.mission.debut).day === new Date().day) 
+        {alert("Debut aujourd'hui")}
+
+        else if((this.mission.transport==="AVION") & (this.moment((this.mission.debut).day-new Date().day<=7)))
+        {alert("Avion")}
 
         else {
             let mission = angular.copy(this.mission)
             mission.utilisateur.matricule = this.LoginService.loadUser().matricule
 
             // modifier les dates pour correspondre au format spring
-            console.log(mission)
             mission.debut = this.moment(mission.debut).format('YYYY/MM/DD');
             mission.fin = this.moment(mission.fin).format('YYYY/MM/DD');
-            console.log(mission)
 
-            // this.mission.debut = this.mission.debut.substring(0,9)
-            // this.mission.fin = this.mission.fin.substring(0,9)
-            console.log(this.mission)
-
-            this.MissionCreationService.ajoutNouvelleMission(mission)
+            // ajout d'une nouvelle mission
+            this.MissionService.ajoutNouvelleMission(mission)
             this.$location.path('/missionsVisualisation')
         }
     }

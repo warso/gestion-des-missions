@@ -15,7 +15,6 @@ import {MissionComponent} from './mission/mission.component'
 import {PrimesComponent} from './primes/primes.component'
 import {MissionValidationComponent} from './missionValidation/missionValidation.component'
 import {MissionCreationComponent} from './missionCreation/missionCreation.component'
-import {UtilisateurComponent} from './utilisateur/utilisateur.component'
 import { AuthComponent } from './auth/auth.component'
 import {MissionModificationComponent} from './missionModification/missionModification.component'
 import {MissionPlanningComponent} from './missionPlanning/missionPlanning.component'
@@ -28,8 +27,6 @@ import 'angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css'
 
 import { LoginService } from './login/login.service'
 import { MissionService } from './mission.service'
-import {UtilisateurService} from './utilisateur.service';
-import {MissionCreationService} from './missionCreation.service';
 import {AbsenceService} from './absence.service'
 
 require('angular-moment');
@@ -45,7 +42,6 @@ angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment', 'mwl.
 .component('primes', PrimesComponent)
 .component('missionValidation', MissionValidationComponent)
 .component('missionCreation', MissionCreationComponent)
-.component('utilisateur', UtilisateurComponent)
 .component('missionModification', MissionModificationComponent)
 
 .component('missionPlanning', MissionPlanningComponent)
@@ -55,8 +51,6 @@ angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment', 'mwl.
 // ici 'LoginService' est le nom du service que je vais injecter dans mon controller (dans le component)
 .service('LoginService', LoginService)
 .service('MissionService', MissionService)
-.service('UtilisateurService', UtilisateurService)
-.service('MissionCreationService', MissionCreationService)
 .service('AbsenceService', AbsenceService)
 
 .config(route)

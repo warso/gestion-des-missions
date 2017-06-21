@@ -1,6 +1,8 @@
 package dev.model;
 
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.apache.commons.lang.builder.EqualsBuilder;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -151,5 +155,20 @@ public class Mission {
 	public void setNotes(List<NoteDeFrais> notes) {
 		this.notes = notes;
 	}
+
+	public boolean equals(Object obj){
+		
+		if (obj == null) { return false;}
+		if (obj==this){return false;}
+		if(!(obj instanceof Mission)){return false;}
+		
+		Mission mission = (Mission) obj;
+		return new EqualsBuilder()
+					.append(getDebut(), mission.getDebut())
+					.append(getFin(), mission.getFin())
+					.isEquals();
+	}
+	
+	
 
 }
