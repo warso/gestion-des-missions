@@ -16,12 +16,12 @@ class controller {
         
         
         
-        $scope.calendarView = 'month';
-        $scope.viewDate = new Date()
-        $scope.events = []
         
-        
+        this.setView('month')
+        this.setDate(new Date())
+        this.$scope.events = []    
     }
+    
     $onInit() {
         
         this.MissionService.getMissions(this.LoginService.loadUser().matricule)
@@ -76,17 +76,17 @@ class controller {
         
         switch(type) {
             case 'Conseil':
-                color.primary = '#0ab9e6'
-                color.secondary = '#5acdeb'
-                break
+            color.primary = '#0ab9e6'
+            color.secondary = '#5acdeb'
+            break
             case 'Formation':
-                color.primary = '#e68a0a'
-                color.secondary = '#e7b268'
-                break
+            color.primary = '#e68a0a'
+            color.secondary = '#e7b268'
+            break
             case 'Expertise Technique':
-                color.primary = '#391be9'
-                color.secondary = '#705ce7'
-                break
+            color.primary = '#391be9'
+            color.secondary = '#705ce7'
+            break
             
             default :
             // the primary event color (should be darker than secondary)
@@ -96,6 +96,21 @@ class controller {
             
         }
         return color
+    }
+    
+    setView(view){
+        this.$scope.calendarView = view;
+    }
+    
+    setDate(date){
+        this.$scope.viewDate = date
+    }
+    
+    addMonth(month){
+        this.$scope.viewDate.setMonth( this.$scope.viewDate.getMonth() + month )
+    }
+    addYear(year){
+        this.$scope.viewDate.setYear( this.$scope.viewDate.getYear() + year )
     }
 }
 
