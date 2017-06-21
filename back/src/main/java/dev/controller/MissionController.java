@@ -47,10 +47,27 @@ public class MissionController {
 
 		return missionRepo.findAll();
 	}
-
+	
+	/**Modification de la mission */
 	@PutMapping("/missions")
 	public void putMission(@RequestBody Mission mission) {
-		missionRepo.save(mission);
+		System.out.println("coucou");
+		/*recuperation d'une mission de la base de donnée par son id*/
+		Mission m = missionRepo.findOne(mission.getId());
+		/*permet de faire le changement des champs et leur persistance si notre objet n'est pas transient(vide)*/
+		if (m != null) {
+			m.setId(mission.getId());
+			m.setDebut(mission.getDebut());
+			m.setFin(mission.getFin());
+			m.setVilleDepart(mission.getVilleDepart());
+			m.setVilleArrivee(mission.getVilleArrivee());
+			m.setStatut(mission.getStatut());
+			m.setTransport(mission.getTransport());
+
+			missionRepo.save(m);
+			System.out.println("Modification de la mission avec l'id: "+mission.getId()+ " reussite" );
+		}
+		else System.out.println("Modification echoué");
 	}
 
 	@GetMapping("/missions/matricule/{matricule}")
@@ -84,7 +101,7 @@ public class MissionController {
 			return new ArrayList<Mission>();
 
 	}
-	
+
 	/*
 	 * Recupére un tableau de transport à l'URL suivant /transport
 	 */
@@ -94,17 +111,17 @@ public class MissionController {
 	public Transport[] getTransport(@RequestParam(value = "transport", required = false) String t) {
 		return Transport.values();
 	}
-	
+
 	/*
 	 * Recupére un tableau de statut à l'URL suivant /statut
 	 */
-	
+
 	@GetMapping("/statut")
 	// @CrossOrigin("*")
 	public Statut[] getSatut(@RequestParam(value = "statut", required = false) String s) {
 		return Statut.values();
 	}
-	
+
 	/*
 	 * Insère une nouvelle mission en base de données
 	 */
@@ -128,7 +145,7 @@ public class MissionController {
 
 		}
 	}
-	
+
 	/*
 	 * Supprime une mission à partir de son Id
 	 */
@@ -153,10 +170,9 @@ public class MissionController {
 	/** Méthode de recupération d'une mission par son id */
 	@GetMapping("/missions/id/{id}")
 	public Mission getMissionById(@PathVariable Integer id) {
-		Mission mission = missionrepo.findOne(id);
+		Mission mission = missionRepo.findOne(id);
 
 		return mission;
 	}
-
 
 }

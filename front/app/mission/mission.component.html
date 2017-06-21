@@ -30,11 +30,10 @@
                     <!--dans le ng-click j'appel mon controleur qui appel le deleteMission de MissionService. et en pararmétre de fonction on a l'id de la mission.-->
                     <!--Donc en cliquant sur la poubelle, automatiquement il recupere l'id correspondant à la ligne et supprime ainsi la mission : $ctrl.MissionService.deleteMission(mission.id)-->
 
-
-
-                    <td><a ng-if="mission.statut == 'INITIALE'" class="btn btn-default" ng-click="$ctrl.popup(mission)" data-toggle="modal"
-                            data-target="#product_view"><span class="glyphicon glyphicon-trash"></span></a></td>
-                    <li ng-if="$ctrl.user.role=='ADMINISTRATEUR'"><a href="#">Natures des missions</a></li>
+                    <td>
+                        <a ng-if="mission.statut == 'INITIALE'" class="btn btn-default" data-toggle="modal" data-target="#product_view" ng-click="$ctrl.popupDelete(mission)"><span class="glyphicon glyphicon-trash"></span></a>
+                        <a href="/gestion-des-missions/missionsModification/{{mission.id}}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                    </td>
 
                 </tr>
 

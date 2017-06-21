@@ -33,9 +33,12 @@ class controller {
 
     modifMission() {
         console.log("modifmission")
-        this.mission.utilisateur = this.LoginService.loadUser()
+        // this.mission.utilisateur = this.LoginService.loadUser()
         
-        this.MissionService.updateMission(this.mission.id)
+        this.MissionService.updateMission(this.mission)
+
+//this.MissionService.updateMission()
+       // this.$location.path('/missionsVisualisation')
     }
 
     reset() {

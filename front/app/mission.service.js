@@ -8,9 +8,9 @@ export class MissionService {
 
   }
 
-  updateMission(id) {
+  updateMission(mission) {
     console.log('updateMissions()')
-    return this.$http.put(API_URL + '/missions/' + id)
+    return this.$http.put(API_URL + '/missions/' ,mission)
       .then(rep => rep.data)
   }
 
