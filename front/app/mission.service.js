@@ -4,12 +4,37 @@ export class MissionService {
     this.$http = $http
     this.$q = $q
     this.API_URL = API_URL
+
+
   }
 
-  updateMission(mission) {
+  updateMission(id) {
     console.log('updateMissions()')
-    this.$http.put(API_URL + '/missions', mission)
+    return this.$http.put(API_URL + '/missions/' + id)
+      .then(rep => rep.data)
   }
+
+  getMissionsById(id) {
+    console.log("recuperation de la mission par son id")
+    if (!id) {
+      return this.$q.resolve(this.mission = {
+        debut: "",
+        fin: "",
+        nature: { id: "" },
+        villeDepart: "",
+        utilisateur: { matricule: "" },
+        villeArrivee: "",
+        transport: "",
+      })
+    }
+    return this.$http.get(API_URL + '/missions/id/' + id)
+      .then(
+        rep => rep.data,
+        err => { console.log('error acces API/missions for get mission', err) }
+      )
+  }
+
+
 
   getMissions(matricule) {
     return this.$http.get(API_URL + '/missions/matricule/' + matricule)
@@ -41,7 +66,7 @@ export class MissionService {
     return this.$http.get(API_URL + '/nature')
       .then(response => response.data)
   }
- // recupertion status des missions (enumeration dans Java)
+  // recupertion status des missions (enumeration dans Java)
   getMissionStatus() {
     return this.$http.get(API_URL + '/statut')
       .then(response => response.data)

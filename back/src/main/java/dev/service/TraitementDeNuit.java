@@ -35,8 +35,8 @@ public class TraitementDeNuit {
 	 * Se lance automatiquement tous les jours à 01h00
 	 * Traite différente tâches sur les missions
 	 */
-	@Scheduled(fixedDelay=60000) // Pour tester (toutes les 60 secondes)
-	//@Scheduled(cron="0 0 1 * * ?") // Tous les jours à une heure du matin 
+	//@Scheduled(fixedDelay=60000) // Pour tester (toutes les 60 secondes)
+	@Scheduled(cron="0 0 1 * * ?") // Tous les jours à une heure du matin 
 	public void lancerTraitementNuit() {
 
 

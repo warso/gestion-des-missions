@@ -17,8 +17,10 @@ import {MissionValidationComponent} from './missionValidation/missionValidation.
 import {MissionCreationComponent} from './missionCreation/missionCreation.component'
 import {UtilisateurComponent} from './utilisateur/utilisateur.component'
 import { AuthComponent } from './auth/auth.component'
+import {MissionModificationComponent} from './missionModification/missionModification.component'
 import {MissionPlanningComponent} from './missionPlanning/missionPlanning.component'
 
+//import $uibModal from 'angular-ui-bootstrap';
 
 import 'angular-bootstrap-calendar'
 import 'angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css'
@@ -33,6 +35,8 @@ require('angular-moment');
 
 angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment', 'mwl.calendar'])
 .value('API_URL', window.API_URL)
+// .component('nom de la balise dans le app.route.js', Nom d'attache à notre component.)
+// Ici on fait le liens entre notre liens et notre , controller, vue
 .component('accueil', AccueilComponent)
 .component('barnav', NavBarComponent)
 .component('loginComponent', LoginComponent)
@@ -41,6 +45,8 @@ angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment', 'mwl.
 .component('missionValidation', MissionValidationComponent)
 .component('missionCreation', MissionCreationComponent)
 .component('utilisateur', UtilisateurComponent)
+.component('missionModification', MissionModificationComponent)
+
 .component('missionPlanning', MissionPlanningComponent)
 
 .component('auth', AuthComponent)

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -83,26 +84,33 @@ public class MissionController {
 			return new ArrayList<Mission>();
 
 	}
+	
+	/*
+	 * Recupére un tableau de transport à l'URL suivant /transport
+	 */
 
 	@GetMapping("/transport")
+	// @CrossOrigin("*")
 	public Transport[] getTransport(@RequestParam(value = "transport", required = false) String t) {
 		return Transport.values();
 	}
-
+	
 	/*
 	 * Recupére un tableau de statut à l'URL suivant /statut
 	 */
-
+	
 	@GetMapping("/statut")
+	// @CrossOrigin("*")
 	public Statut[] getSatut(@RequestParam(value = "statut", required = false) String s) {
 		return Statut.values();
 	}
-
+	
 	/*
 	 * Insère une nouvelle mission en base de données
 	 */
 
 	@PostMapping("/missions")
+	// @CrossOrigin("*")
 	public void addMission(@RequestBody Mission mission) {
 
 		mission.setStatut(Statut.INITIALE);
@@ -119,14 +127,15 @@ public class MissionController {
 			missionRepo.save(mission);
 
 		}
-
 	}
-
+	
 	/*
 	 * Supprime une mission à partir de son Id
 	 */
 
+	/** Suppression de mission par id */
 	@DeleteMapping("/missions/{id}")
+
 	public Map<String, String> deleteById(@PathVariable Integer id) {
 
 		Map<String, String> reponse = new HashMap<>();
@@ -140,5 +149,14 @@ public class MissionController {
 		;
 		return reponse;
 	}
+
+	/** Méthode de recupération d'une mission par son id */
+	@GetMapping("/missions/id/{id}")
+	public Mission getMissionById(@PathVariable Integer id) {
+		Mission mission = missionrepo.findOne(id);
+
+		return mission;
+	}
+
 
 }

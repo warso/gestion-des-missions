@@ -32,7 +32,9 @@ class controller {
     console.log("fonctions statut mission")
   }
 
-  popup(mission) {
+
+
+  popupDelete(mission) {
     // Ici je stoque mon this dans une variable, pour pouvoir l'utilisé dans une fonction anonyme qui a son propre this ( les fonctions anonyme ont leurs propres this)
     let me = this;
 
@@ -42,7 +44,7 @@ class controller {
       ariaDescribedBy: 'modal-body',
       template: templateModal,
       controller: function ($scope, $uibModalInstance, MissionService) {
-        // je suis dans ma fonction anonyme et le this à partir de maintenant et jusqu'a ce qu'on sort de la focntion est celui de la fonction anonyme
+        // je suis dans une fonction anonyme et le this à partir de maintenant et jusqu'a ce qu'on sort de la focntion est celui de la fonction anonyme
         this.depart = "yo!"
         this.uneMission = mission;
         this.test = function () {
@@ -69,5 +71,7 @@ class controller {
 export let MissionComponent = {
   template,
   controller,
-  bindings: {}
+  bindings: {
+    mission:"<"
+  }
 }
