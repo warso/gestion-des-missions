@@ -10,7 +10,8 @@
         <div class="form-group container">
             <label class="col-md-4 control-label" for="username">Date de debut </label>
             <div class="col-md-4">
-                <input id="username" ng-model="$ctrl.mission.debut" name="username" type="date" placeholder="" class="form-control input-md" required>
+                <input id="username" ng-model="$ctrl.mission.debut" name="username" type="date" placeholder="" class="form-control input-md"
+                    required>
             </div>
             <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
         </div>
@@ -19,7 +20,8 @@
         <div class="form-group container">
             <label class="col-md-4 control-label" for="username">Date de fin </label>
             <div class="col-md-4">
-                <input id="username" ng-model="$ctrl.mission.fin" name="username" type="date" placeholder="" class="form-control input-md" required>
+                <input id="username" ng-model="$ctrl.mission.fin" name="username" type="date" placeholder="" class="form-control input-md"
+                    required>
             </div>
             <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
         </div>
@@ -68,5 +70,16 @@
             <div class="col-md-8">
                 <button id="button1id" name="button1id" class="btn btn-danger" ng-click="$ctrl.reset()">Annuler</button>
                 <button id="button2id" name="button2id" class="btn btn-success" ng-click="$ctrl.addMission()">Valider</button>
+                <br><br>
+                <div class="alert alert-warning" ng-if="$ctrl.errorValid">
+                    La date de début est après la date de fin !
+                </div>
+                 <div class="alert alert-warning" ng-if="$ctrl.errorValid1">
+                    Le transport choisi étant avion, le delai n'est pas suffisant !
+                </div>
+                 <div class="alert alert-warning" ng-if="$ctrl.errorValid2">
+                    La mission ne peut débuter aujourd'hui !
+                </div>
+
             </div>
         </div>

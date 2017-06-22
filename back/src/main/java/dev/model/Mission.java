@@ -152,7 +152,8 @@ public class Mission {
 	public void setNotes(List<NoteDeFrais> notes) {
 		this.notes = notes;
 	}
-
+	
+	@Override
 	public boolean equals(Object obj){
 		
 		if (obj == null) { return false;}

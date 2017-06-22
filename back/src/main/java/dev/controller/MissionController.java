@@ -152,8 +152,7 @@ public class MissionController {
 		}
 		
 		else if (debutMission.getDayOfYear() >= finMission.getDayOfYear()){
-			logger.info("Fin avant debut ou Fin = debut");
-			
+			logger.info("Fin avant debut ou Fin = debut");	
 		}
 
 		else if (
@@ -162,10 +161,6 @@ public class MissionController {
 				(Period.between(LocalDate.now(), debutMission).getDays() <= 7)
 				){
 			logger.info("Avion");
-			logger.info(""+(mission.getTransport() == Transport.AVION));
-			logger.info(""+(Period.between(LocalDate.now(), debutMission).getDays() >= 7));
-			logger.info(""+(Period.between(LocalDate.now(), debutMission).getDays()));
-			
 		}
 		
 		else if (miss.equals(mission)){
