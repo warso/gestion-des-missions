@@ -12,7 +12,6 @@ class controller {
         this.moment = moment
         
         this.today = new Date()
-        console.log("today",this.today)
         this.y = this.today.getFullYear()
         this.m = this.today.getMonth()
         this.d = this.today.getDate()
@@ -27,8 +26,8 @@ class controller {
         .then(
         rep => {
             this.missions = rep;
+            if(rep)
             for(let i in this.missions) {
-                console.log("mission",this.missions[i])
                 this.$scope.events.push( this.createMission(this.missions[i]) )
             }
         },
@@ -37,13 +36,22 @@ class controller {
         }
         )
         
-        this.AbsenceService.getAbsences()
+        this.AbsenceService.getAbsencesByMatricule(this.LoginService.loadUser().matricule)
         .then(
         rep => {
+            if(rep)
             for(let i in rep){
-                console.log("absence",rep[i])
                 this.$scope.events.push( this.createAbsence(rep[i]) )
-                console.log(this.$scope.events)
+            }
+        }
+        )
+        
+        this.AbsenceService.getJoursFeries()
+        .then(
+        rep => {
+            if(rep)
+            for(let i in rep){
+                this.$scope.events.push( this.createJourFerie(rep[i]) )
             }
         }
         )
@@ -72,6 +80,8 @@ class controller {
             allDay: true 
         }
     }
+    
+    
     createAbsence(abs) {
         abs.debut = new Date()
         abs.debut.setYear(abs.dateDebut.year)
@@ -90,6 +100,33 @@ class controller {
             endsAt: abs.fin, 
             // can also be calendarConfig.colorTypes.warning for shortcuts to the deprecated event types
             color: this.getColor(abs.type),
+            //Allow an event to be dragged and dropped
+            draggable: false, 
+            //Allow an event to be resizable
+            resizable: false, 
+            //If set to false then will not count towards the badge total amount on the month and year view
+            incrementsBadgeTotal: true, 
+            //A CSS class (or more, just separate with spaces) that will be added to the event when it is displayed on each view. Useful for marking an event as selected / active etc
+            cssClass: 'a-css-class-name', 
+            // set to true to display the event as an all day event on the day view
+            allDay: true 
+        }
+    }
+    
+    
+    createJourFerie(JF) {
+        JF.dateStart = new Date()
+        JF.dateStart.setYear(JF.date.year)
+        JF.dateStart.setMonth(JF.date.monthValue)
+        JF.dateStart.setDate(JF.date.dayOfMonth)
+        
+        return  {
+            // The title of the event
+            title: JF.type, 
+            // A javascript date object for when the event starts
+            startsAt: JF.dateStart,
+            // can also be calendarConfig.colorTypes.warning for shortcuts to the deprecated event types
+            color: this.getColor(JF.type),
             //Allow an event to be dragged and dropped
             draggable: false, 
             //Allow an event to be resizable
@@ -123,8 +160,17 @@ class controller {
             color.secondary = '#705ce7'
             break
             case "CONGE_SANS_SOLDE":
+            case "CONGE_PAYE":
+            case "RTT":
             color.primary = '#ff3f3f'
             color.secondary = '#ff7878'
+            break
+
+            
+            case "FERIE":
+            case "RTT_EMPLOYEUR":
+            color.primary = '#4cde28'
+            color.secondary = '#9aea86'
             break
             
             default :
