@@ -39,14 +39,10 @@
                           </div>
                            
                            <div class="col-md-6">
-                               <a href="/gestion-des-missions/missionsModification/{{mission.id}}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                               <a ng-if="mission.statut == 'INITIALE' || mission.statut == 'REJETEE'" href="/gestion-des-missions/missionsModification/{{mission.id}}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
                            </div>
-                        
                       </div>
-                       
-                       
                     </td>
-
                 </tr>
 
 
