@@ -19,7 +19,21 @@
                 </tr>
             </tbody>
         </table>
-        
-        <img src="http://i.imgur.com/ersAdQs.png" width="500">
+
+
+        <canvas id="line" 
+            class="chart chart-line" 
+            chart-data="data" 
+            chart-labels="labels" 
+            chart-series="series" 
+            chart-options="options"
+            chart-dataset-override="datasetOverride" 
+            chart-click="onClick">
+        </canvas>
+
+        <canvas data-sys-chart-line data-dataset="$ctrl.data" width="400" height="240"></canvas>
+
+
+        <!--<img src="http://i.imgur.com/ersAdQs.png" width="500">-->
     </div>
 </div>

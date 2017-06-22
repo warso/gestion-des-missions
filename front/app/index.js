@@ -19,8 +19,10 @@ import { AuthComponent } from './auth/auth.component'
 import {MissionModificationComponent} from './missionModification/missionModification.component'
 import {MissionPlanningComponent} from './missionPlanning/missionPlanning.component'
 
-//import $uibModal from 'angular-ui-bootstrap';
 
+import 'angular-chart.js'
+import 'chart.js'
+import 'angular-chart.js/dist/angular-chart.min.js'
 import 'angular-bootstrap-calendar'
 import 'angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css'
 
@@ -29,9 +31,9 @@ import { LoginService } from './login/login.service'
 import { MissionService } from './mission.service'
 import {AbsenceService} from './absence.service'
 
-require('angular-moment');
+require('angular-moment')
 
-angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment', 'mwl.calendar'])
+angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment', 'mwl.calendar', 'chart.js'])
 .value('API_URL', window.API_URL)
 // .component('nom de la balise dans le app.route.js', Nom d'attache à notre component.)
 // Ici on fait le liens entre notre liens et notre , controller, vue
