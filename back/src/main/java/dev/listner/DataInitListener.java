@@ -177,6 +177,51 @@ public class DataInitListener implements ServletContextListener{
 		m9.setTransport(Transport.VOITURE_DE_SERVICE);
 		missionRepo.save(m9);
 		
+		int i = 1000;
+		while (i > 0){
+			i--;
+			
+			RoleUtilisateur util;
+			double rand = Math.random();
+			if(rand < 0.25)
+				util = util1;
+			else if(rand < 0.5)
+				util = util2;
+			else if(rand < 0.75)
+				util = util3;
+			else
+				util = util4;
+			
+			int annee = (int)((Math.random()*18)+2000);
+			int mois = (int) ((Math.random()*11)+1);
+			String stringMois = "";
+			if(mois < 10)
+				stringMois = "0";
+			String stringMoisFin = "";
+				if(mois < 9)
+					stringMoisFin = "0";
+			Nature nature;
+			Double rand2 = Math.random();
+			if(rand2 < 0.33)
+				nature = expertise;
+			else if(rand2 < 0.66)
+				nature = formation;
+			else
+				nature = conseil;
+			
+			
+			Mission m = new Mission();
+			m.setUtilisateur(util);
+			m.setDebut(LocalDate.parse(annee+"-"+stringMois+mois+"-10"));
+			m.setFin(LocalDate.parse(annee+"-"+stringMoisFin+(mois+1)+"-10"));
+			m.setStatut(Statut.VALIDEE);
+			m.setVilleDepart("Lyon");
+			m.setVilleArrivee("Lille");
+			m.setNature(nature);
+			m.setTransport(Transport.VOITURE_DE_SERVICE);
+			missionRepo.save(m);
+		}
+		
 	}
 
 	@Override

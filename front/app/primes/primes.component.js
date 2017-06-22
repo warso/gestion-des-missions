@@ -37,7 +37,6 @@ class controller {
     // on met à jour le graph
     let res = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     this.missionsAnnee.forEach(function (mission) {
-      console.log(mission.fin.split('/')[1])
       res[mission.fin.split('/')[1] - 1] += mission.prime
     })
     this.$scope.data = [res]
