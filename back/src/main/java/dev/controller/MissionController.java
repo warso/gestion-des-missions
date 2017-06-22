@@ -69,7 +69,6 @@ public class MissionController {
 			m.setVilleArrivee(mission.getVilleArrivee());
 			m.setStatut(mission.getStatut());
 			m.setTransport(mission.getTransport());
-			m.setStatut(Statut.INITIALE);
 
 			missionRepo.save(m);
 			logger.info("Modification de la mission avec l'id: " + mission.getId() + " reussite");
