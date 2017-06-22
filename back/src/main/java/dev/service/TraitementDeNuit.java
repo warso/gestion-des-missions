@@ -44,7 +44,7 @@ public class TraitementDeNuit {
 		for (Mission m : missions) {
 
 
-			if(m.getStatut() != Statut.ECHUE && m.getFin().isBefore(LocalDate.now()))
+			if(m.getStatut() == Statut.VALIDEE && m.getFin().isBefore(LocalDate.now()))
 				traitementMissionTerminee(m);
 
 

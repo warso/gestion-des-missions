@@ -154,7 +154,7 @@ public class DataInitListener implements ServletContextListener{
 		m7.setUtilisateur(util2);
 		m7.setDebut(LocalDate.parse("2000-01-01"));
 		m7.setFin(LocalDate.parse("2000-02-02"));
-		m7.setStatut(Statut.VALIDEE);
+		m7.setStatut(Statut.REJETEE);
 		m7.setVilleDepart("Millau");
 		m7.setVilleArrivee("Rodez");
 		m7.setNature(conseil);
