@@ -21,8 +21,6 @@ import {MissionPlanningComponent} from './missionPlanning/missionPlanning.compon
 
 
 import 'angular-chart.js'
-import 'chart.js'
-import 'angular-chart.js/dist/angular-chart.min.js'
 import 'angular-bootstrap-calendar'
 import 'angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css'
 
