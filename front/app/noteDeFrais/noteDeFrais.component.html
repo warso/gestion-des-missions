@@ -32,16 +32,7 @@
                     <!--Donc en cliquant sur la poubelle, automatiquement il recupere l'id correspondant à la ligne et supprime ainsi la mission : $ctrl.MissionService.deleteMission(mission.id)-->
 
                     <td>
-                      
-                      <div class="row "> 
-                          <div class="col-md-6">
-                              <a ng-if="mission.statut == 'INITIALE'" class="btn btn-default" data-toggle="modal" data-target="#product_view" ng-click="$ctrl.popupDelete(mission)"><span class="glyphicon glyphicon-trash"></span></a>
-                          </div>
-                           
-                           <div class="col-md-6">
-                               <a ng-if="mission.statut == 'INITIALE' || mission.statut == 'REJETEE'" href="/gestion-des-missions/missionsModification/{{mission.id}}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                           </div>
-                      </div>
+                        <!--BOUTON ACTION-->
                     </td>
                 </tr>
 
@@ -52,8 +43,5 @@
         <div>
 
         </div>
-
-
-        <a href="/gestion-des-missions/missionsCreation" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter une demande</a>
     </div>
 </div>

@@ -208,8 +208,6 @@ public class MissionController {
 	@GetMapping("/missions/id/{id}")
 	public Mission getMissionById(@PathVariable Integer id) {
 		return missionRepo.findOne(id);
-
-		return mission;
 	}
 
 }
