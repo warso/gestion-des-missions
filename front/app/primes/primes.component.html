@@ -1,6 +1,14 @@
 <div class="container">
     <h2 align="center">RECAPITULATION DES PRIMES</h2> <br>
     <div class="col-md-10">
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="selectbasic">Select Année</label>
+            <div class="col-md-4">
+                <select id="selectbasic" name="selectbasic" class="form-control">
+                    <option ng-repeat="annee in $ctrl.annees" value="annee">{{annee}}</option>
+                </select>
+            </div>
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -11,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="mission in $ctrl.missions" ng-if="mission.statut == 'ECHUE'">
+                <tr ng-repeat="mission in $ctrl.getMissionsAnnee()" ng-if="mission.statut == 'ECHUE'">
                     <td>{{mission.debut}}</td>
                     <td>{{mission.fin}}</td>
                     <td>{{mission.nature.type}}</td>
@@ -21,14 +29,8 @@
         </table>
 
 
-        <canvas id="line" 
-            class="chart chart-line" 
-            chart-data="data" 
-            chart-labels="labels" 
-            chart-series="series" 
-            chart-options="options"
-            chart-dataset-override="datasetOverride" 
-            chart-click="onClick">
+        <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options"
+            chart-dataset-override="datasetOverride" chart-click="onClick">
         </canvas>
 
         <canvas data-sys-chart-line data-dataset="$ctrl.data" width="400" height="240"></canvas>

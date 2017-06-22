@@ -5,58 +5,20 @@ class controller {
   constructor (MissionService, LoginService, $scope) {
     this.MissionService = MissionService
     this.LoginService = LoginService
-    this.$scope = $scope
     this.missions = []
-    this.missionsInitiales = []
+    this.annees = []
+    this.yearToDisplay = '2000'
 
-    this.data = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-      datasets: [
-        {
-          fillColor: 'rgba(220,220,220,0.2)',
-          strokeColor: 'rgba(220,220,220,1)',
-          pointColor: 'rgba(220,220,220,1)',
-          data: [40, 10, 60, 70, 20, 20]
-        },
-        {
-          fillColor: 'rgba(151,187,205,0.2)',
-          strokeColor: 'rgba(151,187,205,1)',
-          pointColor: 'rgba(151,187,205,1)',
-          data: [30, 70, 40, 90, 60, 70]
-        }
-      ]
-    }
-    $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-  $scope.series = ['Series A', 'Series B'];
-  $scope.data = [
-    [65, 59, 80, 81, 56, 55, 40],
-    [28, 48, 40, 19, 86, 27, 90]
-  ];
-  $scope.onClick = function (points, evt) {
-    console.log(points, evt);
-  };
-  $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-  $scope.options = {
-    scales: {
-      yAxes: [
-        {
-          id: 'y-axis-1',
-          type: 'linear',
-          display: true,
-          position: 'left'
-        },
-        {
-          id: 'y-axis-2',
-          type: 'linear',
-          display: true,
-          position: 'right'
-        }
-      ]
-    }
-  };
+    $scope.labels = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
+    $scope.series = ['Prime']
+    $scope.data = [
+      [65, 59, 80, 81, 56, 55, 40]
+    ]
   }
 
   $onInit () {
+    this.annees = ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']
+    this.yearToDisplay = '2000'
     let user = this.LoginService.loadUser()
     if (user !== undefined) {
       this.MissionService.getMissions(user.matricule)
@@ -65,6 +27,13 @@ class controller {
               this.missions = missions
             })
     }
+  }
+
+  getMissionsAnnee () {
+    function isAnnee (mission) {
+      return mission.fin.split('/')[0] === this.yearToDisplay
+    }
+    return this.missions.filter(isAnnee.bind(this))
   }
 }
 
