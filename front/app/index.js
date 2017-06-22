@@ -8,16 +8,15 @@ import 'moment/locale/fr'
 
 import { route } from './app.route'
 
-import {AccueilComponent} from './accueil/accueil.component'
-import {NavBarComponent} from './navbar/navbar.component'
-import {LoginComponent} from './login/login.component'
-import {MissionComponent} from './mission/mission.component'
+import {NavBarComponent} from './uiComponent/navbar/navbar.component'
+import {LoginComponent} from './uiComponent/login/login.component'
+import {MissionComponent} from './missionComponents/mission/mission.component'
 import {PrimesComponent} from './primes/primes.component'
-import {MissionValidationComponent} from './missionValidation/missionValidation.component'
-import {MissionCreationComponent} from './missionCreation/missionCreation.component'
-import { AuthComponent } from './auth/auth.component'
-import {MissionModificationComponent} from './missionModification/missionModification.component'
-import {MissionPlanningComponent} from './missionPlanning/missionPlanning.component'
+import {MissionValidationComponent} from './missionComponents/missionValidation/missionValidation.component'
+import {MissionCreationComponent} from './missionComponents/missionCreation/missionCreation.component'
+import { AuthComponent } from './uiComponent/auth/auth.component'
+import {MissionModificationComponent} from './missionComponents/missionModification/missionModification.component'
+import {MissionPlanningComponent} from './missionComponents/missionPlanning/missionPlanning.component'
 import {NoteDeFraisComponent} from './noteDeFrais/noteDeFrais.component'
 
 
@@ -36,7 +35,6 @@ angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment', 'mwl.
 .value('API_URL', window.API_URL)
 // .component('nom de la balise dans le app.route.js', Nom d'attache à notre component.)
 // Ici on fait le liens entre notre liens et notre , controller, vue
-.component('accueil', AccueilComponent)
 .component('barnav', NavBarComponent)
 .component('loginComponent', LoginComponent)
 .component('mission', MissionComponent)
