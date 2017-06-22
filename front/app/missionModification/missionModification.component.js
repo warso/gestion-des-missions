@@ -43,7 +43,7 @@ class controller {
          this.mission.utilisateur = this.LoginService.loadUser()
         
         this.MissionService.updateMission(this.mission)
-     this.$location.path('/missionsVisualisation')
+       this.$location.path('/missionsVisualisation')
     }
 
     reset() {

@@ -1,10 +1,11 @@
 
 export class MissionService {
-  constructor($http, $q, API_URL, moment) {
+  constructor($http, $q, API_URL, moment,$location ) {
     this.$http = $http
     this.$q = $q
     this.API_URL = API_URL
     this.moment = moment
+    this.$location = $location
 
   }
 
@@ -37,7 +38,7 @@ export class MissionService {
     }
     return this.$http.get(API_URL + '/missions/id/' + id)
       .then(
-      rep => rep.data,
+      rep => rep.data, 
       err => { console.log('error acces API/missions for get mission', err) }
       )
   }

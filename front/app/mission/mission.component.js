@@ -3,11 +3,11 @@ import template from './mission.component.html'
 import templateModal from './deletePopup.html'
 
 class controller {
-  constructor(MissionService, LoginService, $uibModal) {
+  constructor(MissionService, LoginService, $uibModal,$location) {
     this.MissionService = MissionService
     this.LoginService = LoginService
     this.$uibModal = $uibModal
-
+    this.$location = $location
     this.missions = []
   }
 
@@ -30,6 +30,10 @@ class controller {
   statutMission(){
    this.MissionService.getMissionStatus()
     console.log("fonctions statut mission")
+  }
+
+  pageVisualisation(){
+      this.$location.path('/missionsVisualisation')
   }
 
 
@@ -57,7 +61,8 @@ class controller {
         this.validerSuppression = () => {
           MissionService.deleteMission(this.uneMission.id)
           // ici j'utilise mon this stoquer dans la variable me, car je suis dans une fonction anonyme avec son this propre
-            .then((rep) => me.rechargerMissions());
+            .then((rep) => me.rechargerMissions())
+            .then(rep => this.annuler())
         }
       },
       controllerAs: '$ctrlPop',

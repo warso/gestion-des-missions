@@ -10,16 +10,20 @@ import javax.servlet.annotation.WebListener;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import dev.enumeration.NatureNoteDeFrais;
 import dev.enumeration.Role;
 import dev.enumeration.Statut;
 import dev.enumeration.Transport;
 import dev.model.Mission;
 import dev.model.Nature;
+import dev.model.NoteDeFrais;
 import dev.model.RoleUtilisateur;
 import dev.repository.MissionRepo;
 import dev.repository.NatureRepository;
+import dev.repository.NoteDeFraisRepo;
 import dev.repository.RoleUtilisateurRepo;
 import dev.service.UtilisateurService;
+import scala.annotation.meta.setter;
 
 
 @WebListener
@@ -32,6 +36,8 @@ public class DataInitListener implements ServletContextListener{
 	@Autowired MissionRepo missionRepo;
 	
 	@Autowired NatureRepository natureRepo;
+	
+	@Autowired NoteDeFraisRepo noteFraisRepo;
 	
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {	
@@ -146,8 +152,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m7 = new Mission();
 		m7.setUtilisateur(util2);
-		m7.setDebut(LocalDate.parse("2000-03-01"));
-		m7.setFin(LocalDate.parse("2000-04-02"));
+		m7.setDebut(LocalDate.parse("2000-01-01"));
+		m7.setFin(LocalDate.parse("2000-02-02"));
 		m7.setStatut(Statut.VALIDEE);
 		m7.setVilleDepart("Millau");
 		m7.setVilleArrivee("Rodez");
@@ -157,8 +163,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m8 = new Mission();
 		m8.setUtilisateur(util2);
-		m8.setDebut(LocalDate.parse("2000-04-01"));
-		m8.setFin(LocalDate.parse("2000-05-02"));
+		m8.setDebut(LocalDate.parse("2002-01-01"));
+		m8.setFin(LocalDate.parse("2002-02-02"));
 		m8.setStatut(Statut.VALIDEE);
 		m8.setVilleDepart("Paris");
 		m8.setVilleArrivee("Lens");
@@ -168,8 +174,8 @@ public class DataInitListener implements ServletContextListener{
 		
 		Mission m9 = new Mission();
 		m9.setUtilisateur(util2);
-		m9.setDebut(LocalDate.parse("2000-05-01"));
-		m9.setFin(LocalDate.parse("2000-06-02"));
+		m9.setDebut(LocalDate.parse("2003-01-01"));
+		m9.setFin(LocalDate.parse("2003-02-02"));
 		m9.setStatut(Statut.VALIDEE);
 		m9.setVilleDepart("Lyon");
 		m9.setVilleArrivee("Lille");
@@ -221,7 +227,26 @@ public class DataInitListener implements ServletContextListener{
 			m.setTransport(Transport.VOITURE_DE_SERVICE);
 			missionRepo.save(m);
 		}
+		NoteDeFrais n1 = new NoteDeFrais();
+		n1.setDate(LocalDate.parse("2017-01-01"));
+		n1.setMisson(m1);
+		n1.setMontant((float) 2145.50);
+		n1.setNature(NatureNoteDeFrais.AVION);
+		noteFraisRepo.save(n1);
 		
+		NoteDeFrais n2 = new NoteDeFrais();
+		n2.setDate(LocalDate.parse("2003-01-01"));
+		n2.setMisson(m1);
+		n2.setMontant((float) 2500.50);
+		n2.setNature(NatureNoteDeFrais.HOTEL);
+		noteFraisRepo.save(n2);
+		
+		NoteDeFrais n3 = new NoteDeFrais();
+		n3.setDate(LocalDate.parse("2020-01-01"));
+		n3.setMisson(m1);
+		n3.setMontant((float) 1405.50);
+		n3.setNature(NatureNoteDeFrais.AUTRE);
+		noteFraisRepo.save(n3);
 	}
 
 	@Override
