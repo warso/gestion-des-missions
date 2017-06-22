@@ -1,0 +1,59 @@
+
+<div class="container ">
+    <h2 align="center">AFFICHAGE DES MISSIONS</h2> <br>
+
+    <div class="col-md-10 ">
+
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th>Date de debut</th>
+                    <th>Date de fin</th>
+                    <th>Nature</th>
+                    <th>Depart</th>
+                    <th>Arrivée</th>
+                    <th>Transport</th>
+                    <th>Statut</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--boucle de parcours  de notre liste de mission-->
+                <tr ng-repeat="mission in $ctrl.missions">
+
+                    <td>{{mission.debut}}</td>
+                    <td>{{mission.fin}}</td>
+                    <td>{{mission.nature.type}}</td>
+                    <td>{{mission.villeDepart}}</td>
+                    <td>{{mission.villeArrivee}}</td>
+                    <td>{{mission.transport}}</td>
+                    <td>{{mission.statut}}</td>
+                    <!--dans le ng-click j'appel mon controleur qui appel le deleteMission de MissionService. et en pararmétre de fonction on a l'id de la mission.-->
+                    <!--Donc en cliquant sur la poubelle, automatiquement il recupere l'id correspondant à la ligne et supprime ainsi la mission : $ctrl.MissionService.deleteMission(mission.id)-->
+
+                    <td>
+                      
+                      <div class="row "> 
+                          <div class="col-md-6">
+                              <a ng-if="mission.statut == 'INITIALE'" class="btn btn-default" data-toggle="modal" data-target="#product_view" ng-click="$ctrl.popupDelete(mission)"><span class="glyphicon glyphicon-trash"></span></a>
+                          </div>
+                           
+                           <div class="col-md-6">
+                               <a ng-if="mission.statut == 'INITIALE' || mission.statut == 'REJETEE'" href="/gestion-des-missions/missionsModification/{{mission.id}}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                           </div>
+                      </div>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+        <div>
+
+        </div>
+
+
+        <a href="/gestion-des-missions/missionsCreation" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter une demande</a>
+    </div>
+</div>

@@ -183,6 +183,8 @@ public class DataInitListener implements ServletContextListener{
 		m9.setTransport(Transport.VOITURE_DE_SERVICE);
 		missionRepo.save(m9);
 		
+		
+		/*Géneration de mission aléatoire pour avoir de la donnée et pouvoir travailler correctement. (faire varier le i pour le nombre de donnée)*/
 		int i = 1000;
 		while (i > 0){
 			i--;

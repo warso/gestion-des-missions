@@ -11,6 +11,11 @@ export function route ($routeProvider, $locationProvider) {
           requireAuth: true,
           authorizeRole: ['EMPLOYE', 'ADMINISTRATEUR', 'MANAGER']
         })
+          .when('/frais/:id?', {
+          template: '<mission></mission>',
+          requireAuth: true,
+          authorizeRole: ['EMPLOYE', 'ADMINISTRATEUR', 'MANAGER']
+        })
         .when('/missionsPlanning', {
           template: '<mission-planning></mission-planning>',
           requireAuth: true,

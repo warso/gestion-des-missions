@@ -43,7 +43,7 @@ public class MissionController {
 
 	@Autowired
 	NatureRepository natureRepo;
-	
+
 	Logger logger = LoggerFactory.getLogger(MissionController.class);
 
 	@GetMapping("/missions")
@@ -51,11 +51,11 @@ public class MissionController {
 
 		return missionRepo.findAll();
 	}
-	
-	/**Modification de la mission */
+
+	/** Modification de la mission */
 	@PutMapping("/missions")
 	public void putMission(@RequestBody Mission mission) {
-		/*recuperation d'une mission de la base de donnée par son id*/
+		/* recuperation d'une mission de la base de donnée par son id */
 		Mission m = missionRepo.findOne(mission.getId());
 		/*
 		 * permet de faire le changement des champs et leur persistance si notre
@@ -72,11 +72,11 @@ public class MissionController {
 			m.setStatut(Statut.INITIALE);
 
 			missionRepo.save(m);
-			logger.info("Modification de la mission avec l'id: "+mission.getId()+ " reussite" );
-		}
-		else logger.info("Modification echoué");
+			logger.info("Modification de la mission avec l'id: " + mission.getId() + " reussite");
+		} else
+			logger.info("Modification echoué");
 	}
-	
+
 	/*
 	 * Retourne une liste mission par matricule
 	 */
@@ -89,11 +89,11 @@ public class MissionController {
 		else
 			return new ArrayList<Mission>();
 	}
-	
+
 	/*
 	 * Retourne une liste mission par subalterne
 	 */
-	
+
 	@GetMapping("/missions/subalternes/{matricule}")
 	public List<Mission> getBySubalternes(@PathVariable String matricule) {
 		List<RoleUtilisateur> roles = roleRepo.findByMatricule(matricule);
@@ -150,13 +150,13 @@ public class MissionController {
 		LocalDate debutMission = mission.getDebut();
 		LocalDate finMission = mission.getFin();
 		Mission miss = missionRepo.findAll().get(0);
-		
-		if (debutMission.getDayOfYear() <= LocalDate.now().getDayOfYear()){
+
+		if (debutMission.getDayOfYear() <= LocalDate.now().getDayOfYear()) {
 			logger.info(" Debut aujourd'hui");
 		}
-		
-		else if (debutMission.getDayOfYear() >= finMission.getDayOfYear()){
-			logger.info("Fin avant debut ou Fin = debut");	
+
+		else if (debutMission.getDayOfYear() >= finMission.getDayOfYear()) {
+			logger.info("Fin avant debut ou Fin = debut");
 		}
 
 		if ((debutMission.isAfter(LocalDate.now()))
@@ -194,9 +194,8 @@ public class MissionController {
 	/** Méthode de recupération d'une mission par son id */
 	@GetMapping("/missions/id/{id}")
 	public Mission getMissionById(@PathVariable Integer id) {
-		Mission mission = missionRepo.findOne(id);
+		return missionRepo.findOne(id);
 
-		return mission;
 	}
 
 }
