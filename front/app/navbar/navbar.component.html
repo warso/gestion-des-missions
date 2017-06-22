@@ -6,7 +6,7 @@
                 <li ng-class="{active:isActive('/missionsVisualisation')}"><a ng-href="missionsVisualisation">Gestion des missions</a></li>
                 <li ng-class="{active:isActive('/missionsPlanning')}"><a ng-href="missionsPlanning">Planning des missions</a></li>
                 <li ng-class="{active:isActive('/primes')}"><a ng-href="primes">Primes</a></li>
-                <li ng-class="{active:isActive('/')}"><a href="#">Saisie note de frais</a></li>
+                <li ng-class="{active:isActive('/noteDeFrais')}"><a ng-href="noteDeFrais">Saisie note de frais</a></li>
                 <li ng-class="{active:isActive('/')}" ng-if="$ctrl.user.role=='ADMINISTRATEUR'"><a href="#">Natures des missions</a></li>
                 <li ng-class="{active:isActive('/missionsValidation')}" ng-if="$ctrl.user.role=='MANAGER'"><a ng-href="missionsValidation">Validation des missions</a></li>
             </ul>

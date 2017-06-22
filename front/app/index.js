@@ -18,6 +18,7 @@ import {MissionCreationComponent} from './missionCreation/missionCreation.compon
 import { AuthComponent } from './auth/auth.component'
 import {MissionModificationComponent} from './missionModification/missionModification.component'
 import {MissionPlanningComponent} from './missionPlanning/missionPlanning.component'
+import {NoteDeFraisComponent} from './noteDeFrais/noteDeFrais.component'
 
 
 import 'angular-chart.js'
@@ -43,6 +44,7 @@ angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment', 'mwl.
 .component('missionValidation', MissionValidationComponent)
 .component('missionCreation', MissionCreationComponent)
 .component('missionModification', MissionModificationComponent)
+.component('noteDeFrais', NoteDeFraisComponent)
 
 .component('missionPlanning', MissionPlanningComponent)
 

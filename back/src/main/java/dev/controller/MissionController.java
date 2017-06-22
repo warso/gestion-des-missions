@@ -90,6 +90,19 @@ public class MissionController {
 			return new ArrayList<Mission>();
 	}
 
+	@GetMapping("/missions/status/{status}/{matricule}")
+	public List<Mission> getByStatusAndMatricule(@PathVariable String status, @PathVariable String matricule) {
+		List<RoleUtilisateur> roles = roleRepo.findByMatricule(matricule);
+		if (roles.size() == 1) {
+			if (status.equals("ECHUE"))
+				return missionRepo.findByUtilisateurAndStatut(roles.get(0), Statut.ECHUE);
+			else
+
+				return missionRepo.findByUtilisateur(roles.get(0));
+		} else
+			return new ArrayList<Mission>();
+	}
+
 	/*
 	 * Retourne une liste mission par subalterne
 	 */
@@ -196,6 +209,7 @@ public class MissionController {
 	public Mission getMissionById(@PathVariable Integer id) {
 		return missionRepo.findOne(id);
 
+		return mission;
 	}
 
 }
