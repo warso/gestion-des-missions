@@ -26,17 +26,14 @@ class controller {
   listNatureMission () {
     this.MissionService.getMissionNature()
             .then(natures => this.natures = natures)
-            .then(n => { console.log(this.natures) })
   }
 
   tabTransportMission () {
     this.MissionService.getMissionTransport()
             .then(transports => this.transports = transports)
-            .then(t => { console.log(this.transports) })
   }
 
   modifMission (mission) {
-    console.log('modifmission')
     this.mission.utilisateur = this.LoginService.loadUser()
     this.mission.statut = 'INITIALE'
     this.MissionService.updateMission(this.mission)

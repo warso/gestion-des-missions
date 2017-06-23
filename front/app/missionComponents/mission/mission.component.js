@@ -3,7 +3,7 @@ import template from './mission.component.html'
 import templateModal from './deletePopup.html'
 
 class controller {
-  constructor(MissionService, LoginService, $uibModal,$location) {
+  constructor (MissionService, LoginService, $uibModal, $location) {
     this.MissionService = MissionService
     this.LoginService = LoginService
     this.$uibModal = $uibModal
@@ -11,36 +11,32 @@ class controller {
     this.missions = []
   }
 
-  $onInit() {
+  $onInit () {
     this.rechargerMissions()
   }
 
-  rechargerMissions() {
+  rechargerMissions () {
     let user = this.LoginService.loadUser()
     if (user !== undefined) {
       this.MissionService.getMissions(user.matricule)
         .then(
         missions => {
           this.missions = missions
-          console.log("Missions apres rechargement", this.missions)
         })
     }
   }
 
-  statutMission(){
-   this.MissionService.getMissionStatus()
-    console.log("fonctions statut mission")
+  statutMission () {
+    this.MissionService.getMissionStatus()
   }
 
-  pageVisualisation(){
-      this.$location.path('/missionsVisualisation')
+  pageVisualisation () {
+    this.$location.path('/missionsVisualisation')
   }
 
-
-
-  popupDelete(mission) {
+  popupDelete (mission) {
     // Ici je stoque mon this dans une variable, pour pouvoir l'utilisé dans une fonction anonyme qui a son propre this ( les fonctions anonyme ont leurs propres this)
-    let me = this;
+    let me = this
 
     me.$uibModal.open({
       animation: true,
@@ -49,12 +45,8 @@ class controller {
       template: templateModal,
       controller: function ($scope, $uibModalInstance, MissionService) {
         // je suis dans une fonction anonyme et le this à partir de maintenant et jusqu'a ce qu'on sort de la focntion est celui de la fonction anonyme
-        this.depart = "yo!"
-        this.uneMission = mission;
-        this.test = function () {
-          console.log("test ok ")
-
-        }
+        this.depart = 'yo!'
+        this.uneMission = mission
         this.annuler = () => {
           $uibModalInstance.close()
         }
@@ -65,18 +57,15 @@ class controller {
             .then(rep => this.annuler())
         }
       },
-      controllerAs: '$ctrlPop',
-    });
+      controllerAs: '$ctrlPop'
+    })
   }
-
-
-
 }
 
 export let MissionComponent = {
   template,
   controller,
   bindings: {
-    mission:"<"
+    mission: '<'
   }
 }

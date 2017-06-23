@@ -23,7 +23,6 @@ export class MissionService {
   }
 
   getMissionsById (id) {
-    console.log('recuperation de la mission par son id')
     if (!id) {
       return this.$q.resolve(this.mission = {
         debut: '',
@@ -37,8 +36,7 @@ export class MissionService {
     }
     return this.$http.get(API_URL + '/missions/id/' + id)
     .then(
-    rep => rep.data,
-    err => { console.log('error acces API/missions for get mission', err) }
+    rep => rep.data
     )
   }
 
@@ -47,35 +45,30 @@ export class MissionService {
   getMissions (matricule) {
     return this.$http.get(API_URL + '/missions/matricule/' + matricule)
     .then(
-    rep => rep.data,
-    err => { console.log('error acces API/missions for get mission', err) }
+    rep => rep.data
     )
   }
 
   getMissionEchue (matricule) {
     return this.$http.get(API_URL + '/missions/status/ECHUE/' + matricule)
     .then(
-    rep => rep.data,
-    err => { console.log('error acces API/missions for get mission', err) }
+    rep => rep.data
     )
   }
 
   getMissionsSubalternes (matricule) {
     return this.$http.get(API_URL + '/missions/subalternes/' + matricule)
     .then(
-    rep => rep.data,
-    err => { console.log('error acces API/missions for get missionSubalternes', err) }
+    rep => rep.data
     )
   }
 
 
 
   deleteMission (id) {
-    console.log('deleteMissions()')
     return this.$http.delete(API_URL + '/missions/' + id)
     .then(
-    rep => rep.data,
-    err => { console.log('error acces API/missions for delete mission', err) }
+    rep => rep.data
     )
   }
 
@@ -96,7 +89,6 @@ export class MissionService {
   }
 
   ajoutNouvelleMission (mission) {
-    // console.log('recuperation de la fonction mision creationService', mission)
     // envoie les data à mission.json
     this.$http.post(API_URL + '/missions', mission)
     

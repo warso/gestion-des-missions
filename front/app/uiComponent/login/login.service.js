@@ -16,18 +16,12 @@ export class LoginService {
   }
 
   recup () {
-    console.log('dans la methode recup du service')
         // envoie les data à user.json
     return this.$http.get('http://localhost:3000/user')
         .then(
         /* succes */
         rep => {
-          console.log('reponse ok', rep.data)
           return rep.data
-        },
-        /* error */
-        err => {
-          console.log('error', err)
         }
 
         )
@@ -40,24 +34,18 @@ export class LoginService {
           return rep.data
         },
         err => {
-          console.log('Connection API impossible', err)
           return this.$q.reject(err)
         }
         )
   }
 
   verif (user) {
-    console.log('dans la methode verif du service')
         // le return de ma fonction verif() est une promesse. J'en ai besoin pour pouvoir voir si j'ai un match ou pas de user entre la saisie et la base de donnée
     return this.recup().then((users) => {
       let resultat
       users.forEach((elementUser) => {
-        console.log('verification du foreach', users)
         if (user.email === elementUser.email && user.password === elementUser.password) {
-          console.log('user reconnu', elementUser.email)
           resultat = elementUser
-        } else {
-          console.log('user inconnue')
         }
       }, this)
 
@@ -67,7 +55,6 @@ export class LoginService {
   }
 
   ajoutNouveauEmploye (user) {
-    console.log('recuperation de la fonction loginService', user)
         // envoie les data à user.json
     this.$http.post('http://localhost:3000/user', user)
   }
@@ -81,7 +68,7 @@ export class LoginService {
     }
   }
 
-  loadUser() {
+  loadUser () {
     if (!this.user) {
       this.user = this.$cookies.getObject(this.cookieName)
     }
@@ -94,24 +81,18 @@ export class LoginService {
         rep => {
           let dataUser = rep[0]
           if (!dataUser) {
-            console.log('eror connection')
             return false
           }
 
           if (dataUser.email === user.email && dataUser.password === this.sha1(user.password)) {
-            console.log('succes connection')
             this.saveUser(dataUser)
             if (this.navbarCallback) {
               this.navbarCallback()
             }
             return true
           } else {
-            console.log('eror connection')
             return false
           }
-        },
-        err => {
-          console.log('error connection API', err)
         }
         )
   }
@@ -121,7 +102,6 @@ export class LoginService {
     this.$cookies.remove(this.cookieName)
 
     this.$location.path('login')
-
     if (this.navbarCallback) {
       this.navbarCallback()
     }

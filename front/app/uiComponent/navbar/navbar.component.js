@@ -14,7 +14,6 @@ class controller {
     this.missions = []
 
     $scope.isActive = function (viewLocation) {
-      // console.log(this.$location)
       return viewLocation === this.$location.path()
     }.bind(this)
 
