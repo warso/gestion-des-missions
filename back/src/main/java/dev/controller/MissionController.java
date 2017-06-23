@@ -102,10 +102,12 @@ public class MissionController {
 			return new ArrayList<Mission>();
 	}
 
-	/*
-	 * Retourne une liste mission par subalterne
+	/**
+	 * Génère la liste des missions de tous les subalternes d'un employé
+	 * Les missions de cette employé sont également dans la liste
+	 * @param matricule Defini l'employé en question
+	 * @return la liste des missions
 	 */
-
 	@GetMapping("/missions/subalternes/{matricule}")
 	public List<Mission> getBySubalternes(@PathVariable String matricule) {
 		List<RoleUtilisateur> roles = roleRepo.findByMatricule(matricule);

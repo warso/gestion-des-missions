@@ -2,17 +2,21 @@ import './navbar.component.css'
 import template from './navbar.component.html'
 
 class controller {
-  constructor(LoginService, $scope, $location) {
+  constructor (MissionService, LoginService, $scope, $location) {
+    this.MissionService = MissionService
     this.LoginService = LoginService
-    this.LoginService.navbarCallback = function () { this.onUserChange() }.bind(this)
+    this.LoginService.navbarCallback = function () {
+      this.onUserChange()
+    }.bind(this)
     this.user = {}
     this.hide = true
     this.$location = $location
+    this.missions = []
 
     $scope.isActive = function (viewLocation) {
       // console.log(this.$location)
-            return viewLocation === this.$location.path()
-        }.bind(this)
+      return viewLocation === this.$location.path()
+    }.bind(this)
 
     $scope.$on('$routeChangeStart', function (angularEvent, newUrl) {
       if ($location.path() === '/login') {
@@ -23,11 +27,24 @@ class controller {
     }.bind(this))
   }
 
-  $onInit() {
+  $onInit () {
     this.user = this.LoginService.loadUser()
+    if (this.user !== undefined) {
+      this.MissionService.getMissionsSubalternes(this.user.matricule)
+        .then(
+          missions => {
+            this.missions = missions
+          })
+    }
   }
 
-  onUserChange() {
+  getMissionsEnAttente () {
+    return this.missions.filter(function (mission) {
+      return mission.statut === 'EN_ATTENTE_VALIDATION'
+    })
+  }
+
+  onUserChange () {
     this.user = this.LoginService.loadUser()
   }
 }
