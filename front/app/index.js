@@ -25,7 +25,7 @@ import 'angular-bootstrap-calendar'
 import 'angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css'
 
 
-import { LoginService } from './login/login.service'
+import { LoginService } from './uiComponent/login/login.service'
 import { MissionService } from './mission.service'
 import {AbsenceService} from './absence.service'
 
