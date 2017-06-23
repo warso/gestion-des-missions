@@ -11,8 +11,8 @@ export function route($routeProvider, $locationProvider) {
       requireAuth: true,
       authorizeRole: ['EMPLOYE', 'ADMINISTRATEUR', 'MANAGER']
     })
-    .when('/frais/:id?', {
-      template: '<mission></mission>',
+    .when('/noteDeFrais/mission/:id?', {
+      template: '<ajout-note-de-frais></ajout-note-de-frais>',
       requireAuth: true,
       authorizeRole: ['EMPLOYE', 'ADMINISTRATEUR', 'MANAGER']
     })

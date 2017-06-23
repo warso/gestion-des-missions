@@ -18,6 +18,7 @@ import { AuthComponent } from './uiComponent/auth/auth.component'
 import {MissionModificationComponent} from './missionComponents/missionModification/missionModification.component'
 import {MissionPlanningComponent} from './missionComponents/missionPlanning/missionPlanning.component'
 import {NoteDeFraisComponent} from './noteDeFrais/noteDeFrais.component'
+import {AjoutNoteDeFrais} from './ajoutNoteDeFrais/ajoutNoteDeFrais.component'
 
 
 import 'angular-chart.js'
@@ -25,9 +26,10 @@ import 'angular-bootstrap-calendar'
 import 'angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css'
 
 
-import { LoginService } from './uiComponent/login/login.service'
+import { LoginService } from './login.service'
 import { MissionService } from './mission.service'
 import {AbsenceService} from './absence.service'
+import {NoteDeFraisService} from './noteDeFrais.service'
 
 require('angular-moment')
 
@@ -43,6 +45,7 @@ angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment', 'mwl.
 .component('missionCreation', MissionCreationComponent)
 .component('missionModification', MissionModificationComponent)
 .component('noteDeFrais', NoteDeFraisComponent)
+.component('ajoutNoteDeFrais', AjoutNoteDeFrais)
 
 .component('missionPlanning', MissionPlanningComponent)
 
@@ -52,6 +55,7 @@ angular.module('app', [RouteModule, ngCookies, $uibModal, 'angularMoment', 'mwl.
 .service('LoginService', LoginService)
 .service('MissionService', MissionService)
 .service('AbsenceService', AbsenceService)
+.service('NoteDeFraisService',NoteDeFraisService)
 
 .config(route)
 

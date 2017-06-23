@@ -1,0 +1,70 @@
+<div class="container">
+    
+<h1 align="center">
+
+    GDM</h1>
+<h2 align="center">Nouveau Frais</h2>
+
+<form class="form-horizontal container wrap" name="authentification">
+    <fieldset>
+
+        <!-- Date de debut-->
+        <div class="form-group container">
+            <label class="col-md-4 control-label" for="username">Date de debut </label>
+            <div class="col-md-4">
+                <input id="username" ng-model="$ctrl.mission.debut" name="username" type="date" placeholder="" class="form-control input-md"
+                    required>
+            </div>
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+        </div>
+
+        <!-- Date de fin-->
+        <div class="form-group container">
+            <label class="col-md-4 control-label" for="username">Date de fin </label>
+            <div class="col-md-4">
+                <input id="username" ng-model="$ctrl.mission.fin" name="username" type="date" placeholder="" class="form-control input-md"
+                    required>
+            </div>
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+        </div>
+
+        <!-- Nature -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="selectbasic">Nature</label>
+            <div class="col-md-4">
+                <select id="selectbasic" ng-model="$ctrl.note.natureNotaire" name="selectbasic" class="form-control">
+                    <option ng-repeat="nature in $ctrl.natures" value="{{nature}}">{{nature}}</option>
+                  
+                </select>
+            </div>
+        </div>
+
+        <!-- Montant -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Montant(€)</label>
+            <div class="col-md-4">
+                <input id="textinput" ng-model="$ctrl.note.villeDepart" name="textinput" type="text" placeholder="Montant" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="button1id"></label>
+            <div class="col-md-8">
+                <button id="button1id" name="button1id" class="btn btn-danger" ng-click="$ctrl.reset()">Annuler</button>
+                <button id="button2id" name="button2id" class="btn btn-success" ng-click="$ctrl.addMission()">Valider</button>
+                <br><br>
+                <div class="alert alert-warning" ng-if="$ctrl.errorValid">
+                    La date de début est après la date de fin !
+                </div>
+                 <div class="alert alert-warning" ng-if="$ctrl.errorValid1">
+                    Le transport choisi étant avion, le delai n'est pas suffisant !
+                </div>
+                 <div class="alert alert-warning" ng-if="$ctrl.errorValid2">
+                    La mission ne peut débuter aujourd'hui !
+                </div>
+
+            </div>
+        </div>
+</div>

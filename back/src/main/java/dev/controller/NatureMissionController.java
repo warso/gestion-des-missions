@@ -10,7 +10,7 @@ import dev.model.Nature;
 import dev.repository.NatureRepository;
 
 @RestController
-public class NatureController {
+public class NatureMissionController {
 
 	@Autowired
 	NatureRepository natureRepo;
@@ -21,5 +21,7 @@ public class NatureController {
 
 		return natureRepo.findAll();
 	}
+	
+	
 
 }

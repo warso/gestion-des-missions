@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.enumeration.NatureNoteDeFrais;
+import dev.enumeration.Statut;
 import dev.model.Mission;
 import dev.model.NoteDeFrais;
 import dev.repository.MissionRepo;
@@ -28,14 +30,14 @@ public class NoteDeFraisController {
 	/*
 	 * Recuperation de la liste de toute les notes de frais en abses de donnée
 	 */
-	@GetMapping("/frais")
+	@GetMapping("/noteDefrais")
 	public List<NoteDeFrais> get() {
 
 		return noteDeFraisRepos.findAll();
 	}
 
 	/* Recuperaiton d'une note de frais en fonction de son id */
-	@GetMapping("/frais/id/{id}")
+	@GetMapping("/noteDefrais/id/{id}")
 	public NoteDeFrais getNoteDeFraisById(@PathVariable Integer id) {
 
 		return noteDeFraisRepos.findOne(id);
@@ -54,11 +56,18 @@ public class NoteDeFraisController {
 	 * Recupération de l'objet Json, venant de l'api rest (liens entre spring et
 	 * angular), où cette objet est envoyé depuis angular avecun post en Json
 	 */
-	@PostMapping("/frais")
+	@PostMapping("/noteDefrais")
 	public void addNoteDeFrais(@RequestBody NoteDeFrais noteDeFrais) {
 
 		noteDeFraisRepos.save(noteDeFrais);
 
+	}
+	
+	
+	/**Mise en liens avec l'api nos enumerations de note de frais*/
+	@GetMapping("/noteDefrais/natures")
+	public NatureNoteDeFrais[] getSatut(@RequestParam(value = "statut", required = false) String s) {
+		return NatureNoteDeFrais.values();
 	}
 
 }
