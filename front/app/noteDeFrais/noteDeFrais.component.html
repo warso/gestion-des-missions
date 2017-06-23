@@ -32,9 +32,7 @@
                     <!--Donc en cliquant sur la poubelle, automatiquement il recupere l'id correspondant à la ligne et supprime ainsi la mission : $ctrl.MissionService.deleteMission(mission.id)-->
 
                     <td>
-                        <!--BOUTON ACTION-->
-                        <a href="/gestion-des-missions/noteDeFrais/mission/{{mission.id}}" class="btn btn-default" ><span class="glyphicon glyphicon-plus"></span></a>
-                        
+                        <button ng-click="$ctrl.detailMission(mission.id)" class="btn btn-default btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
                     </td>
                 </tr>
 

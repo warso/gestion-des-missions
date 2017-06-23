@@ -154,8 +154,8 @@ public class MissionController {
 	 * Insère une nouvelle mission en base de données
 	 */
 
+
 	@PostMapping("/missions")
-	// @CrossOrigin("*")
 	public void addMission(@RequestBody Mission mission) {
 
 		mission.setStatut(Statut.INITIALE);
@@ -163,24 +163,32 @@ public class MissionController {
 		LocalDate debutMission = mission.getDebut();
 		LocalDate finMission = mission.getFin();
 		Mission miss = missionRepo.findAll().get(0);
-
-		if (debutMission.getDayOfYear() <= LocalDate.now().getDayOfYear()) {
+		
+		if (debutMission.getDayOfYear() <= LocalDate.now().getDayOfYear()){
 			logger.info(" Debut aujourd'hui");
 		}
-
-		else if (debutMission.getDayOfYear() >= finMission.getDayOfYear()) {
-			logger.info("Fin avant debut ou Fin = debut");
+		
+		else if (debutMission.getDayOfYear() >= finMission.getDayOfYear()){
+			logger.info("Fin avant debut ou Fin = debut");	
 		}
 
-		if ((debutMission.isAfter(LocalDate.now()))
-				&& ((debutMission.isBefore(finMission)) || (debutMission.isEqual(finMission)))) {
-
-			if (mission.getTransport() == Transport.AVION) {
-				finMission = debutMission.plusDays(7);
-			}
+		else if (
+				(mission.getTransport().equals(Transport.AVION))
+				&&
+				(Period.between(LocalDate.now(), debutMission).getDays() <= 7)
+				){
+			logger.info("Avion");
+		}
+		
+		else if (miss.equals(mission)){
+			logger.info("Mission existante");
+		}
+		
+		else {
 			missionRepo.save(mission);
 
 		}
+
 	}
 
 	/*
