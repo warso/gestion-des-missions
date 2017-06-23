@@ -8,6 +8,9 @@ class controller {
     this.LoginService.navbarCallback = function () {
       this.onUserChange()
     }.bind(this)
+    this.MissionService.navbarNotifCallback = function () {
+      this.majMissions()
+    }.bind(this)
     this.user = {}
     this.hide = true
     this.$location = $location
@@ -28,6 +31,10 @@ class controller {
 
   $onInit () {
     this.user = this.LoginService.loadUser()
+    this.majMissions()
+  }
+
+  majMissions () {
     if (this.user !== undefined) {
       this.MissionService.getMissionsSubalternes(this.user.matricule)
         .then(
@@ -36,7 +43,6 @@ class controller {
           })
     }
   }
-
   getMissionsEnAttente () {
     return this.missions.filter(function (mission) {
       return mission.statut === 'EN_ATTENTE_VALIDATION'

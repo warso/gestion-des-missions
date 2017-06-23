@@ -17,10 +17,14 @@ export class MissionService {
 
     missionCopy.debut = this.moment(missionCopy.debut).format('YYYY/MM/DD')
     missionCopy.fin = this.moment(missionCopy.fin).format('YYYY/MM/DD')
-    
+
+    if (this.navbarNotifCallback) {
+      this.navbarNotifCallback()
+    }
+
     // on fait un put(permetttant le update en base de donée) en mettant missonCopy qui est l'objet que l'on veux appliquer
     return this.$http.put(API_URL + '/missions', missionCopy)
-    .then(rep => rep.data)
+    .then(rep => rep.data)  
   }
 
   getMissionsById (id) {
