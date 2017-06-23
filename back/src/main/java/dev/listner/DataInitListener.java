@@ -229,6 +229,7 @@ public class DataInitListener implements ServletContextListener{
 			m.setTransport(Transport.VOITURE_DE_SERVICE);
 			missionRepo.save(m);
 		}
+		
 		NoteDeFrais n1 = new NoteDeFrais();
 		n1.setDate(LocalDate.parse("2017-01-01"));
 		n1.setMisson(m1);

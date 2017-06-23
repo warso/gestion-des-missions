@@ -6,6 +6,7 @@ export class MissionService {
     this.API_URL = API_URL
     this.moment = moment
     this.$location = $location
+    
   }
 
   updateMission (mission) {
@@ -36,7 +37,8 @@ export class MissionService {
     }
     return this.$http.get(API_URL + '/missions/id/' + id)
     .then(
-    rep => rep.data
+    rep => rep.data, 
+    err => { console.log('error acces API/missions for get mission', err) }
     )
   }
 
@@ -45,21 +47,32 @@ export class MissionService {
   getMissions (matricule) {
     return this.$http.get(API_URL + '/missions/matricule/' + matricule)
     .then(
-    rep => rep.data
+    rep => rep.data,
+    err => { console.log('error acces API/missions for get mission', err) }
     )
   }
 
   getMissionEchue (matricule) {
     return this.$http.get(API_URL + '/missions/status/ECHUE/' + matricule)
     .then(
-    rep => rep.data
+    rep => rep.data,
+    err => { console.log('error acces API/missions for get mission', err) }
+    )
+  }
+  
+  getMissionNonEchue(matricule) {
+    return this.$http.get(API_URL + '/missions/status/NOTECHUE/' + matricule)
+    .then(
+    rep => rep.data,
+    err => { console.log('error acces API/missions for get mission', err) }
     )
   }
 
   getMissionsSubalternes (matricule) {
     return this.$http.get(API_URL + '/missions/subalternes/' + matricule)
     .then(
-    rep => rep.data
+    rep => rep.data,
+    err => { console.log('error acces API/missions for get missionSubalternes', err) }
     )
   }
 
@@ -68,7 +81,8 @@ export class MissionService {
   deleteMission (id) {
     return this.$http.delete(API_URL + '/missions/' + id)
     .then(
-    rep => rep.data
+    rep => rep.data,
+    err => { console.log('error acces API/missions for delete mission', err) }
     )
   }
 

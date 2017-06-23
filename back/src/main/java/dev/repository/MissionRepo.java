@@ -13,5 +13,6 @@ public interface MissionRepo extends JpaRepository<Mission, Integer> {
 	
 	List<Mission> findByUtilisateur( RoleUtilisateur utilisateur );
 	List<Mission> findByUtilisateurAndStatut( RoleUtilisateur utilisateur, Statut statut );
+	List<Mission> findByUtilisateurAndStatutNot( RoleUtilisateur utilisateur, Statut statut );
 	List<Mission> findById( int id );
 }

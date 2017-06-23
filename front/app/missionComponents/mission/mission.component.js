@@ -18,7 +18,7 @@ class controller {
   rechargerMissions () {
     let user = this.LoginService.loadUser()
     if (user !== undefined) {
-      this.MissionService.getMissions(user.matricule)
+      this.MissionService.getMissionNonEchue(user.matricule)
         .then(
         missions => {
           this.missions = missions

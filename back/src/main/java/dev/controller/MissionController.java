@@ -96,8 +96,7 @@ public class MissionController {
 			if (status.equals("ECHUE"))
 				return missionRepo.findByUtilisateurAndStatut(roles.get(0), Statut.ECHUE);
 			else
-
-				return missionRepo.findByUtilisateur(roles.get(0));
+				return missionRepo.findByUtilisateurAndStatutNot(roles.get(0), Statut.ECHUE);
 		} else
 			return new ArrayList<Mission>();
 	}
